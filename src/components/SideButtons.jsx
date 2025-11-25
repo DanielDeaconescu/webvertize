@@ -32,10 +32,25 @@ const FormButton = styled.a`
 function SideButtons() {
   const [showForm, setShowForm] = useState(false);
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    alert('Form submitted!');
-    setShowForm(false);
+
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
+
+    // send to Vercel API route
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+
+    if (res.ok) {
+      alert('Message sent!');
+      setShowForm(false);
+    } else {
+      alert('Error sending message!');
+    }
   }
 
   return (
