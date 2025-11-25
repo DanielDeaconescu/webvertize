@@ -1,0 +1,16 @@
+import Footer from '../components/Footer';
+import Navigation from '../components/Navigation';
+import SideButtons from '../components/SideButtons';
+
+function OurMission() {
+  return (
+    <div>
+      <Navigation />
+      <p>This is the Services page!</p>
+      <SideButtons />
+      <Footer />
+    </div>
+  );
+}
+
+export default OurMission;
