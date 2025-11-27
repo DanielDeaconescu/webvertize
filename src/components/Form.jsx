@@ -5,13 +5,13 @@ function Form({ onSubmit }) {
         <label htmlFor="name" className="form-label">
           Name:
         </label>
-        <input type="text" className="form-control" />
+        <input type="text" className="form-control" name="name" />
       </div>
       <div className="mb-3">
         <label htmlFor="email" className="form-label">
           Email:
         </label>
-        <input type="email" className="form-control" />
+        <input type="email" className="form-control" name="email" />
       </div>
       <div className="mb-3">
         <label htmlFor="message" className="form-label">
