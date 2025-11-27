@@ -20,7 +20,6 @@ function Modal({ show, onClose, title, children }) {
   useEffect(() => {
     if (show) bsModal.current.show();
     else {
-      onClose();
       bsModal.current.hide();
     }
   }, [show, onClose]);
