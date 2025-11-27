@@ -10,6 +10,7 @@ export default async function handler(req, res) {
         try {
           resolve(JSON.parse(body));
         } catch (error) {
+          console.error(error);
           reject(new Error('Invalid JSON'));
         }
       });
