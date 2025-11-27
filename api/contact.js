@@ -34,7 +34,7 @@ export default async function handler(req, res) {
     });
 
     await transporter.sendMail({
-      from: `Webvertize Form`,
+      from: `Webvertize Form ${process.env.SMTP_USER}`,
       to: process.env.RECEIVING_EMAIL,
       subject: `Webvertize Form`,
       html: `
