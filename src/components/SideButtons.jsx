@@ -49,8 +49,8 @@ function SideButtons() {
 
     if (res.ok) {
       // Navigate to the thank-you page
-
       navigate('/thank-you');
+      setShowForm(false);
     } else {
       alert('Error sending message!');
     }
