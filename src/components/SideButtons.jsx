@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Modal from './Modal';
 import { useState } from 'react';
 import Form from './Form';
+import { useNavigate } from 'react-router-dom';
 
 const SideButtonsContainer = styled.div`
   display: flex;
@@ -30,6 +31,7 @@ const FormButton = styled.a`
 `;
 
 function SideButtons() {
+  const navigate = useNavigate();
   const [showForm, setShowForm] = useState(false);
 
   async function handleSubmit(e) {
@@ -46,8 +48,9 @@ function SideButtons() {
     });
 
     if (res.ok) {
-      alert('Message sent!');
-      setShowForm(false);
+      // Navigate to the thank-you page
+
+      navigate('/thank-you');
     } else {
       alert('Error sending message!');
     }
