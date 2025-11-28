@@ -57,7 +57,7 @@ function SideButtons() {
       sessionStorage.setItem('formSubmitted', 'true');
       // 3. Navigating to the thank-you page
       navigate('/thank-you');
-    } else if (res.status === 'tooManyRequests') {
+    } else if (res.status === 429) {
       navigate('/too-many-requests');
       alert('Error sending message!');
     }
