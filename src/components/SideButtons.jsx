@@ -49,9 +49,11 @@ function SideButtons() {
 
     if (res.ok) {
       // Navigate to the thank-you page
+      // 1. Removing Bootstrap's modal-backdrop
       document.body.classList.remove('modal-open');
       document.querySelectorAll('.modal-backdrop').forEach((el) => el.remove());
       setShowForm(false);
+      // 2. Navigating to the thank-you page
       navigate('/thank-you');
     } else {
       alert('Error sending message!');
