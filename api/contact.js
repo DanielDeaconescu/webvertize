@@ -17,6 +17,28 @@ export default async function handler(req, res) {
       req.on('error', reject);
     });
 
+    const client = await clientPromise;
+    const db = client.db('WebvertizeFormSubmissions');
+    const collection = db.collection('Webvertize');
+
+    // Determine user IP (Vercel-friendly)
+    const userIP =
+      req.headers['x-forwarded-for']?.split(',')[0]?.trim() ||
+      req.socket.remoteAddress;
+
+    // Calculate the time window
+    const twentyFourHoursAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
+
+    // Count how many submissions this IP made in the last 24 hours
+    const submissionsCount = await collection.countDocuments({
+      ip: userIP,
+      createdAt: { $gte: twentyFourHoursAgo },
+    });
+
+    if (submissionsCount >= 2) {
+      return res.status(429).json({ status: 'tooManyRequests' });
+    }
+
     // 2. Validate
     if (!data.name || !data['email'] || !data['message']) {
       return res.status(400).json({ error: 'All fields are required!' });
@@ -44,6 +66,15 @@ export default async function handler(req, res) {
         <p><strong>Email: </strong> ${data.email}</p>
         <p><strong>Message: </strong> ${data.message}</p>
       `,
+    });
+
+    // Insert the form submission
+    const body = req.body;
+
+    await collection.insertOne({
+      ...body,
+      ip: userIP,
+      createdAt: new Date(),
     });
 
     res
