@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import Logo from '../components/Logo';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleLeft } from '@fortawesome/free-solid-svg-icons';
+import { useEffect } from 'react';
 
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -32,6 +33,20 @@ const ThankYouText = styled.div`
 `;
 
 function ThankYou() {
+  // Check for the sessionStorage flag - if it doesn't exist, redirect to "/"
+  const navigate = useNavigate();
+  useEffect(() => {
+    const flag = sessionStorage.getItem('formSubmitted');
+
+    if (!flag) {
+      navigate('/');
+      return;
+    }
+
+    // if accessed correctly, remove the flag so refreshing the page doesn't show the content again
+    sessionStorage.removeItem('formSubmitted');
+  }, [navigate]);
+
   return (
     <ThankYouContainer>
       <Logo />
