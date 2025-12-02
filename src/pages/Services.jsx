@@ -2,7 +2,7 @@ import Footer from '../components/Footer';
 import Navigation from '../components/Navigation';
 import SideButtons from '../components/SideButtons';
 
-function OurMission() {
+function Services() {
   return (
     <div>
       <Navigation />
@@ -13,4 +13,4 @@ function OurMission() {
   );
 }
 
-export default OurMission;
+export default Services;

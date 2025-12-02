@@ -3,6 +3,7 @@ import Footer from '../components/Footer';
 import SideButtons from '../components/SideButtons';
 import WebDev from '../components/WebDev';
 import Ads from '../components/Ads';
+import OurMission from '../components/OurMission';
 
 function Home() {
   return (
@@ -11,6 +12,7 @@ function Home() {
       <div className="container">
         <WebDev />
         <Ads />
+        <OurMission />
       </div>
       <SideButtons />
       <Footer />
