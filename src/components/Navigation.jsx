@@ -80,7 +80,7 @@ function Navigation() {
 
             <StyledLi className="nav-item">
               <StyledLink className="nav-link" to="/projects">
-                Projects
+                Portfolio
               </StyledLink>
             </StyledLi>
             <StyledLi className="nav-item">
