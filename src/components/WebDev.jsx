@@ -5,6 +5,13 @@ import bgWebAppsImage from '../assets/web_apps_image.jpg';
 
 const StyledWebDev = styled.div`
   height: 650px;
+  padding-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  margin-bottom: 4rem;
 `;
 
 function WebDev() {
@@ -21,7 +28,9 @@ function WebDev() {
               link1="/portfolio"
               link2="/services"
               icon="websites-icon"
-              bgWebsitesImage={bgWebsitesImage}
+              bgImage={bgWebsitesImage}
+              overlayOpacity={0.35}
+              blur={5}
             />
           </div>
           <div className="col-md-6">
@@ -32,7 +41,9 @@ function WebDev() {
               link1="/portfolio"
               link2="/services"
               icon="web-app-icon"
-              bgWebAppsImage={bgWebAppsImage}
+              bgImage={bgWebAppsImage}
+              overlayOpacity={0.35}
+              blur={5}
             />
           </div>
         </div>
