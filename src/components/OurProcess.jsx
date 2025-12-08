@@ -34,6 +34,14 @@ const TabContainer = styled.div`
   flex-direction: column;
   gap: 1.5rem;
   padding: 3rem;
+
+  @media (max-width: 576px) {
+    padding: 1.5rem;
+  }
+
+  @media (min-width: 576px) and (max-width: 768px) {
+    padding: 1.5rem;
+  }
 `;
 
 const TabList = styled.div`
@@ -43,6 +51,14 @@ const TabList = styled.div`
   gap: 1rem;
   position: relative;
   z-index: 9;
+
+  @media (max-width: 576px) {
+    font-size: 12px;
+  }
+
+  @media (min-width: 576px) and (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 const TabButton = styled.button`
@@ -68,10 +84,23 @@ const TabPanel = styled.div`
   position: relative;
   z-index: 9;
   color: #fff;
+
+  @media (max-width: 1200px) {
+    padding: 0;
+    gap: 1rem;
+  }
 `;
 
 const StyledP = styled.p`
   text-align: justify;
+
+  @media (max-width: 576px) {
+    font-size: 16px !important;
+  }
+
+  @media (min-width: 576px) and (max-width: 992px) {
+    font-size: 20px !important;
+  }
 `;
 
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
@@ -82,6 +111,24 @@ const TitleContainer = styled.div`
   position: relative;
   z-index: 9;
   color: #fff;
+`;
+
+const TabListTabPanel = styled.div`
+  @media (max-width: 576px) {
+    gap: 1rem;
+  }
+
+  @media (min-width: 576px) and (max-width: 768px) {
+    gap: 1rem;
+  }
+
+  @media (min-width: 768px) and (max-width: 992px) {
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 992px) and (max-width: 1200px) {
+    gap: 2rem;
+  }
 `;
 
 const tabs = [
@@ -131,7 +178,7 @@ function OurProcess() {
         <TitleContainer>
           <h2>Our Process - How we build your digital presence</h2>
         </TitleContainer>
-        <div className="d-flex">
+        <TabListTabPanel className="d-flex">
           <TabList>
             {tabs.map((tab, i) => (
               <TabButton
@@ -150,7 +197,7 @@ function OurProcess() {
             />
             <StyledP className="fs-4">{tabs[activeIndex].content}</StyledP>
           </TabPanel>
-        </div>
+        </TabListTabPanel>
       </TabContainer>
     </TabWrapper>
   );
