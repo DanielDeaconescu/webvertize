@@ -8,10 +8,11 @@ import OurMission from './pages/Services';
 import Projects from './pages/Projects';
 import ThankYou from './pages/ThankYou';
 import TooManyRequests from './pages/TooManyRequests';
-import WebDevelopment from './pages/Services/WebDevelopment';
 import AiAutomation from './pages/Services/AiAutomation';
 import AdCampaigns from './pages/Services/AdCampaigns';
 import ContentCreation from './pages/Services/ContentCreation';
+import WebsitesPage from './pages/Services/WebsitesPage';
+import WebAppsPage from './pages/Services/WebAppsPage';
 
 function App() {
   return (
@@ -25,7 +26,8 @@ function App() {
         <Route path="/thank-you" element={<ThankYou />} />
         <Route path="/too-many-requests" element={<TooManyRequests />} />
         {/* Services (Dropdown) Routes */}
-        <Route path="/web-development" element={<WebDevelopment />} />
+        <Route path="/websites" element={<WebsitesPage />} />
+        <Route path="/web-apps" element={<WebAppsPage />} />
         <Route path="/ai-automation" element={<AiAutomation />} />
         <Route path="/ad-campaigns" element={<AdCampaigns />} />
         <Route path="/content-creation" element={<ContentCreation />} />

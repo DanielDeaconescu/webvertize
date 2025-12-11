@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import styled from 'styled-components';
-import discoveryImg from '../assets/discovery.jpg';
-import uiUxImg from '../assets/ui_ux_design.jpg';
-import developmentImg from '../assets/development.jpg';
-import testingImg from '../assets/testing_optimization.jpg';
-import launchImg from '../assets/launch_support.jpg';
+import discoveryImg from '../../assets/discovery.jpg';
+import uiUxImg from '../../assets/ui_ux_design.jpg';
+import developmentImg from '../../assets/development.jpg';
+import testingImg from '../../assets/testing_optimization.jpg';
+import launchImg from '../../assets/launch_support.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faRocket,
@@ -19,8 +19,8 @@ const Section = styled.section`
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center; */
+  /* align-items: center; */
   gap: 1.5rem;
   padding: 4rem 0;
 `;
@@ -338,7 +338,7 @@ export default function ServicesStackedCards() {
   }, []);
 
   return (
-    <Section>
+    <Section className="container">
       <h2>Our Process - How We Bring Your Project to Life</h2>
       <CardsList className="js-stack-cards">
         {steps.map((step, i) => (

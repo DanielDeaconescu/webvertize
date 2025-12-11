@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
-import './Dropdown.css';
 import styled from 'styled-components';
 
 const DropdownContainer = styled.li`
@@ -168,15 +167,15 @@ function Dropdown({ closeNav }) {
   const dropdownOptions = [
     {
       id: 1,
-      label: 'Web Development',
-      value: 'web-development',
-      dest: '/web-development',
+      label: 'Websites',
+      value: 'websites',
+      dest: '/websites',
     },
     {
       id: 2,
-      label: 'AI & Automation',
-      value: 'ai-automation',
-      dest: '/ai-automation',
+      label: 'Web Applications',
+      value: 'web-applications',
+      dest: '/web-apps',
     },
     {
       id: 3,
