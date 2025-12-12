@@ -15,7 +15,6 @@ const StyledSection = styled.section`
   align-items: center;
   gap: 2rem;
   padding: 2rem;
-  margin-bottom: 2rem;
 `;
 
 const StyledSection2 = styled.section`
@@ -23,7 +22,15 @@ const StyledSection2 = styled.section`
   gap: 2rem;
   justify-content: center;
   align-items: center;
-  margin-bottom: 2rem;
+  padding: 2rem;
+`;
+
+const StyledSection3 = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
 `;
 
 const SectionTextContent = styled.div``;
@@ -67,6 +74,7 @@ const StyledUl = styled.ul`
 
 const StyledP = styled.p`
   text-align: justify;
+  margin-bottom: 0;
 `;
 
 const StyledFontAwesomeIocn = styled(FontAwesomeIcon)`
@@ -85,7 +93,7 @@ function Websites() {
           <div className="col-sm-12 col-xl-6 mb-4">
             <WebsitesImage src={websitesImg} className="img-fluid" />
           </div>
-          <div className="col-sm-12 col-xl-6 mb-4">
+          <div className="col-sm-12 col-xl-6">
             <SectionTextContent>
               <StyledP className="fs-5">
                 At Webvertize, we specialize in building fast, modern and
@@ -221,7 +229,7 @@ function Websites() {
         </div>
       </StyledSection2>
       {/* Value proposition */}
-      <section>
+      <StyledSection3>
         <h2 className="mb-3">Designed to Drive Results</h2>
         <p className="fs-5">
           All of our websites are cross-browser compatible, fully optimized for
@@ -240,7 +248,7 @@ function Websites() {
           beautiful and functional, giving you a strong foundation for your
           online growth.
         </p>
-      </section>
+      </StyledSection3>
     </div>
   );
 }
