@@ -110,7 +110,7 @@ function WebApps() {
           <h2 className="mb-3">
             Custom Web Applications Built for Your Business
           </h2>
-          <div className="col-sm-12 col-xl-6 mb-4">
+          <div className="col-sm-12 col-xl-6 d-flex align-items-center justify-content-center">
             <WebsAppsImage src={webAppsImg} className="img-fluid" />
           </div>
           <div className="col-sm-12 col-xl-6">

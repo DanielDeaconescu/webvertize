@@ -59,7 +59,7 @@ const DropdownMenu = styled.div`
   z-index: 1000;
   display: ${(props) => (props.$isOpen ? 'flex' : 'none')};
   flex-direction: column;
-  min-width: 200px;
+  min-width: 250px;
   width: 100%;
   padding: 0.5rem 0;
   background-color: #fff;
@@ -179,15 +179,9 @@ function Dropdown({ closeNav }) {
     },
     {
       id: 3,
-      label: 'Ad Campaigns',
-      value: 'ad-campaigns',
-      dest: '/ad-campaigns',
-    },
-    {
-      id: 4,
-      label: 'Content Creation',
-      value: 'content-creation',
-      dest: '/content-creation',
+      label: 'Advertising & Content Creation',
+      value: 'advertising-content-creation',
+      dest: '/advertising-content-creation',
     },
   ];
   return (

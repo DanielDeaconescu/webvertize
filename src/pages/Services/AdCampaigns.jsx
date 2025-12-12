@@ -1,7 +1,7 @@
 import Navigation from '../../components/Navigation';
 import Footer from '../../components/Footer';
 
-function AdCampaigns() {
+function AdvertisingContentCreation() {
   return (
     <div>
       <Navigation />
@@ -11,4 +11,4 @@ function AdCampaigns() {
   );
 }
 
-export default AdCampaigns;
+export default AdvertisingContentCreation;

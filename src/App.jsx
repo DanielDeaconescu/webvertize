@@ -13,6 +13,7 @@ import AdCampaigns from './pages/Services/AdCampaigns';
 import ContentCreation from './pages/Services/ContentCreation';
 import WebsitesPage from './pages/Services/WebsitesPage';
 import WebAppsPage from './pages/Services/WebAppsPage';
+import AdvertisingContentCreation from './pages/Services/AdCampaigns';
 
 function App() {
   return (
@@ -29,8 +30,10 @@ function App() {
         <Route path="/websites" element={<WebsitesPage />} />
         <Route path="/web-apps" element={<WebAppsPage />} />
         <Route path="/ai-automation" element={<AiAutomation />} />
-        <Route path="/ad-campaigns" element={<AdCampaigns />} />
-        <Route path="/content-creation" element={<ContentCreation />} />
+        <Route
+          path="/advertising-content-creation"
+          element={<AdvertisingContentCreation />}
+        />
       </Routes>
     </div>
   );
