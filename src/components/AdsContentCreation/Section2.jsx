@@ -25,7 +25,16 @@ const GoogleAdsCampaigns = styled.img`
   }
 `;
 
-const TitleContainer = styled.div`
+const ContentRow = styled.div`
+  @media (max-width: 1200px) {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0 1.5rem;
+  }
+`;
+
+const TitleTotal = styled.div`
   margin-bottom: 1rem;
 `;
 
@@ -46,15 +55,6 @@ const Content = styled.div`
   gap: 1.5rem;
 `;
 
-const ContentRow = styled.div`
-  @media (max-width: 1200px) {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding: 0 1.5rem;
-  }
-`;
-
 const StyledUl = styled.ul`
   list-style-type: none;
   display: flex;
@@ -66,10 +66,10 @@ function Section2() {
   return (
     <StyledSection2 className="container">
       <div className="row">
-        <TitleContainer>
+        <TitleTotal>
           <Title>Google Ads Campaigns</Title>
           <Subtitle>Search-Driven Advertising With Measurable Results</Subtitle>
-        </TitleContainer>
+        </TitleTotal>
 
         <Content>
           <ContentRow className="row mb-4">

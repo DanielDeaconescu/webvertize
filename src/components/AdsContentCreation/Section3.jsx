@@ -20,6 +20,8 @@ const StyledUl = styled.ul`
   gap: 0.5rem;
 `;
 
+const TitleTotal = styled.div``;
+
 const Title = styled.h4``;
 const Subtitle = styled.div`
   margin-top: -12px;
@@ -29,8 +31,11 @@ function Section3() {
   return (
     <StyledSection3 className="container">
       <ContentRow className="row">
-        <Title>Facebook & Instagram Ads</Title>
-        <Subtitle>Reach, Engage and Convert with Meta Advertising</Subtitle>
+        <TitleTotal>
+          <Title>Facebook & Instagram Ads</Title>
+          <Subtitle>Reach, Engage and Convert with Meta Advertising</Subtitle>
+        </TitleTotal>
+
         <p>
           Meta platforms offer highly targeted advertising options based on
           intrests, behaviors and demographics.{' '}
