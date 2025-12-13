@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import googleAdsCampaigns from '../../assets/google_ads_campaigns_image.jpg';
 
-const StyledSection2 = styled.div`
+const StyledSection2 = styled.section`
   padding-bottom: 4rem;
 `;
 
@@ -90,6 +90,7 @@ function Section2() {
             </div>
           </ContentRow>
         </Content>
+        {/* Our Process */}
         <ContentRow className="row">
           <h4>Our Process</h4>
           <StyledUl>
@@ -129,39 +130,119 @@ function Section2() {
               <div class="card">
                 <div class="card-body">
                   <h5>Daily performance monitoring</h5>
-                  <p></p>
+                  <p>
+                    After launch, we keep a close eye on your campaigns every
+                    day. We track performance indicators, check search trends
+                    and look for early signals that help us make fast, informed
+                    adjustments.
+                  </p>
                 </div>
               </div>
             </li>
             <li>
               <div class="card">
                 <div class="card-body">
-                  Continuous bid, keyword, and targeting optimizations
+                  <h5>Continuous bid, keyword and targeting optimizations</h5>
+                  <p>
+                    Your campaigns evolve constantly. We refine bods, update
+                    keywords, adjust match types, improve targeting and test new
+                    variations to maintain efficiency and relevance. This
+                    ensures your ads adapt to real-time behavior and market
+                    conditions.
+                  </p>
                 </div>
               </div>
             </li>
             <li>
               <div class="card">
                 <div class="card-body">
-                  Notifications and assistance with billing thresholds
+                  <h5>Notifications and assistance with billing thresholds</h5>
+                  <p>
+                    We monitor billing thresholds to make sure your ads never
+                    stop running unexpectedly. When payments are approaching or
+                    action is required, we notify you immediately and guide you
+                    through what needs to be done.
+                  </p>
                 </div>
               </div>
             </li>
             <li>
               <div class="card">
                 <div class="card-body">
-                  Implementation of conversion tracking when needed
+                  <h5>Implementation of conversion tracking when needed</h5>
+                  <p>
+                    Some campaigns require additional tracking to measure
+                    results accurately. When needed, we set up conversion
+                    tracking for form submissions, calls, or other website
+                    actions—giving you clear insights into what’s working and
+                    what needs improvement.
+                  </p>
                 </div>
               </div>
             </li>
             <li>
               <div class="card">
                 <div class="card-body">
-                  Monthly performance reports for complete transparency
+                  <h5>Monthly performance reports for complete transparency</h5>
+                  <p>
+                    Each month, you receive a concise and easy-to-understand
+                    performance report. We highlight what changed, how your
+                    budget was spent, and how the campaign is progressing toward
+                    your goals. You always know exactly where your investment is
+                    going.
+                  </p>
                 </div>
               </div>
             </li>
           </StyledUl>
+        </ContentRow>
+        {/* Campaign Types We Manage */}
+        <ContentRow className="row">
+          <h4>Google Campaign Types We Manage</h4>
+          <div className="card">
+            <StyledUl className="list-group list-group-flush">
+              <li className="list-group-item">
+                <strong>Search Campaigns</strong> - Text-based ads shown on
+                Google Search.
+              </li>
+              <li className="list-group-item">
+                <strong>Display Campaigns</strong> - Image/banner ads across
+                millions of websites.
+              </li>
+              <li className="list-group-item">
+                <strong>Shopping Campaigns</strong> - Product listings with
+                images and prices.
+              </li>
+              <li className="list-group-item">
+                <strong>Video Campaigns</strong> - YouTube and Google video
+                partner ads.
+              </li>
+              <li className="list-group-item">
+                <strong>App Campaigns</strong> - Mobile app install and
+                engagement ads.
+              </li>
+              <li className="list-group-item">
+                <strong>Performance Max</strong> - Multi-channel AI-driven
+                campaign across all Google properties.
+              </li>
+              <li className="list-group-item">
+                <strong>Demand Gen</strong> - Visually rich ads on Discover,
+                YouTube, and Gmail.
+              </li>
+              <li className="list-group-item">
+                <strong>Local Services Ads</strong> - High-intent ads for
+                service-area businesses.
+              </li>
+              <li className="list-group-item">
+                <strong>Hotel/Travel Campaigns</strong> - Specialized ads for
+                the travel industry.
+              </li>
+              <li className="list-group-item">
+                <strong>Smart Campaigns</strong> - Simplified, automated
+                campaigns for smaller budgets.
+              </li>
+            </StyledUl>
+          </div>
         </ContentRow>
       </div>
     </StyledSection2>
