@@ -28,7 +28,7 @@ export default async function handler(req, res) {
           secret: process.env.TURNSTILE_SECRET,
           response: data['cf_turnstile_token'],
         }),
-      }
+      },
     ).then((res) => res.json());
 
     if (!responseToken.success) {

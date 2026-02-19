@@ -186,6 +186,16 @@ function Navigation() {
               <StyledLi className="nav-item">
                 <StyledLink
                   className="nav-link"
+                  to="/prices"
+                  onClick={closeNav}
+                >
+                  {t('nav.prices')}
+                </StyledLink>
+              </StyledLi>
+
+              <StyledLi className="nav-item">
+                <StyledLink
+                  className="nav-link"
                   to="/portfolio"
                   onClick={closeNav}
                 >
