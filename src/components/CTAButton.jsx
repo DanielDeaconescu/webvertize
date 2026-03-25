@@ -27,6 +27,8 @@ function CTAButton({ type }) {
   const navigate = useNavigate();
 
   async function submitHandler(data) {
+    console.log('data in submitHandler: ', data);
+
     const res = await fetch('/api/packageForm', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
