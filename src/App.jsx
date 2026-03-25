@@ -18,7 +18,7 @@ import AdvertisingContentCreation from './pages/Services/AdsContentCreation';
 import Cookies from './pages/Cookies';
 import { Toaster } from 'react-hot-toast';
 import ScrollToTop from './components/ScrollToTop';
-import Prices from './pages/Prices';
+import PackagesPage from './pages/PackagesPage';
 
 function App() {
   return (
@@ -28,7 +28,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<OurMission />} />
-        <Route path="/prices" element={<Prices />} />
+        <Route path="/prices" element={<PackagesPage />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/thank-you" element={<ThankYou />} />
