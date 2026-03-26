@@ -21,5 +21,7 @@ export default async function handler(req, res) {
     },
   ).then((res) => res.json());
 
-  console.log('responseToken: ', responseToken);
+  if (!responseToken.success) {
+    return res.status(400).json({ error: 'CAPTCHA verification failed!' });
+  }
 }
