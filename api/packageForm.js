@@ -24,4 +24,8 @@ export default async function handler(req, res) {
   if (!responseToken.success) {
     return res.status(400).json({ error: 'CAPTCHA verification failed!' });
   }
+
+  // Determine the user's IP
+  const forwardedFor = req.headers['x-forwarded-for'];
+  console.log('forwardedFor: ', forwardedFor);
 }
