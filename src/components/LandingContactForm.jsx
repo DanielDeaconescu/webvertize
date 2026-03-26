@@ -1,13 +1,45 @@
+import { useEffect, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 
 function LandingContactForm({ selectedPackage, onSubmitHandler }) {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm();
+  const ref = useRef(null);
+  const widgetRef = useRef(null);
+
+  // registering the virtual field
+  useEffect(() => {
+    register('cf_turnstile_token', { required: true });
+  }, [register]);
+
+  const onTurnstileSuccess = (token) => {
+    setValue('cf_turnstile_token', token, {
+      shouldValidate: true,
+    });
+  };
+
+  // Rendering the turnstile
+  useEffect(() => {
+    if (!window.turnstile) return;
+
+    widgetRef.current = window.turnstile.render(ref.current, {
+      sitekey: '0x4AAAAAACGwYToVvX6OMIl0',
+      callback: onTurnstileSuccess,
+    });
+
+    return () => {
+      if (widgetRef.current !== null) {
+        window.turnstile.remove(widgetRef.current);
+      }
+    };
+  }, []);
 
   function submitHandler(data) {
+    console.log('data in submitHandler: ', data);
     onSubmitHandler(data);
   }
 
@@ -68,6 +100,15 @@ function LandingContactForm({ selectedPackage, onSubmitHandler }) {
             rows="4"
             {...register('message')}
           ></textarea>
+        </div>
+        {/* Turnstile */}
+        <div>
+          <div
+            ref={ref}
+            className="turnstile-landing-page"
+            data-theme="light"
+            data-size="normal"
+          ></div>
         </div>
 
         <button type="submit" className="btn btn-primary w-100">

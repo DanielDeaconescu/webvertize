@@ -27,7 +27,6 @@ function App() {
       {/* Route definitions */}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/services" element={<OurMission />} />
         <Route path="/prices" element={<PackagesPage />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/contact" element={<Contact />} />

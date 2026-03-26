@@ -18,7 +18,7 @@ export default function Turnstile({ onVerify }) {
       }
 
       widgetId = window.turnstile.render(containerRef.current, {
-        sitekey: '0x4AAAAAACGwYToVvX6OMIl0', // your real site key
+        sitekey: '0x4AAAAAACGwYToVvX6OMIl0',
         theme: 'light',
         callback: (token) => {
           onVerify(token);
