@@ -24,10 +24,12 @@ const RequestButton = styled.button`
 
 function CTAButton({ type }) {
   const [showForm, setShowForm] = useState();
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   async function submitHandler(data) {
     console.log('data in submitHandler: ', data);
+    setLoading(true);
 
     const res = await fetch('/api/packageForm', {
       method: 'POST',
@@ -41,15 +43,18 @@ function CTAButton({ type }) {
       document.body.classList.remove('modal-open');
       document.querySelectorAll('.modal-backdrop').forEach((el) => el.remove());
       setShowForm(false);
+      setLoading(false);
       sessionStorage.setItem('landingFormSubmitted', 'true');
       navigate('/thank-you');
     } else if (res.status === 429) {
       document.body.classList.remove('modal-open');
       document.querySelectorAll('.modal-backdrop').forEach((el) => el.remove());
       setShowForm(false);
+      setLoading(false);
       sessionStorage.setItem('tooManyRequests', 'true');
       navigate('/too-many-requests');
     } else if (res.status === 400) {
+      setLoading(false);
       toast.error(resData.status);
     }
   }
@@ -64,7 +69,7 @@ function CTAButton({ type }) {
         title="Formular de contact"
         onClose={() => setShowForm(false)}
       >
-        <LandingContactForm onSubmitHandler={submitHandler} />
+        <LandingContactForm onSubmitHandler={submitHandler} loading={loading} />
       </ModalForm>
     </>
   );

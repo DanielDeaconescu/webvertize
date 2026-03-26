@@ -1,7 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { useForm } from 'react-hook-form';
+import LoadingSpinner from './LoadingSpinner';
 
-function LandingContactForm({ selectedPackage, onSubmitHandler }) {
+function LandingContactForm({ selectedPackage, onSubmitHandler, loading }) {
   const {
     register,
     handleSubmit,
@@ -112,6 +113,7 @@ function LandingContactForm({ selectedPackage, onSubmitHandler }) {
         </div>
 
         <button type="submit" className="btn btn-primary w-100">
+          {loading && <LoadingSpinner />}
           Trimite
         </button>
       </form>
