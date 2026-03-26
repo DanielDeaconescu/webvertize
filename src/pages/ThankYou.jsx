@@ -44,7 +44,7 @@ function ThankYou() {
     const flag2 = sessionStorage.getItem('landingFormSubmitted');
 
     if (!flag || !flag2) {
-      navigate('/contact');
+      navigate('/');
       return;
     }
 
