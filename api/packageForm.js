@@ -52,4 +52,6 @@ export default async function handler(req, res) {
   if (errorInsert) {
     throw new Error('There was an error inserting data in Supabase!');
   }
+
+  res.status(200).json({ success: true });
 }
