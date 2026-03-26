@@ -24,6 +24,7 @@ const RequestButton = styled.button`
 
 function CTAButton({ type }) {
   const [showForm, setShowForm] = useState();
+  const [selectedPackage, setSelectedPackage] = useState(type);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -61,7 +62,13 @@ function CTAButton({ type }) {
 
   return (
     <>
-      <RequestButton type={type} onClick={() => setShowForm(true)}>
+      <RequestButton
+        type={type}
+        onClick={() => {
+          setShowForm(true);
+          setSelectedPackage(type);
+        }}
+      >
         Hai să discutăm
       </RequestButton>
       <ModalForm
@@ -73,6 +80,7 @@ function CTAButton({ type }) {
           onSubmitHandler={submitHandler}
           loading={loading}
           type={type}
+          selectedPackage={selectedPackage}
         />
       </ModalForm>
     </>

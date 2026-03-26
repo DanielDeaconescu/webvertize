@@ -16,22 +16,17 @@ function LandingContactForm({
   loading,
   type,
 }) {
-  const [select, setSelect] = useState(null);
-
-  useEffect(() => {
-    function handleSelect() {
-      if (type) setSelect(type);
-      else setSelect('unknown');
-    }
-    handleSelect();
-  }, [type]);
-
+  console.log('selectedPackage is: ', selectedPackage);
   const {
     register,
     handleSubmit,
     setValue,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      package: selectedPackage,
+    },
+  });
   const ref = useRef(null);
   const widgetRef = useRef(null);
 
@@ -63,7 +58,6 @@ function LandingContactForm({
   }, []);
 
   function submitHandler(data) {
-    console.log('data in submitHandler: ', data);
     onSubmitHandler(data);
   }
 
@@ -106,13 +100,7 @@ function LandingContactForm({
           <label htmlFor="package" className="form-label">
             Pachet de interes (opțional)
           </label>
-          <select
-            name="package"
-            id="package"
-            className="form-select"
-            value={select}
-            {...register('package')}
-          >
+          <select id="package" className="form-select" {...register('package')}>
             <option value="basic">Pachetul Basic</option>
             <option value="standard">Pachetul Standard</option>
             <option value="premium">Pachetul Premium</option>
