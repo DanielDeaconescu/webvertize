@@ -43,7 +43,7 @@ function ThankYou() {
     const flag = sessionStorage.getItem('formSubmitted');
     const flag2 = sessionStorage.getItem('landingFormSubmitted');
 
-    if (!flag || !flag2) {
+    if (!flag && !flag2) {
       navigate('/');
       return;
     }
