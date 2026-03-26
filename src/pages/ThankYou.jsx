@@ -50,6 +50,7 @@ function ThankYou() {
 
     // if accessed correctly, remove the flag so refreshing the page doesn't show the content again
     sessionStorage.removeItem('formSubmitted');
+    sessionStorage.removeItem('landingFormSubmitted');
     setAllowed(true);
   }, [navigate]);
 
