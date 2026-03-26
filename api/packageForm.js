@@ -1,3 +1,11 @@
+import { createClient } from '@supabase/supabase-js/dist/index.cjs';
+
+// create the supabase client
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_SERVICE_ROLE_KEY,
+);
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(400).json({ status: 'Method not allowed!' });
@@ -32,6 +40,7 @@ export default async function handler(req, res) {
     : req.socket?.remoteAddress;
 
   // 1. Insert in the "submissions" table
+  const body = req.body;
 
   const { data, errorInsert } = await supabase
     .from('submissions')
