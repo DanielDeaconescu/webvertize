@@ -35,7 +35,7 @@ function CTAButton({ type }) {
       body: JSON.stringify(data),
     });
 
-    const data = res.json();
+    const resData = res.json();
 
     if (res.ok) {
       document.body.classList.remove('modal-open');
@@ -50,7 +50,7 @@ function CTAButton({ type }) {
       sessionStorage.setItem('tooManyRequests', 'true');
       navigate('/too-many-requests');
     } else if (res.status === 400) {
-      toast.error(data.status);
+      toast.error(resData.status);
     }
   }
 
