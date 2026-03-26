@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import LandingContactForm from './LandingContactForm';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { useForm } from 'react-hook-form';
 
 const RequestButton = styled.button`
   display: flex;
@@ -24,9 +25,10 @@ const RequestButton = styled.button`
 
 function CTAButton({ type }) {
   const [showForm, setShowForm] = useState();
-  const [selectedPackage, setSelectedPackage] = useState(type);
+  const [selectedPackage, _] = useState(type);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { reset } = useForm();
 
   async function submitHandler(data) {
     console.log('data in submitHandler: ', data);
@@ -62,25 +64,22 @@ function CTAButton({ type }) {
 
   return (
     <>
-      <RequestButton
-        type={type}
-        onClick={() => {
-          setShowForm(true);
-          setSelectedPackage(type);
-        }}
-      >
+      <RequestButton type={type} onClick={() => setShowForm(true)}>
         Hai să discutăm
       </RequestButton>
       <ModalForm
         show={showForm}
         title="Formular de contact"
-        onClose={() => setShowForm(false)}
+        onClose={() => {
+          setShowForm(false);
+        }}
       >
         <LandingContactForm
           onSubmitHandler={submitHandler}
           loading={loading}
           type={type}
           selectedPackage={selectedPackage}
+          showForm={showForm}
         />
       </ModalForm>
     </>

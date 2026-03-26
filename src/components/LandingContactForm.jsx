@@ -14,14 +14,14 @@ function LandingContactForm({
   selectedPackage,
   onSubmitHandler,
   loading,
-  type,
+  showForm,
 }) {
-  console.log('selectedPackage is: ', selectedPackage);
   const {
     register,
     handleSubmit,
     setValue,
     formState: { errors },
+    reset,
   } = useForm({
     defaultValues: {
       package: selectedPackage,
@@ -29,6 +29,14 @@ function LandingContactForm({
   });
   const ref = useRef(null);
   const widgetRef = useRef(null);
+
+  useEffect(() => {
+    function handleShowForm() {
+      if (!showForm) reset();
+    }
+
+    handleShowForm();
+  }, [showForm, reset]);
 
   // registering the virtual field
   useEffect(() => {
