@@ -1,15 +1,31 @@
-import { useEffect, useRef } from 'react';
-import { useForm } from 'react-hook-form';
+import { useEffect, useRef, useState } from 'react';
+import { set, useForm } from 'react-hook-form';
 import LoadingSpinner from './LoadingSpinner';
 import styled from 'styled-components';
 
 const SendButton = styled.button`
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.25rem;
 `;
 
-function LandingContactForm({ selectedPackage, onSubmitHandler, loading }) {
+function LandingContactForm({
+  selectedPackage,
+  onSubmitHandler,
+  loading,
+  type,
+}) {
+  const [select, setSelect] = useState(null);
+
+  useEffect(() => {
+    function handleSelect() {
+      if (type) setSelect(type);
+      else setSelect('unknown');
+    }
+    handleSelect();
+  }, [type]);
+
   const {
     register,
     handleSubmit,
@@ -66,6 +82,9 @@ function LandingContactForm({ selectedPackage, onSubmitHandler, loading }) {
               required: "Câmplul 'Nume' este obligatoriu!",
             })}
           />
+          {errors?.name && (
+            <small className="text-danger">{errors.name?.message}</small>
+          )}
         </div>
         <div className="mb-4">
           <label htmlFor="phone" className="form-label">
@@ -79,6 +98,9 @@ function LandingContactForm({ selectedPackage, onSubmitHandler, loading }) {
               required: "Câmplul 'Număr de telefon' este obligatoriu!",
             })}
           />
+          {errors?.phone && (
+            <small className="text-danger">{errors.phone?.message}</small>
+          )}
         </div>
         <div className="mb-4">
           <label htmlFor="package" className="form-label">
@@ -88,6 +110,7 @@ function LandingContactForm({ selectedPackage, onSubmitHandler, loading }) {
             name="package"
             id="package"
             className="form-select"
+            value={select}
             {...register('package')}
           >
             <option value="basic">Pachetul Basic</option>

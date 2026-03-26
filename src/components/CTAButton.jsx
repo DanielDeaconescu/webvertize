@@ -69,7 +69,11 @@ function CTAButton({ type }) {
         title="Formular de contact"
         onClose={() => setShowForm(false)}
       >
-        <LandingContactForm onSubmitHandler={submitHandler} loading={loading} />
+        <LandingContactForm
+          onSubmitHandler={submitHandler}
+          loading={loading}
+          type={type}
+        />
       </ModalForm>
     </>
   );
