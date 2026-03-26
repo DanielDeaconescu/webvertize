@@ -44,7 +44,8 @@ export default async function handler(req, res) {
 
   const { data, errorInsert } = await supabase
     .from('submissions')
-    .insert({ ...body, ip: ip, form_location: 'prices' });
+    .insert({ ...body, ip: ip, form_location: 'prices' })
+    .select();
 
   console.log('inserted data: ', data);
 
