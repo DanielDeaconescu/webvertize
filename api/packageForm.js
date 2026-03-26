@@ -51,13 +51,18 @@ export default async function handler(req, res) {
 
   console.log('submissionsCount: ', submissionsCount);
 
-  // if (error) {
-  //   throw new Error(error.message);
-  // }
+  if (error) {
+    throw new Error(error.message);
+  }
 
-  // if (submissionsCount >= 2) {
-  //   return res.status(429).json({ status: 'Too many requests!' });
-  // }
+  if (submissionsCount >= 2) {
+    return res.status(429).json({ status: 'Too many requests!' });
+  }
+
+  // Validation (name and phone are mandatory)
+  if (!name || !phone) {
+    return res.status(400).json({ status: 'Missing required fields!' });
+  }
 
   // 1. Insert in the "submissions" table
   const body = req.body;

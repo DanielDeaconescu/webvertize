@@ -35,6 +35,8 @@ function CTAButton({ type }) {
       body: JSON.stringify(data),
     });
 
+    const data = res.json();
+
     if (res.ok) {
       document.body.classList.remove('modal-open');
       document.querySelectorAll('.modal-backdrop').forEach((el) => el.remove());
@@ -48,7 +50,7 @@ function CTAButton({ type }) {
       sessionStorage.setItem('tooManyRequests', 'true');
       navigate('/too-many-requests');
     } else if (res.status === 400) {
-      toast.error('Captcha verification failed!');
+      toast.error(data.status);
     }
   }
 
