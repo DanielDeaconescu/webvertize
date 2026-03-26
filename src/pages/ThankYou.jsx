@@ -41,8 +41,9 @@ function ThankYou() {
   const navigate = useNavigate();
   useEffect(() => {
     const flag = sessionStorage.getItem('formSubmitted');
+    const flag2 = sessionStorage.getItem('landingFormSubmitted');
 
-    if (!flag) {
+    if (!flag || !flag2) {
       navigate('/');
       return;
     }

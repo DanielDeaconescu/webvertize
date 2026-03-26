@@ -88,7 +88,7 @@ function LandingContactForm({ selectedPackage, onSubmitHandler }) {
             <option value="unknown">Nu știu încă</option>
           </select>
         </div>
-        <div className="mb-4">
+        <div className="mb-3">
           <label htmlFor="message" className="form-label">
             Mesaj (opțional)
           </label>
@@ -102,7 +102,7 @@ function LandingContactForm({ selectedPackage, onSubmitHandler }) {
           ></textarea>
         </div>
         {/* Turnstile */}
-        <div>
+        <div className="d-flex justify-content-center mb-2">
           <div
             ref={ref}
             className="turnstile-landing-page"
