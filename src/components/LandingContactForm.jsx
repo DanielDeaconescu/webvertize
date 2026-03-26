@@ -1,6 +1,13 @@
 import { useEffect, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import LoadingSpinner from './LoadingSpinner';
+import styled from 'styled-components';
+
+const SendButton = styled.button`
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+`;
 
 function LandingContactForm({ selectedPackage, onSubmitHandler, loading }) {
   const {
@@ -112,10 +119,10 @@ function LandingContactForm({ selectedPackage, onSubmitHandler, loading }) {
           ></div>
         </div>
 
-        <button type="submit" className="btn btn-primary w-100">
+        <SendButton type="submit" className="btn btn-primary w-100">
           {loading && <LoadingSpinner />}
           Trimite
-        </button>
+        </SendButton>
       </form>
     </div>
   );
