@@ -39,6 +39,26 @@ export default async function handler(req, res) {
     ? forwardedFor.split(',')[0].trim()
     : req.socket?.remoteAddress;
 
+  // Calculate the time window (per ip and form_location)
+  const twentyFourHoursAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
+
+  const { count: submissionsCount, error } = await supabase
+    .from('submissions')
+    .select('*', { count: 'exact', head: true })
+    .eq('ip', ip)
+    .eq('form_location', 'prices')
+    .gte('created_at', twentyFourHoursAgo.toISOString());
+
+  console.log('submissionsCount: ', submissionsCount);
+
+  // if (error) {
+  //   throw new Error(error.message);
+  // }
+
+  // if (submissionsCount >= 2) {
+  //   return res.status(429).json({ status: 'Too many requests!' });
+  // }
+
   // 1. Insert in the "submissions" table
   const body = req.body;
 
