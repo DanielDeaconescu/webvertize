@@ -6,6 +6,7 @@ import styled from 'styled-components';
 const CookiePopup = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 0.35rem;
   justify-content: center;
   align-items: center;
   position: fixed;
