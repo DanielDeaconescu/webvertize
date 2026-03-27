@@ -3,11 +3,20 @@ import { set, useForm } from 'react-hook-form';
 import LoadingSpinner from './LoadingSpinner';
 import styled from 'styled-components';
 
-const SendButton = styled.button`
+const StyledForm = styled.form`
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.25rem;
+  flex-direction: column;
+`;
+
+const SendButton = styled.button`
+  border: none;
+  background-color: #1b3c53;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  align-self: center;
 `;
 
 function LandingContactForm({
@@ -71,7 +80,7 @@ function LandingContactForm({
 
   return (
     <div>
-      <form onSubmit={handleSubmit(submitHandler)}>
+      <StyledForm onSubmit={handleSubmit(submitHandler)}>
         <div className="mb-4">
           <label htmlFor="name" className="form-label">
             Nume
@@ -106,7 +115,7 @@ function LandingContactForm({
         </div>
         <div className="mb-4">
           <label htmlFor="package" className="form-label">
-            Pachet de interes (opțional)
+            Pachet de interes <span className="text-muted">(opțional)</span>
           </label>
           <select id="package" className="form-select" {...register('package')}>
             <option value="basic">Pachetul Basic</option>
@@ -117,7 +126,7 @@ function LandingContactForm({
         </div>
         <div className="mb-3">
           <label htmlFor="message" className="form-label">
-            Mesaj (opțional)
+            Mesaj <span className="text-muted">(opțional)</span>
           </label>
           <textarea
             name="message"
@@ -138,11 +147,11 @@ function LandingContactForm({
           ></div>
         </div>
 
-        <SendButton type="submit" className="btn btn-primary w-100">
+        <SendButton type="submit">
           {loading && <LoadingSpinner />}
           Trimite
         </SendButton>
-      </form>
+      </StyledForm>
     </div>
   );
 }
