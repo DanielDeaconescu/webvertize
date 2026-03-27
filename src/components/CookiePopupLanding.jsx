@@ -32,17 +32,37 @@ const CookiePopupInner = styled.div`
   gap: 2rem;
 `;
 
-const ButtonsContainer = styled.div`
+const Row = styled.div`
   display: flex;
   align-items: center;
+`;
+
+const ButtonsContainer = styled.div`
+  display: flex;
   gap: 0.5rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    flex-direction: row;
+    width: 100%;
+  }
 `;
 
 const StyledButton = styled.button`
   border: none;
-  /* background-color: transparent; */
   padding: 0.25rem 1rem;
   border-radius: 10px;
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    flex: 1;
+  }
 `;
 
 const StyledLink = styled(Link)`
@@ -51,12 +71,26 @@ const StyledLink = styled(Link)`
   background-color: #fff;
   padding: 0.25rem 1rem;
   border-radius: 10px;
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    flex: 6;
+    display: flex;
+    justify-content: center;
+  }
 `;
 
 const StyledP = styled.p`
   display: flex;
   text-align: justify;
   margin: 0;
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
 `;
 
 function CookiePopupLanding() {
@@ -75,14 +109,12 @@ function CookiePopupLanding() {
       {!acceptedCookies && (
         <StyledCookiePopup>
           <CookiePopupInner className="container">
-            <div className="row">
+            <Row className="row">
               {/* Message */}
               <div className="col-md-8 mb-3">
                 <StyledP>
-                  Webvertize nu folosește cookies momentan. În cazul în care le
-                  vom implementa, ne vom asigura că vă înștiințăm. Vă rugăm să
-                  verificați pagina noastră de cookies în mod regulat pentru
-                  actualizări și informații suplimentare.
+                  Webvertize nu folosește cookies momentan. Vă vom anunța dacă
+                  le implementăm.
                 </StyledP>
               </div>
               {/* Buttons */}
@@ -96,7 +128,7 @@ function CookiePopupLanding() {
                   </StyledLink>
                 </ButtonsContainer>
               </div>
-            </div>
+            </Row>
           </CookiePopupInner>
         </StyledCookiePopup>
       )}
