@@ -54,7 +54,7 @@ const LogoSubtitle = styled.div`
   }
 `;
 
-function Logo({ theme }) {
+function Logo({ theme, lng }) {
   const { t, i18n } = useTranslation();
   return (
     <StyledLogo className="d-flex justify-content-center align-items-center">
@@ -67,7 +67,11 @@ function Logo({ theme }) {
       </div>
       <div className="d-flex justify-content-center align-items-left flex-column">
         <LogoTitle theme={theme}>Webvertize</LogoTitle>
-        <LogoSubtitle theme={theme}>{t('logo.logoText')}</LogoSubtitle>
+        <LogoSubtitle theme={theme}>
+          {lng === 'ro'
+            ? 'Dezvoltare Web și Publicitate'
+            : 'Web Development & Ads'}
+        </LogoSubtitle>
       </div>
     </StyledLogo>
   );

@@ -58,12 +58,12 @@ function ThankYou() {
 
   return (
     <ThankYouContainer>
-      <Logo />
+      <Logo lng="ro" />
       <ThankYouText>
         <h3>Mulțumim pentru completarea formularului!</h3>
         <p className="fs-5">
-          Vom analiza cererea și vă vom contacta cât de curând pentru a stabili
-          o discuție inițială.
+          Vom analiza cererea ta și te vom contacta cât de curând pentru o
+          discuție inițială!
         </p>
       </ThankYouText>
       <StyledLink to="/">
