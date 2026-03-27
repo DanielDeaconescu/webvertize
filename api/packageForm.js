@@ -1,3 +1,4 @@
+import nodemailer from 'nodemailer';
 import { createClient } from '@supabase/supabase-js/dist/index.cjs';
 
 // create the supabase client
@@ -11,9 +12,13 @@ export default async function handler(req, res) {
     return res.status(400).json({ status: 'Method not allowed!' });
   }
 
-  const { name, phone, email, message, cf_turnstile_token } = req.body;
-
-  // 2. Send the email with collected data
+  const {
+    name,
+    phone,
+    package: chosenPackage,
+    message,
+    cf_turnstile_token,
+  } = req.body;
 
   // Turnstile validation
   const responseToken = await fetch(
@@ -64,15 +69,42 @@ export default async function handler(req, res) {
     return res.status(400).json({ status: 'Missing required fields!' });
   }
 
-  // 1. Insert in the "submissions" table
+  // 1. Send the email with collected data
+  const date = new Date();
+  const formattedDate = date.toLocaleString('ro-RO', {
+    timeZone: 'Europe/Bucharest',
+  });
+
+  const transporter = nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: 465,
+    secure: true,
+    auth: {
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS,
+    },
+  });
+
+  await transporter.sendMail({
+    from: `Solicitare formular landing page ${process.env.SMTP_USER}`,
+    to: process.env.RECEIVING_EMAIL,
+    subject: `New lead: solicitare pachet ${chosenPackage}`,
+    html: `
+      <h3>Solicitare de pe /pricesL cu detaliile:</h3>
+      <p><strong>Nume: </strong> ${name} </p>
+        <p><strong>Telefon: </strong> ${phone} </p>
+        <p><strong>Pachetul de interes: </strong> ${chosenPackage} </p>
+        <p><strong>Mesaj: </strong> ${message} </p>
+    `,
+  });
+
+  // 2. Insert in the "submissions" table
   const body = req.body;
 
   const { data, errorInsert } = await supabase
     .from('submissions')
     .insert({ ...body, ip: ip, form_location: 'prices' })
     .select();
-
-  console.log('inserted data: ', data);
 
   if (errorInsert) {
     throw new Error('There was an error inserting data in Supabase!');
