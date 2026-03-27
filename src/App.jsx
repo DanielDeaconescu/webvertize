@@ -1,6 +1,5 @@
 import '../App.css';
 import { Link, Route, Routes } from 'react-router-dom';
-
 import Home from './pages/Home';
 import About from './pages/Services';
 import Contact from './pages/Contact';
@@ -18,7 +17,9 @@ import AdvertisingContentCreation from './pages/Services/AdsContentCreation';
 import Cookies from './pages/Cookies';
 import { Toaster } from 'react-hot-toast';
 import ScrollToTop from './components/ScrollToTop';
+import LandingPage from './pages/LandingPage';
 import PackagesPage from './pages/PackagesPage';
+import ThankYouRo from './pages/ThankYouRo';
 
 function App() {
   return (
@@ -28,9 +29,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/prices" element={<PackagesPage />} />
+        <Route path="/dezvoltare-web-ro" element={<LandingPage />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/thank-you" element={<ThankYou />} />
+        <Route path="/multumim" element={<ThankYouRo />} />
         <Route path="/too-many-requests" element={<TooManyRequests />} />
         {/* Services (Dropdown) Routes */}
         <Route path="/websites" element={<WebsitesPage />} />

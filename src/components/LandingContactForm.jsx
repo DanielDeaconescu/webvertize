@@ -17,6 +17,7 @@ const SendButton = styled.button`
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   align-self: center;
+  width: 100%;
 `;
 
 function LandingContactForm({
