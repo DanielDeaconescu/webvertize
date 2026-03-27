@@ -88,9 +88,9 @@ export default async function handler(req, res) {
   await transporter.sendMail({
     from: `Solicitare formular landing page ${process.env.SMTP_USER}`,
     to: process.env.RECEIVING_EMAIL,
-    subject: `New lead: solicitare pachet ${chosenPackage}`,
+    subject: `New lead: solicitare pachet ${chosenPackage} - ${formattedDate}`,
     html: `
-      <h3>Solicitare de pe /pricesL cu detaliile:</h3>
+      <h3>Solicitare de pe /dezvoltare-web-ro cu detaliile:</h3>
       <p><strong>Nume: </strong> ${name} </p>
         <p><strong>Telefon: </strong> ${phone} </p>
         <p><strong>Pachetul de interes: </strong> ${chosenPackage} </p>
