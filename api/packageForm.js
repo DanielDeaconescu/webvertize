@@ -1,11 +1,12 @@
 import nodemailer from 'nodemailer';
 import { createClient } from '@supabase/supabase-js/dist/index.cjs';
+import clientPromise from '../lib/mongodb';
 
 // create the supabase client
-const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY,
-);
+// const supabase = createClient(
+//   process.env.SUPABASE_URL,
+//   process.env.SUPABASE_SERVICE_ROLE_KEY,
+// );
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -37,6 +38,10 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'CAPTCHA verification failed!' });
   }
 
+  const client = await clientPromise;
+  const db = client.db('WebvertizeFormSubmissions');
+  const collection = db.collection('Webvertize_Leads');
+
   // Determine the user's IP
   const forwardedFor = req.headers['x-forwarded-for'];
   // we always want to take the leftmost address
@@ -47,18 +52,11 @@ export default async function handler(req, res) {
   // Calculate the time window (per ip and form_location)
   const twentyFourHoursAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
 
-  const { count: submissionsCount, error } = await supabase
-    .from('submissions')
-    .select('*', { count: 'exact', head: true })
-    .eq('ip', ip)
-    .eq('form_location', 'prices')
-    .gte('created_at', twentyFourHoursAgo.toISOString());
-
-  console.log('submissionsCount: ', submissionsCount);
-
-  if (error) {
-    throw new Error(error.message);
-  }
+  // Submission coount per IP in the last 24 hours
+  const submissionsCount = await collection.countDocuments({
+    ip: ip,
+    createdAt: { $gte: twentyFourHoursAgo },
+  });
 
   if (submissionsCount >= 2) {
     return res.status(429).json({ status: 'Too many requests!' });
@@ -98,17 +96,14 @@ export default async function handler(req, res) {
     `,
   });
 
-  // 2. Insert in the "submissions" table
+  // Insert the form submission
   const body = req.body;
 
-  const { data, errorInsert } = await supabase
-    .from('submissions')
-    .insert({ ...body, ip: ip, form_location: 'prices' })
-    .select();
-
-  if (errorInsert) {
-    throw new Error('There was an error inserting data in Supabase!');
-  }
+  await collection.insertOne({
+    ...body,
+    ip: ip,
+    createdAt: new Date(),
+  });
 
   res.status(200).json({ success: true });
 }
