@@ -55,7 +55,7 @@ const LogoWrapper = styled.div`
   justify-content: center;
 
   @media (max-width: 768px) {
-    justify-content: flex-start;
+    justify-content: center;
   }
 `;
 
@@ -64,6 +64,9 @@ const Copyright = styled.div`
   justify-content: center;
   align-items: center;
   gap: 0.25rem;
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
 `;
 
 const CopyrightText = styled.div``;
@@ -71,6 +74,9 @@ const CopyrightText = styled.div``;
 const FooterYear = styled.div`
   display: flex;
   justify-content: center;
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
 `;
 
 const QuickLinksWrapper = styled.div`
