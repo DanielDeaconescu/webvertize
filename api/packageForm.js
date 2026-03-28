@@ -1,12 +1,5 @@
 import nodemailer from 'nodemailer';
-import { createClient } from '@supabase/supabase-js/dist/index.cjs';
-import clientPromise from '../lib/mongodb';
-
-// create the supabase client
-// const supabase = createClient(
-//   process.env.SUPABASE_URL,
-//   process.env.SUPABASE_SERVICE_ROLE_KEY,
-// );
+import clientPromise from '../lib/mongodb.js';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
