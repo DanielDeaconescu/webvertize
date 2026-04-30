@@ -1,13 +1,14 @@
-import styled from 'styled-components';
-import { packages } from '../data/packagesFeatures';
-import Package from './Package';
-import NextSteps from './NextSteps';
+import styled from "styled-components";
+import { packages } from "../data/packagesFeatures";
+import Package from "./Package";
+import NextSteps from "./NextSteps";
+import Logo from "./Logo";
 
 const StyledPrices = styled.div`
-  padding: 5rem;
+  padding: 3rem;
 
   @media (max-width: 768px) {
-    padding: 2.5rem 1rem;
+    padding: 1.5rem 1rem;
   }
 
   @media (min-width: 768px) and (max-width: 1024px) {
@@ -65,10 +66,11 @@ function Packages() {
   return (
     <StyledPrices>
       <Header className="mb-4">
+        <Logo />
         <StyledH1>Un website profesional pentru afacerea ta</StyledH1>
         <StyledP className="fs-4">
           Alege pachetul potrivit și hai să construim împreună prezența online
-          pe care afacerea ta o merită.{' '}
+          pe care afacerea ta o merită.{" "}
         </StyledP>
       </Header>
       <PackagesContainer className="container">
