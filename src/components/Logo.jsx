@@ -30,6 +30,10 @@ const LogoTitle = styled.div`
   @media (min-width: 576px) and (max-width: 768px) {
     font-size: 1.25rem;
   }
+
+  @media (min-width: 768px) and (max-width: 992px) {
+    font-size: 1.35rem;
+  }
 `;
 
 const LogoSubtitle = styled.div`
@@ -48,6 +52,10 @@ const LogoSubtitle = styled.div`
   @media (min-width: 576px) and (max-width: 768px) {
     font-size: 0.7rem;
     margin-top: -5px;
+  }
+
+  @media (min-width: 768px) and (max-width: 992px) {
+    font-size: 0.7rem;
   }
 `;
 

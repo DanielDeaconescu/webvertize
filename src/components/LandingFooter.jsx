@@ -1,15 +1,15 @@
-import styled from 'styled-components';
-import Logo from './Logo';
-import FacebookIcon from './FacebookIcon';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCopyright } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import Modal from './Modal';
-import Form from './Form';
-import { Link } from 'react-router-dom';
-import ModalForm from './ModalForm';
-import { useTranslation } from 'react-i18next';
+import styled from "styled-components";
+import Logo from "./Logo";
+import FacebookIcon from "./FacebookIcon";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCopyright } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import Modal from "./Modal";
+import Form from "./Form";
+import { Link } from "react-router-dom";
+import ModalForm from "./ModalForm";
+import { useTranslation } from "react-i18next";
 
 const StyledFooter = styled.footer`
   padding: 1rem;
@@ -114,9 +114,7 @@ function LandingFooter() {
       <div className="container">
         <FooterRow className="row d-flex">
           <LogoWrapper className="col-md-4 d-flex">
-            <StyledLinkLogo to="/">
-              <Logo theme={'light'} />
-            </StyledLinkLogo>
+            <Logo theme={"light"} />
           </LogoWrapper>
           {/* Copyright */}
           <Copyright className="col-md-4">

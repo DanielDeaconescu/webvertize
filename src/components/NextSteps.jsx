@@ -1,5 +1,4 @@
-import styled from 'styled-components';
-import CTAButton from './CTAButton';
+import styled from "styled-components";
 
 const StyledNextSteps = styled.div`
   display: flex;
@@ -7,7 +6,11 @@ const StyledNextSteps = styled.div`
   justify-content: center;
   align-items: center;
   color: #000;
-  padding: 0.5rem 0 3rem;
+  padding: 1rem 0;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
 `;
 
 const Header = styled.div``;
@@ -51,20 +54,7 @@ const StyledUl = styled.ul`
   gap: 1rem;
   list-style: none;
   margin-bottom: 2rem;
-`;
-
-const FooterNextSteps = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-const StyledH4 = styled.h4`
-  color: #1b3c53;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  text-align: center;
+  padding: 0;
 `;
 
 const StyledLi = styled.li`
@@ -159,15 +149,6 @@ function NextSteps() {
           </ItemText>
         </StyledLi>
       </StyledUl>
-      <FooterNextSteps>
-        <StyledH4>
-          <div>Gata să începem?</div>
-          <div>Primul pas nu presupune costuri.</div>
-        </StyledH4>
-        <div className="d-flex align-items-center">
-          <CTAButton type="standard" />
-        </div>
-      </FooterNextSteps>
     </StyledNextSteps>
   );
 }
