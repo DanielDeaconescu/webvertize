@@ -62,13 +62,15 @@ const PackagesContainer = styled.div`
   }
 `;
 
-function Packages() {
+function Packages({ page }) {
   return (
     <StyledPrices>
       <Header className="mb-4">
-        <div className="mb-3">
-          <Logo />
-        </div>
+        {page === "landing" && (
+          <div className="mb-3">
+            <Logo />
+          </div>
+        )}
         <StyledH1>Un website profesional pentru afacerea ta</StyledH1>
         <StyledP className="fs-4">
           Alege pachetul potrivit și hai să construim împreună prezența online

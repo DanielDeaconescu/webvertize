@@ -15,7 +15,7 @@ const StyledPackagesPage = styled.div`
 function LandingPage() {
   return (
     <StyledPackagesPage>
-      <Packages />
+      <Packages page="landing" />
       <NextSteps />
       <LandingPageCTA />
       <BackToTop />
