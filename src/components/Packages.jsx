@@ -66,7 +66,7 @@ function Packages() {
   return (
     <StyledPrices>
       <Header className="mb-4">
-        <div className="mb-2">
+        <div className="mb-3">
           <Logo />
         </div>
         <StyledH1>Un website profesional pentru afacerea ta</StyledH1>
