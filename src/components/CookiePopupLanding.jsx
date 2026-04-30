@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 const CookiePopup = styled.div`
   display: flex;
@@ -10,7 +10,7 @@ const CookiePopup = styled.div`
   justify-content: center;
   align-items: center;
   position: fixed;
-  z-index: 999;
+  z-index: 90;
   width: 80%;
   bottom: 1rem;
 
@@ -57,12 +57,12 @@ const StyledLink = styled(Link)`
 function CookiePopupLanding() {
   const { t } = useTranslation();
   const [acceptedCookies, setAcceptedCookies] = useState(
-    localStorage.getItem('WebvertizeAcceptedCookies') === 'true',
+    localStorage.getItem("WebvertizeAcceptedCookies") === "true",
   );
 
   function handleAcceptedCookies() {
-    setAcceptedCookies('true');
-    localStorage.setItem('WebvertizeAcceptedCookies', 'true');
+    setAcceptedCookies("true");
+    localStorage.setItem("WebvertizeAcceptedCookies", "true");
   }
 
   return (
@@ -70,19 +70,17 @@ function CookiePopupLanding() {
       {!acceptedCookies && (
         <CookiePopup className="container">
           {/* Text */}
-          <div>
+          <div className="d-flex align-items-center gap-1">
             <StyledP>
               Webvertize nu folosește cookies momentan. Vă vom anunța dacă le
               implementăm.
             </StyledP>
-          </div>
-          {/* Container for buttons */}
-          <ContainerButtons>
             <StyledButton onClick={() => handleAcceptedCookies()}>
               Ok
             </StyledButton>
-            <StyledLink>Mai multe despre cookies</StyledLink>
-          </ContainerButtons>
+          </div>
+          {/* Container for buttons */}
+          {/* <ContainerButtons></ContainerButtons> */}
         </CookiePopup>
       )}
     </div>
