@@ -18,7 +18,6 @@ const StyledPortfolio = styled.div`
 function Portfolio() {
   return (
     <StyledPortfolio>
-      <Navigation />
       <Header
         bgImage={bgImage}
         title="Proiecte și Studii de Caz"
@@ -32,11 +31,6 @@ function Portfolio() {
         title="Ești gata să crești prin publicitate mai eficientă?"
         text="Programează un apel și hai să construim campanii care ajung la clienții potriviți, cu mesajul potrivit."
       />
-      <SideButtons />
-      <BackToTop />
-      <WhatsAppButton />
-      <CookiePopup />
-      <Footer />
     </StyledPortfolio>
   );
 }

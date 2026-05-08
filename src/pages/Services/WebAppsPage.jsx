@@ -22,7 +22,6 @@ const StyledWebAppsPage = styled.div`
 function WebAppsPage() {
   return (
     <StyledWebAppsPage>
-      <Navigation />
       <Header
         title="Aplicații Web Personalizate"
         text1="Webvertize intervine atunci când soluțiile software standard nu se potrivesc perfect, oferind flexibilitatea de care afacerea ta are nevoie pentru a funcționa eficient."
@@ -37,11 +36,6 @@ function WebAppsPage() {
         title="Instrumentele potrivite pot schimba totul"
         text="Hai să construim o aplicație care să se potrivească fluxului de lucru al afacerii tale."
       />
-      <SideButtons />
-      <WhatsAppButton />
-      <CookiePopup />
-      <BackToTop />
-      <Footer />
     </StyledWebAppsPage>
   );
 }

@@ -21,7 +21,6 @@ const StyledAdsContentCreation = styled.div`
 function AdsContentCreation() {
   return (
     <StyledAdsContentCreation>
-      <Navigation />
       <Header
         bgImage={bgImage}
         title="Publicitate și Creare de Conținut"
@@ -35,11 +34,8 @@ function AdsContentCreation() {
         title="Ești gata să crești prin publicitate mai eficientă?"
         text="Programează un apel și hai să construim campanii care ajung la clienții potriviți, cu mesajul potrivit."
       />
-      <SideButtons />
-      <BackToTop />
-      <WhatsAppButton />
+
       <CookiePopup />
-      <Footer />
     </StyledAdsContentCreation>
   );
 }

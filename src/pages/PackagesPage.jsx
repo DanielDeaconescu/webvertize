@@ -18,20 +18,14 @@ const StyledPackagesPage = styled.div`
 function LandingPage() {
   return (
     <StyledPackagesPage>
-      <Navigation />
       <Header
         bgImage={pricesHeaderImg}
         title="Alege pachetul potrivit pentru afacerea ta"
         text1="Fiecare pachet include tot ce ai nevoie pentru o prezență online profesională."
         text2="Prețul final îl stabilim împreună, în funcție de nevoile afacerii tale."
       />
-      <SideButtons />
       <Packages />
       <NextSteps />
-      <WhatsAppButton />
-      <BackToTop />
-      <CookiePopup />
-      <Footer />
     </StyledPackagesPage>
   );
 }

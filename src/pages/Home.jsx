@@ -22,7 +22,6 @@ const StyledHome = styled.div`
 function Home() {
   return (
     <StyledHome>
-      <Navigation />
       <Header
         title="Website-uri, Aplicații Web și Publicitate"
         text1="La Webvertize, ajutăm afacerile să își construiască o prezență online solidă și profesională prin website-uri personalizate, aplicații web și publicitate orientată spre performanță."
@@ -37,11 +36,6 @@ function Home() {
         title="Hai să construim împreună prezența ta digitală"
         text="Programează un apel de descoperire, spune-ne obiectivele tale și fă următorul pas în lumea digitală."
       />
-      <SideButtons />
-      <WhatsAppButton />
-      <BackToTop />
-      <CookiePopup />
-      <Footer />
     </StyledHome>
   );
 }

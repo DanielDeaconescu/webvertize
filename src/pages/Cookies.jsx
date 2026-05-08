@@ -10,7 +10,6 @@ import WhatsAppButton from "../components/WhatsAppButton";
 function Cookies() {
   return (
     <div>
-      <Navigation />
       <Header
         bgImage={cookiesHeader}
         title="Politica de Cookie-uri Webvertize"
@@ -18,10 +17,6 @@ function Cookies() {
         text2="Mai jos vei găsi informații generale despre cookie-uri — ce sunt și cum sunt utilizate în mod obișnuit — precum și detalii despre modul în care cookie-urile pot fi implementate pe Webvertize, atunci când este cazul."
       />
       <MainContent />
-      <WhatsAppButton />
-      <BackToTop />
-      <CookiePopup />
-      <Footer />
     </div>
   );
 }

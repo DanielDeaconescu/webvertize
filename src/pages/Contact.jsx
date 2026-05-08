@@ -17,7 +17,6 @@ const StyledContact = styled.div`
 function Contact() {
   return (
     <StyledContact>
-      <Navigation />
       <Header
         bgImage={contactHeaderImg}
         title="Hai să Discutăm Despre Proiectul Tău Digital"
@@ -25,11 +24,6 @@ function Contact() {
         text2="Povestește-ne despre obiectivele, provocările sau ideile tale și vom construi mai departe împreună."
       />
       <MainSection />
-      <SideButtons />
-      <BackToTop />
-      <WhatsAppButton />
-      <CookiePopup />
-      <Footer />
     </StyledContact>
   );
 }

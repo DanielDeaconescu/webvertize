@@ -13,7 +13,6 @@ import websitesHeader from "../../assets/websites_header.jpg";
 import WebsitesIntro from "../../components/WebDevelopment/WebsitesIntro";
 import WebsitesResults from "../../components/WebDevelopment/WebsitesResults";
 import WebsitesFeatures from "../../components/WebDevelopment/WebsitesFeatures";
-import { useTranslation } from "react-i18next";
 
 const StyledWebsitesPage = styled.div`
   background-color: hsl(203, 53%, 13%, 0.9);
@@ -23,7 +22,6 @@ const StyledWebsitesPage = styled.div`
 function WebsitesPage() {
   return (
     <StyledWebsitesPage>
-      <Navigation />
       <Header
         title="Website-uri care îți reprezintă afacerea"
         text1="Website-ul afacerii tale este o extensie a brandului și un instrument puternic de interacțiune cu clienții."
@@ -38,11 +36,6 @@ function WebsitesPage() {
         title="Următorii tăi clienți te caută online"
         text="Hai să construim un website care să îi ajute să te găsească — și să te aleagă. Programează un apel pentru a începe."
       />
-      <SideButtons />
-      <WhatsAppButton />
-      <BackToTop />
-      <CookiePopup />
-      <Footer />
     </StyledWebsitesPage>
   );
 }
