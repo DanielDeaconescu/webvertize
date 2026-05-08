@@ -34,8 +34,6 @@ function App() {
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/thank-you" element={<ThankYou />} />
-          <Route path="/multumim" element={<ThankYouRo />} />
-          <Route path="/too-many-requests" element={<TooManyRequests />} />
           {/* Services (Dropdown) Routes */}
           <Route path="/websites" element={<WebsitesPage />} />
           <Route path="/web-apps" element={<WebAppsPage />} />
@@ -46,6 +44,9 @@ function App() {
           />
           <Route path="/cookies" element={<Cookies />} />
         </Route>
+
+        <Route path="/multumim" element={<ThankYouRo />} />
+        <Route path="/too-many-requests" element={<TooManyRequests />} />
       </Routes>
 
       {/* react-hot-toast */}
