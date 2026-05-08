@@ -1,15 +1,15 @@
-import styled from 'styled-components';
-import Logo from './Logo';
-import FacebookIcon from './FacebookIcon';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import Modal from './Modal';
-import Form from './Form';
-import { Link } from 'react-router-dom';
-import ModalForm from './ModalForm';
-import { useTranslation } from 'react-i18next';
+import styled from "styled-components";
+import Logo from "./Logo";
+import FacebookIcon from "./FacebookIcon";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import Modal from "./Modal";
+import Form from "./Form";
+import { Link } from "react-router-dom";
+import ModalForm from "./ModalForm";
+import { useTranslation } from "react-i18next";
 
 const StyledFooter = styled.footer`
   padding: 2.5rem;
@@ -92,29 +92,29 @@ function Footer() {
     const data = Object.fromEntries(formData.entries());
 
     // send to Vercel API route
-    const res = await fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });
 
     if (res.ok) {
       // Navigate to the thank-you page
       // 1. Removing Bootstrap's modal-backdrop
-      document.body.classList.remove('modal-open');
-      document.querySelectorAll('.modal-backdrop').forEach((el) => el.remove());
+      document.body.classList.remove("modal-open");
+      document.querySelectorAll(".modal-backdrop").forEach((el) => el.remove());
       setShowForm(false);
       // 2. Setting a flag in the SessionStorage
-      sessionStorage.setItem('formSubmitted', 'true');
+      sessionStorage.setItem("formSubmitted", "true");
       // 3. Navigating to the thank-you page
-      navigate('/thank-you');
+      navigate("/thank-you");
     } else if (res.status === 429) {
-      document.body.classList.remove('modal-open');
-      document.querySelectorAll('.modal-backdrop').forEach((el) => el.remove());
+      document.body.classList.remove("modal-open");
+      document.querySelectorAll(".modal-backdrop").forEach((el) => el.remove());
       setShowForm(false);
       // setting a flag in sessionStorage
-      sessionStorage.setItem('tooManyRequests', 'true');
-      navigate('/too-many-requests');
+      sessionStorage.setItem("tooManyRequests", "true");
+      navigate("/too-many-requests");
       return;
     }
   }
@@ -126,43 +126,39 @@ function Footer() {
           <FooterRow className="row d-flex">
             <LogoWrapper className="col-md-4 d-flex">
               <StyledLinkLogo to="/">
-                <Logo theme={'light'} />
+                <Logo theme={"light"} />
               </StyledLinkLogo>
             </LogoWrapper>
             <QuickLinksWrapper className="col-md-4 d-flex">
               <div>
-                <h3>{t('footer.quickLinks.title')}</h3>
+                <h3>Link-uri utile</h3>
                 <StyledUl>
                   <li>
                     <StyledFontAwesomeIcon icon={faCheckCircle} />
                     <StyledLink onClick={() => setShowForm(true)}>
-                      {t('footer.quickLinks.link1')}
+                      Programează un apel
                     </StyledLink>
                   </li>
                   <li>
                     <StyledFontAwesomeIcon icon={faCheckCircle} />
-                    <StyledRegularLink to="/">
-                      {t('footer.quickLinks.link2')}
-                    </StyledRegularLink>
+                    <StyledRegularLink to="/">Acasă</StyledRegularLink>
                   </li>
                   <li>
                     <StyledFontAwesomeIcon icon={faCheckCircle} />
                     <StyledRegularLink to="/websites">
-                      {t('footer.quickLinks.link3')}
+                      Servicii
                     </StyledRegularLink>
                   </li>
                   <li>
                     <StyledFontAwesomeIcon icon={faCheckCircle} />
-                    <StyledRegularLink to="/contact">
-                      {t('footer.quickLinks.link4')}
-                    </StyledRegularLink>
+                    <StyledRegularLink to="/contact">Contact</StyledRegularLink>
                   </li>
                 </StyledUl>
               </div>
             </QuickLinksWrapper>
             <SocialMediaWrapper className="col-md-4 d-flex">
               <div>
-                <h3>{t('footer.socialMedia.title')}</h3>
+                <h3>Rețele de Socializare</h3>
                 <FacebookIcon color="light" />
               </div>
             </SocialMediaWrapper>
@@ -171,10 +167,10 @@ function Footer() {
       </StyledFooter>
       <ModalForm
         show={showForm}
-        title="Contact Form"
+        title="Formular de contact"
         onClose={() => setShowForm(false)}
       >
-        <Form onSubmit={handleSubmit}></Form>
+        <Form onSubmit={handleSubmit} />
       </ModalForm>
     </>
   );

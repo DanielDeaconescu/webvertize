@@ -1,6 +1,6 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState } from 'react';
-import styled from 'styled-components';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
+import styled from "styled-components";
 import {
   fa1,
   fa2,
@@ -12,9 +12,9 @@ import {
   faMagnifyingGlass,
   faRocket,
   faSitemap,
-} from '@fortawesome/free-solid-svg-icons';
-import bgImage from '../assets/our-process-bg.jpg';
-import { useTranslation } from 'react-i18next';
+} from "@fortawesome/free-solid-svg-icons";
+import bgImage from "../assets/our-process-bg.jpg";
+import { useTranslation } from "react-i18next";
 
 const TabWrapper = styled.div`
   background-image: url(${bgImage});
@@ -28,7 +28,7 @@ const TabWrapper = styled.div`
   border-radius: 2rem;
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     z-index: 1;
@@ -84,9 +84,9 @@ const TabButton = styled.button`
   padding: 1rem 0.3rem;
   background: ${({ active }) =>
     active
-      ? 'linear-gradient(to bottom, #456882 0%, #456882 60%, #456882 100%)'
-      : 'linear-gradient(to bottom, #eaeaea 0%, #d4d4d4 60%, #c4c4c4 100%)'};
-  color: ${({ active }) => (active ? '#fff' : '#444')};
+      ? "linear-gradient(to bottom, #456882 0%, #456882 60%, #456882 100%)"
+      : "linear-gradient(to bottom, #eaeaea 0%, #d4d4d4 60%, #c4c4c4 100%)"};
+  color: ${({ active }) => (active ? "#fff" : "#444")};
   display: flex;
   /* justify-content: center; */
 `;
@@ -155,68 +155,60 @@ const Subtitle = styled.p``;
 
 const tabs = [
   {
-    label: 'Discovery',
-    labelKey: 'homepage.ourProcess.tabsLabel.tab1',
+    name: "Descoperire",
     content:
-      'We begin by getting to know your business — your goals, audience, competitors, and what makes your brand unique. Together, we define what success means for this project and translate it into clear requirements. The outcome of this phase is a focused digital strategy that guides every design and development decision.',
-    contentKey: 'homepage.ourProcess.tabsText.text1',
+      "Începem prin a înțelege în profunzime afacerea ta — obiectivele, publicul țintă, concurența și ceea ce face brandul tău unic. Împreună definim ce înseamnă succesul pentru acest proiect și îl transformăm în cerințe clare. Rezultatul acestei etape este o strategie digitală bine definită, care ghidează fiecare decizie de design și dezvoltare.",
     icon: faMagnifyingGlass,
-    iconLabel: fa1,
-    color: '#fff',
+    icon_number: fa1,
+    color: "#fff",
   },
   {
-    label: 'UX/UI Design',
-    labelKey: 'homepage.ourProcess.tabsLabel.tab2',
+    name: "Design UI/UX",
     content:
-      'Based on the strategy, we design the structure and visual identity of your website or application. This includes wireframes, layout, user flows and other design elements that reflect your brand and align with your business goals.',
-    contentKey: 'homepage.ourProcess.tabsText.text2',
+      "Pe baza strategiei stabilite, realizăm structura și identitatea vizuală a website-ului sau aplicației tale. Aceasta include wireframe-uri, layout-uri, fluxuri de utilizare și alte elemente de design care reflectă brandul tău și sunt aliniate obiectivelor de business.",
     icon: faSitemap,
-    iconLabel: fa2,
-    color: '#fff',
+    icon_number: fa2,
+    color: "#fff",
   },
   {
-    label: 'Development',
-    labelKey: 'homepage.ourProcess.tabsLabel.tab3',
+    name: "Dezvoltare",
     content:
-      'We bring the design to life by building a fast, responsive, and modern solution optimized for all devices. Whether it’s a presentational website or a full web application, we code using reliable technologies and integrate all required features as defined in the project scope.',
-    contentKey: 'homepage.ourProcess.tabsText.text3',
+      "Aducem designul la viață prin dezvoltarea unei soluții rapide, responsive și moderne, optimizate pentru toate dispozitivele. Fie că este vorba de un website de prezentare sau de o aplicație web completă, folosim tehnologii fiabile și integrăm toate funcționalitățile stabilite în cadrul proiectului.",
     icon: faCode,
-    iconLabel: fa3,
-    color: '#fff',
+    icon_number: fa3,
+    color: "#fff",
   },
   {
-    label: 'Testing & Optimization',
-    labelKey: 'homepage.ourProcess.tabsLabel.tab4',
+    name: "Testare & Optimizare",
     content:
-      'Before launch, we carefully test everything - functionality, performance, accessibility and browser compatibility. We address issues, refine interactions, and optimize the experience so your product is ready for real users.',
-    contentKey: 'homepage.ourProcess.tabsText.text4',
+      "Înainte de lansare, testăm cu atenție fiecare aspect — funcționalitatea, performanța, accesibilitatea și compatibilitatea cu diferite browsere. Corectăm eventualele probleme, rafinăm interacțiunile și optimizăm experiența, astfel încât produsul să fie pregătit pentru utilizatori reali.",
     icon: faBugSlash,
-    iconLabel: fa4,
-    color: '#fff',
+    icon_number: fa4,
+    color: "#fff",
   },
   {
-    label: 'Launch & Support',
-    labelKey: 'homepage.ourProcess.tabsLabel.tab5',
+    name: "Lansare și Suport",
     content:
-      'Once everything meets expectations, we deploy the final product and provide post-launch support according to the agreed terms. We can assist with updates, optimizations, analytics, and improvements — ensuring your digital presence keeps growing.',
-    contentKey: 'homepage.ourProcess.tabsText.text5',
+      "După ce totul îndeplinește așteptările, lansăm produsul final și oferim suport post-lansare conform termenilor agreați. Te putem ajuta cu actualizări, optimizări, analiză de date și îmbunătățiri continue — asigurând creșterea constantă a prezenței tale digitale.",
     icon: faRocket,
-    iconLabel: fa5,
-    color: '#fff',
+    icon_number: fa5,
+    color: "#fff",
   },
 ];
 
 function OurProcess() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const { t } = useTranslation();
 
   return (
     <TabWrapper className="container">
       <TabContainer className="container">
         <TitleContainer>
-          <StyledH2>{t('homepage.ourProcess.title')}</StyledH2>
+          <StyledH2>
+            Procesul nostru – Cum construim prezența ta digitală
+          </StyledH2>
           <Subtitle className="fs-5">
-            {t('homepage.ourProcess.subtitle')}
+            O abordare clară, pas cu pas, care transformă ideile în soluții
+            digitale fiabile.
           </Subtitle>
         </TitleContainer>
         <TabListTabPanel className="d-flex">
@@ -228,11 +220,9 @@ function OurProcess() {
                 onClick={() => setActiveIndex(i)}
               >
                 <TabButtonIcon>
-                  <FontAwesomeIcon icon={tab.iconLabel} />
+                  <FontAwesomeIcon icon={tab.icon_number} />
                 </TabButtonIcon>
-                <TabButtonText className="flex-3">
-                  {t(tab.labelKey)}
-                </TabButtonText>
+                <TabButtonText className="flex-3">{tab.name}</TabButtonText>
               </TabButton>
             ))}
           </TabList>
@@ -241,9 +231,7 @@ function OurProcess() {
               icon={tabs[activeIndex].icon}
               color={tabs[activeIndex].color}
             />
-            <StyledP className="fs-4">
-              {t(tabs[activeIndex].contentKey)}
-            </StyledP>
+            <StyledP className="fs-4">{tabs[activeIndex].content}</StyledP>
           </TabPanel>
         </TabListTabPanel>
       </TabContainer>

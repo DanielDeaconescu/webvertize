@@ -1,24 +1,19 @@
-import { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import Logo from './Logo';
-import FacebookIcon from './FacebookIcon';
-import Dropdown from './Dropdown/Dropdown';
-import i18n from '../i18n';
-import { useTranslation } from 'react-i18next';
-import usaImg from '../assets/usa_flag.png';
-import roImg from '../assets/ro_flag.png';
-import LanguageDropdown from './Dropdown/LanguageDropdown';
+import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import Logo from "./Logo";
+import FacebookIcon from "./FacebookIcon";
+import Dropdown from "./Dropdown/Dropdown";
 
 const NavigationHeader = styled.header`
   transition: all 0.3s ease-in-out;
 
   @media (min-width: 1200px) {
-    position: ${({ $isScrolled }) => ($isScrolled ? 'fixed' : 'unset')};
-    top: ${({ $isScrolled }) => ($isScrolled ? '0.25rem' : '0')};
+    position: ${({ $isScrolled }) => ($isScrolled ? "fixed" : "unset")};
+    top: ${({ $isScrolled }) => ($isScrolled ? "0.25rem" : "0")};
     width: 100%;
     z-index: 100;
-    padding: ${({ $isScrolled }) => ($isScrolled ? '0.75rem 3rem' : '0')};
+    padding: ${({ $isScrolled }) => ($isScrolled ? "0.75rem 3rem" : "0")};
 
     ${({ $isScrolled }) =>
       $isScrolled
@@ -39,7 +34,7 @@ const StyledNav = styled.nav`
   }
 
   @media (min-width: 1200px) {
-    border-radius: ${({ $isScrolled }) => ($isScrolled ? '1rem' : '0')};
+    border-radius: ${({ $isScrolled }) => ($isScrolled ? "1rem" : "0")};
   }
 `;
 
@@ -93,7 +88,6 @@ function Navigation() {
   const [isNavCollapsed, setIsNavCollapsed] = useState(true);
   const navRef = useRef(null);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -101,14 +95,14 @@ function Navigation() {
       setIsScrolled(myBool);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     // Run once on mount in case page is already scrolled
     handleScroll();
 
     // clean-up
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -129,7 +123,7 @@ function Navigation() {
         if (
           navRef.current &&
           !navRef.current.contains(event.target) &&
-          !event.target.closest('.navbar-toggler')
+          !event.target.closest(".navbar-toggler")
         ) {
           closeNav();
         }
@@ -137,11 +131,11 @@ function Navigation() {
     }
 
     // Add event listener when component mounts or dependencies change
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
 
     // Clean up event listener when component unmounts
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isNavCollapsed]);
 
@@ -168,14 +162,14 @@ function Navigation() {
           </button>
           <div
             className={`${
-              isNavCollapsed ? 'collapse' : ''
+              isNavCollapsed ? "collapse" : ""
             } navbar-collapse h-100`}
             id="navbarSupportedContent"
           >
             <StyledUl className="navbar-nav me-auto mb-2 mb-lg-0 ms-auto h-100">
               <StyledLi className="nav-item">
                 <StyledLink className="nav-link" to="/" onClick={closeNav}>
-                  {t('nav.home')}
+                  Acasă
                 </StyledLink>
               </StyledLi>
               {/* Services dropdown */}
@@ -189,7 +183,7 @@ function Navigation() {
                   to="/prices"
                   onClick={closeNav}
                 >
-                  {t('nav.prices')}
+                  Prețuri
                 </StyledLink>
               </StyledLi>
 
@@ -199,7 +193,7 @@ function Navigation() {
                   to="/portfolio"
                   onClick={closeNav}
                 >
-                  {t('nav.portfolio')}
+                  Portofoliu
                 </StyledLink>
               </StyledLi>
               <StyledLi className="nav-item">
@@ -208,15 +202,13 @@ function Navigation() {
                   to="/contact"
                   onClick={closeNav}
                 >
-                  {t('nav.contact')}
+                  Contact
                 </StyledLink>
               </StyledLi>
             </StyledUl>
             <FacebookIconContainer>
               <FacebookIcon color="dark" />
             </FacebookIconContainer>
-            {/* Language Select Dropdown */}
-            <LanguageDropdown />
           </div>
         </div>
       </StyledNav>

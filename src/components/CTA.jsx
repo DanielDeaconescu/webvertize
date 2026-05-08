@@ -1,10 +1,10 @@
-import styled from 'styled-components';
-import Form from './Form';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import ctaImage from '../assets/CTA_image.jpg';
-import ModalForm from './ModalForm';
-import { useTranslation } from 'react-i18next';
+import styled from "styled-components";
+import Form from "./Form";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import ctaImage from "../assets/CTA_image.jpg";
+import ModalForm from "./ModalForm";
+import { useTranslation } from "react-i18next";
 
 const CTAWrapper = styled.div`
   background-color: #37353e;
@@ -17,7 +17,7 @@ const CTAWrapper = styled.div`
   z-index: 9;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     background-color: rgba(0, 0, 0, 0.75);
@@ -72,29 +72,29 @@ function CTA({ title, text }) {
     const data = Object.fromEntries(formData.entries());
 
     // send to Vercel API route
-    const res = await fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });
 
     if (res.ok) {
       // Navigate to the thank-you page
       // 1. Removing Bootstrap's modal-backdrop
-      document.body.classList.remove('modal-open');
-      document.querySelectorAll('.modal-backdrop').forEach((el) => el.remove());
+      document.body.classList.remove("modal-open");
+      document.querySelectorAll(".modal-backdrop").forEach((el) => el.remove());
       setShowForm(false);
       // 2. Setting a flag in the SessionStorage
-      sessionStorage.setItem('formSubmitted', 'true');
+      sessionStorage.setItem("formSubmitted", "true");
       // 3. Navigating to the thank-you page
-      navigate('/thank-you');
+      navigate("/thank-you");
     } else if (res.status === 429) {
-      document.body.classList.remove('modal-open');
-      document.querySelectorAll('.modal-backdrop').forEach((el) => el.remove());
+      document.body.classList.remove("modal-open");
+      document.querySelectorAll(".modal-backdrop").forEach((el) => el.remove());
       setShowForm(false);
       // setting a flag in sessionStorage
-      sessionStorage.setItem('tooManyRequests', 'true');
-      navigate('/too-many-requests');
+      sessionStorage.setItem("tooManyRequests", "true");
+      navigate("/too-many-requests");
       return;
     }
   }
@@ -103,20 +103,20 @@ function CTA({ title, text }) {
     <>
       <CTAWrapper>
         <CTAContainer className="container">
-          <h3>{t(title)}</h3>
-          <p className="fs-4 text-center">{t(text)}</p>
+          <h3>{title}</h3>
+          <p className="fs-4 text-center">{text}</p>
           <StyledButton onClick={() => setShowForm(true)}>
-            {t('CTA.home.buttonText')}
+            Programează o discuție
           </StyledButton>
         </CTAContainer>
       </CTAWrapper>
 
       <ModalForm
         show={showForm}
-        title="Schedule a Call"
+        title="Formular de contact"
         onClose={() => setShowForm(false)}
       >
-        <Form onSubmit={handleSubmit}></Form>
+        <Form onSubmit={handleSubmit} />
       </ModalForm>
     </>
   );

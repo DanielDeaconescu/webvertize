@@ -90,7 +90,6 @@ function Packages({ page }) {
           />
         ))}
       </PackagesContainer>
-      {/* Next steps: like trying to answer the question of what happens after the customer purchases a package. */}
     </StyledPrices>
   );
 }

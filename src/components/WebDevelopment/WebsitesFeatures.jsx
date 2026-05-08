@@ -4,10 +4,10 @@ import {
   faImages,
   faMapLocationDot,
   faMessage,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useTranslation } from 'react-i18next';
-import styled from 'styled-components';
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useTranslation } from "react-i18next";
+import styled from "styled-components";
 
 const StyledWebsitesFeatures = styled.div`
   /* border: 1px solid white; */
@@ -51,10 +51,13 @@ function WebsitesFeatures() {
         {/* Features & Capabilities */}
         <StyledSection2>
           <div className="row">
-            <h2 className="mb-3">{t('websites.websitesFeatures.title')}</h2>
+            <h2 className="mb-3">Funcționalități și capabilități</h2>
             <div className="col-12 mb-4">
               <StyledP className="fs-5 mb-4">
-                {t('websites.websitesFeatures.subtitle')}
+                Începem cu website-uri de prezentare care evidențiază brandul și
+                serviciile tale, apoi le extindem cu funcționalități
+                personalizate, în funcție de nevoile afacerii tale. Aceste
+                funcționalități pot include:
               </StyledP>
 
               <div>
@@ -68,18 +71,13 @@ function WebsitesFeatures() {
                               <StyledFontAwesomeIocn icon={faComments} />
                             </div>
                             <div>
-                              <strong>
-                                {t(
-                                  'websites.websitesFeatures.featuresList.feature1.title'
-                                )}
-                              </strong>
+                              <strong>Chat live</strong>
                             </div>
                           </div>
                         </div>
                         <div className="card-text">
-                          {t(
-                            'websites.websitesFeatures.featuresList.feature1.text'
-                          )}
+                          Integrare chat live pentru a comunica direct cu
+                          clienții tăi.
                         </div>
                       </div>
                     </div>
@@ -93,18 +91,13 @@ function WebsitesFeatures() {
                               <StyledFontAwesomeIocn icon={faImages} />
                             </div>
                             <div>
-                              <strong>
-                                {t(
-                                  'websites.websitesFeatures.featuresList.feature2.title'
-                                )}
-                              </strong>
+                              <strong>Prezentări de produse</strong>
                             </div>
                           </div>
                         </div>
                         <div className="card-text">
-                          {t(
-                            'websites.websitesFeatures.featuresList.feature2.text'
-                          )}
+                          Prezentări interactive de produse și galerii de
+                          imagini pentru a evidenția ofertele tale.
                         </div>
                       </div>
                     </div>
@@ -119,18 +112,13 @@ function WebsitesFeatures() {
                             </div>
 
                             <div>
-                              <strong>
-                                {t(
-                                  'websites.websitesFeatures.featuresList.feature3.title'
-                                )}
-                              </strong>
+                              <strong>Formulare</strong>
                             </div>
                           </div>
                         </div>
                         <div className="card-text">
-                          {t(
-                            'websites.websitesFeatures.featuresList.feature3.text'
-                          )}
+                          Formulare de contact și trimiterea solicitărilor,
+                          stocate în siguranță în baze de date.
                         </div>
                       </div>
                     </div>
@@ -146,18 +134,13 @@ function WebsitesFeatures() {
                               />
                             </div>
                             <div>
-                              <strong>
-                                {t(
-                                  'websites.websitesFeatures.featuresList.feature4.title'
-                                )}
-                              </strong>
+                              <strong>Funcționalitate de autentificare</strong>
                             </div>
                           </div>
                         </div>
                         <div className="card-text">
-                          {t(
-                            'websites.websitesFeatures.featuresList.feature4.text'
-                          )}
+                          Autentificare pentru utilizatori și panouri de
+                          administrare pentru gestionarea conținutului.
                         </div>
                       </div>
                     </div>
@@ -172,17 +155,14 @@ function WebsitesFeatures() {
                             </div>
                             <div>
                               <strong>
-                                {t(
-                                  'websites.websitesFeatures.featuresList.feature5.title'
-                                )}
+                                Hărți și alte elemente interactive
                               </strong>
                             </div>
                           </div>
                         </div>
                         <div className="card-text">
-                          {t(
-                            'websites.websitesFeatures.featuresList.feature5.text'
-                          )}
+                          Hărți, media încorporată sau alte elemente interactive
+                          adaptate afacerii tale.
                         </div>
                       </div>
                     </div>

@@ -1,9 +1,9 @@
-import { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
-import styled from 'styled-components';
-import { useTranslation } from 'react-i18next';
+import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 
 const DropdownContainer = styled.li`
   position: relative;
@@ -58,7 +58,7 @@ const DropdownMenu = styled.div`
   top: 100%;
   left: 0;
   z-index: 1000;
-  display: ${(props) => (props.$isOpen ? 'flex' : 'none')};
+  display: ${(props) => (props.$isOpen ? "flex" : "none")};
   flex-direction: column;
   min-width: 250px;
   width: 100%;
@@ -71,7 +71,7 @@ const DropdownMenu = styled.div`
   /* For mobile: making dropdown full width and remove absolute positioning */
   @media (max-width: 992px) {
     position: static;
-    display: ${(props) => (props.$isOpen ? 'flex' : 'none')} !important;
+    display: ${(props) => (props.$isOpen ? "flex" : "none")} !important;
 
     flex-direction: column;
     width: 100%;
@@ -159,35 +159,27 @@ function Dropdown({ closeNav }) {
       }
     }
 
-    document.addEventListener('click', handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
     return () => {
-      document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener("click", handleClickOutside);
     };
   }, []);
 
   const dropdownOptions = [
     {
-      id: 1,
-      labelKey: 'nav.websites',
-      label: 'Websites',
-      value: 'websites',
-      dest: '/websites',
+      link_name: "Website-uri",
+      route: "/websites",
     },
     {
-      id: 2,
-      labelKey: 'nav.web-apps',
-      label: 'Web Applications',
-      value: 'web-applications',
-      dest: '/web-apps',
+      link_name: "Aplicații Web",
+      route: "/web-apps",
     },
     {
-      id: 3,
-      labelKey: 'nav.advertising-content-creation',
-      label: 'Advertising & Content Creation',
-      value: 'advertising-content-creation',
-      dest: '/advertising-content-creation',
+      link_name: "Publicitate & Creare de Conținut",
+      route: "/advertising-content-creation",
     },
   ];
+
   return (
     <DropdownContainer className="nav-item dropdown" ref={dropdownRef}>
       <DropdownToggle
@@ -197,7 +189,7 @@ function Dropdown({ closeNav }) {
         role="button"
       >
         <StyledServicesSingle className="services-single">
-          {t('nav.services')}
+          Servicii
         </StyledServicesSingle>
         {isOpen ? (
           <FontAwesomeIcon icon={faChevronUp} />
@@ -213,11 +205,11 @@ function Dropdown({ closeNav }) {
         {dropdownOptions.map((option) => (
           <DropdownItem>
             <DropdownLink
-              to={option.dest}
+              to={option.route}
               onClick={handleItemClick}
               className="dropdown-item"
             >
-              {t(option.labelKey)}
+              {t(option.link_name)}
             </DropdownLink>
           </DropdownItem>
         ))}

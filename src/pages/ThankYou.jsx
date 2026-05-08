@@ -1,10 +1,9 @@
-import styled from 'styled-components';
-import Logo from '../components/Logo';
-import { Link, useNavigate } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleLeft } from '@fortawesome/free-solid-svg-icons';
-import { useEffect, useState } from 'react';
-import { useSSR, useTranslation } from 'react-i18next';
+import styled from "styled-components";
+import Logo from "../components/Logo";
+import { Link, useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleLeft } from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useState } from "react";
 
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -36,21 +35,20 @@ const ThankYouText = styled.div`
 function ThankYou() {
   const [allowed, setAllowed] = useState(false);
 
-  const { t } = useTranslation();
   // Check for the sessionStorage flag - if it doesn't exist, redirect to "/"
   const navigate = useNavigate();
   useEffect(() => {
-    const flag = sessionStorage.getItem('formSubmitted');
-    const flag2 = sessionStorage.getItem('landingFormSubmitted');
+    const flag = sessionStorage.getItem("formSubmitted");
+    const flag2 = sessionStorage.getItem("landingFormSubmitted");
 
     if (!flag && !flag2) {
-      navigate('/');
+      navigate("/");
       return;
     }
 
     // if accessed correctly, remove the flag so refreshing the page doesn't show the content again
-    sessionStorage.removeItem('formSubmitted');
-    sessionStorage.removeItem('landingFormSubmitted');
+    sessionStorage.removeItem("formSubmitted");
+    sessionStorage.removeItem("landingFormSubmitted");
     setAllowed(true);
   }, [navigate]);
 
@@ -60,14 +58,17 @@ function ThankYou() {
     <ThankYouContainer>
       <Logo />
       <ThankYouText>
-        <h3>{t('thankYouPage.title')}</h3>
-        <p className="fs-5">{t('thankYouPage.paragraph')}</p>
+        <h3>Îți mulțumim pentru completarea formularului!</h3>
+        <p className="fs-5">
+          Vom analiza solicitarea ta și te vom contacta în cel mai scurt timp
+          posibil.
+        </p>
       </ThankYouText>
       <StyledLink to="/">
         <div>
           <FontAwesomeIcon icon={faCircleLeft} />
         </div>
-        <div>{t('thankYouPage.buttonText')}</div>
+        <div>Înapoi la pagina principală</div>
       </StyledLink>
     </ThankYouContainer>
   );

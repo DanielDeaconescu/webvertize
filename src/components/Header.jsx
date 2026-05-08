@@ -1,11 +1,10 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
-import ModalForm from './ModalForm';
-import Form from './Form';
-import ScheduleACallButton from './ScheduleACallButton';
-import { useTranslation } from 'react-i18next';
-import toast from 'react-hot-toast';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import ModalForm from "./ModalForm";
+import Form from "./Form";
+import ScheduleACallButton from "./ScheduleACallButton";
+import toast from "react-hot-toast";
 
 const StyledHeader = styled.header`
   position: relative;
@@ -18,7 +17,7 @@ const StyledHeader = styled.header`
   border-bottom-right-radius: 1rem;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     background-color: rgba(0, 0, 0, 0.7);
@@ -48,6 +47,7 @@ const TextContent = styled.div`
 `;
 
 const Title = styled.h1`
+  text-align: center;
   @media (max-width: 576px) {
     font-size: 1.5rem;
     text-align: center;
@@ -82,7 +82,6 @@ const StyledButton = styled.button`
 function Header({ bgImage, title, text1, text2 }) {
   const navigate = useNavigate();
   const [showForm, setShowForm] = useState(false);
-  const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState(false);
 
   function handleLoading(bool) {
@@ -91,29 +90,29 @@ function Header({ bgImage, title, text1, text2 }) {
 
   async function handleValidSubmit(data) {
     handleLoading(true);
-    const res = await fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });
 
     if (res.ok) {
       handleLoading(false);
-      document.body.classList.remove('modal-open');
-      document.querySelectorAll('.modal-backdrop').forEach((el) => el.remove());
+      document.body.classList.remove("modal-open");
+      document.querySelectorAll(".modal-backdrop").forEach((el) => el.remove());
       setShowForm(false);
-      sessionStorage.setItem('formSubmitted', 'true');
-      navigate('/thank-you');
+      sessionStorage.setItem("formSubmitted", "true");
+      navigate("/thank-you");
     } else if (res.status === 429) {
       handleLoading(false);
-      document.body.classList.remove('modal-open');
-      document.querySelectorAll('.modal-backdrop').forEach((el) => el.remove());
+      document.body.classList.remove("modal-open");
+      document.querySelectorAll(".modal-backdrop").forEach((el) => el.remove());
       setShowForm(false);
-      sessionStorage.setItem('tooManyRequests', 'true');
-      navigate('/too-many-requests');
+      sessionStorage.setItem("tooManyRequests", "true");
+      navigate("/too-many-requests");
     } else if (res.status === 400) {
       handleLoading(false);
-      toast.error('Captcha verification failed!');
+      toast.error("Captcha verification failed!");
     }
   }
 
@@ -121,13 +120,13 @@ function Header({ bgImage, title, text1, text2 }) {
     <>
       <StyledHeader $bgImage={bgImage}>
         <TextContent className="container">
-          <Title>{t(title)}</Title>
+          <Title>{title}</Title>
           <StyledP className="fs-4 text-center">
-            <strong>{t(text1)}</strong> {t(text2)}
+            <strong>{text1}</strong> {text2}
           </StyledP>
-          {title !== 'Webvertize Cookie Policy' && (
+          {title !== "Webvertize Cookie Policy" && (
             <StyledButton onClick={() => setShowForm(true)}>
-              {t('header.homepage.textBtn')}
+              Programează un apel
             </StyledButton>
           )}
         </TextContent>
@@ -135,7 +134,7 @@ function Header({ bgImage, title, text1, text2 }) {
 
       <ModalForm
         show={showForm}
-        title="Schedule a Call"
+        title="Formular de contact"
         onClose={() => setShowForm(false)}
       >
         <Form onValidSubmit={handleValidSubmit} isLoading={isLoading}></Form>

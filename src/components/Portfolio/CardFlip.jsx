@@ -1,17 +1,17 @@
-import Modal from '../Modal';
-import { useState } from 'react';
-import Form from '../Form';
-import styled from 'styled-components';
-import Lightbox from 'yet-another-react-lightbox';
-import 'yet-another-react-lightbox/styles.css';
-import imgContent1 from '../../assets/portfolio/content_creation/content1.png';
-import { Video } from 'yet-another-react-lightbox/plugins';
+import Modal from "../Modal";
+import { useState } from "react";
+import Form from "../Form";
+import styled from "styled-components";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+import imgContent1 from "../../assets/portfolio/content_creation/content1.png";
+import { Video } from "yet-another-react-lightbox/plugins";
 import {
   faCheckSquare,
   faSquareCheck,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useTranslation } from 'react-i18next';
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useTranslation } from "react-i18next";
 
 const CardWrapper = styled.div`
   height: 100%;
@@ -80,14 +80,14 @@ function CardFlip({ project }) {
           <CardFace>
             <div className="card h-100 rounded-4">
               <img
-                src={project.image}
+                src={project.card_img}
                 className="card-img-top rounded-top-4"
-                alt={project.title}
+                alt={project.name}
               />
               <div className="card-body">
-                <h5 className="card-title">{t(project.title)}</h5>
-                <p className="card-text">{t(project.shortDescription)}</p>
-                <div className="text-muted">{t(project.category)}</div>
+                <h5 className="card-title">{project.name}</h5>
+                <p className="card-text">{project.front_text}</p>
+                <div className="text-muted">{project.category}</div>
               </div>
             </div>
           </CardFace>
@@ -96,16 +96,14 @@ function CardFlip({ project }) {
           <CardBack>
             <div className="card h-100 d-flex justify-content-center align-items-center rounded-4">
               <CardBodyBack className="card-body d-flex flex-column align-items-center justify-content-center gap-1">
-                <h5 className="card-title text-center">{t(project.title)}</h5>
-                <StyledP className="card-text">
-                  {t(project.longDescription)}
-                </StyledP>
+                <h5 className="card-title text-center">{project.name}</h5>
+                <StyledP className="card-text">{project.back_text}</StyledP>
                 {/* This will open a modal */}
                 <button
                   onClick={() => setShowForm(true)}
                   className="btn btn-primary btn-sm"
                 >
-                  {t('portfolio.websites.cards.card1.card1Back.btnText')}
+                  Vezi detaliile complete
                 </button>
               </CardBodyBack>
             </div>
@@ -114,163 +112,121 @@ function CardFlip({ project }) {
       </CardWrapper>
       <Modal
         show={showForm}
-        title={t(project.title)}
+        title={t(project.name)}
         onClose={() => setShowForm(false)}
-        logo={project.logo}
+        logo={project.business_logo}
       >
         {/* Websites & Web Apps */}
-        {project.categoryInner === 'websites' ||
-        project.categoryInner === 'web-apps' ? (
+        {project.categoryInner === "websites" ||
+        project.categoryInner === "web-apps" ? (
           <>
-            <h3>{t('portfolio.websites.cards.card1.card1Modal.title')}</h3>
-            <h4>
-              {t('portfolio.websites.cards.card1.card1Modal.more.title')}{' '}
-              {project.companyName}
-            </h4>
-            <p>{t(project.aboutCompany)}</p>
+            <h3>Prezentare Generală a Proiectului</h3>
+            <h4>Mai multe despre {project.name}</h4>
+            <p>{project.business_description}</p>
             {/* Challenges */}
             <section>
-              <h4>{t(project.projectChallenges?.title)}</h4>
+              <h4>Provocările Proiectului</h4>
               <StyledUl>
-                {project.projectChallenges?.challenges.map((ch) => (
+                {project.project_challenges?.map((ch) => (
                   <li>
                     <FontAwesomeIcon icon={faCheckSquare} />
-                    {t(ch)}
+                    {ch}
                   </li>
                 ))}
               </StyledUl>
             </section>
             {/* Solution */}
             <section>
-              <h4>
-                {t('portfolio.websites.cards.card1.card1Modal.solution.title')}
-              </h4>
-              <p>{t(project.projectSolution)}</p>
+              <h4>Soluția</h4>
+              <p>{project.project_solution}</p>
             </section>
             {/* Results */}
             <section>
-              <h4>
-                {t('portfolio.websites.cards.card1.card1Modal.results.title')}
-              </h4>
-              <p>{t(project.projectResults?.generalText)}</p>
+              <h4>Rezultate</h4>
+              <p>{project.project_results.project_results_intro}</p>
               <StyledUl>
-                {project.projectResults?.listResults?.map((res) => (
+                {project.project_results.project_results_list.map((item) => (
                   <li>
                     <FontAwesomeIcon icon={faCheckSquare} />
-                    {t(res)}
+                    {item}
                   </li>
                 ))}
               </StyledUl>
             </section>
             {/* Key Points */}
             <section>
-              <h4>
-                {t('portfolio.websites.cards.card1.card1Modal.keyPoints.title')}
-              </h4>
+              <h4>Puncte Cheie</h4>
               <StyledUl>
-                {project.projectKeyPoints?.map((point) => (
+                {project.project_key_points.map((item) => (
                   <li>
                     <FontAwesomeIcon icon={faCheckSquare} />
-                    {t(point)}
+                    {item}
                   </li>
                 ))}
               </StyledUl>
             </section>
             {/* Live Project */}
             <section>
-              <h4>
-                {t(
-                  'portfolio.websites.cards.card1.card1Modal.liveProject.title'
-                )}
-              </h4>
-              <StyledButton href={project.button1?.link} target="_blank">
-                {t(
-                  'portfolio.websites.cards.card1.card1Modal.liveProject.btnText'
-                )}
+              <h4>Proiect Live</h4>
+              <StyledButton href={project.live_url} target="_blank">
+                Previzualizare Live
               </StyledButton>
             </section>
           </>
         ) : (
-          ''
+          ""
         )}
         {/* Ads */}
-        {project.categoryInner === 'ads' ? (
+        {project.categoryInner === "ads" ? (
           <>
-            <h3>
-              {t('portfolio.content-creation.cards.card1.card1Modal.title')}
-            </h3>
-            <h4>
-              {t(
-                'portfolio.content-creation.cards.card1.card1Modal.more.title'
-              )}{' '}
-              {project.companyName}
-            </h4>
-            <p>{t(project.aboutCompany)}</p>
+            <h3>Prezentare Proiect</h3>
+            <h4>Mai multe despre {project.name}</h4>
+            <p>{project.business_description}</p>
             {/* Challenges */}
             <section>
-              <h4>
-                {t(
-                  'portfolio.content-creation.cards.card1.card1Modal.challenges.title'
-                )}
-              </h4>
+              <h4>Provocări ale Proiectului</h4>
               <StyledUl>
-                {project.projectChallenges?.challenges.map((ch) => (
+                {project.project_challenges.map((item) => (
                   <li>
                     <FontAwesomeIcon icon={faCheckSquare} />
-                    {t(ch)}
+                    {item}
                   </li>
                 ))}
               </StyledUl>
             </section>
             {/* Solution */}
             <section>
-              <h4>
-                {t(
-                  'portfolio.content-creation.cards.card1.card1Modal.solution.title'
-                )}
-              </h4>
-              <p>{t(project.projectSolution)}</p>
+              <h4>Soluție</h4>
+              <p>{project.project_solution}</p>
             </section>
             {/* Results */}
             <section>
-              <h4>
-                {t(
-                  'portfolio.content-creation.cards.card1.card1Modal.results.title'
-                )}
-              </h4>
-              <p>{t(project.projectResults?.generalText)}</p>
+              <h4>Rezultate</h4>
+              <p>{project.project_results.project_results_intro}</p>
               <StyledUl>
-                {project.projectResults?.listResults?.map((res) => (
+                {project.project_results.project_results_list.map((item) => (
                   <li>
                     <FontAwesomeIcon icon={faCheckSquare} />
-                    {t(res)}
+                    {item}
                   </li>
                 ))}
               </StyledUl>
             </section>
             {/* Key Points */}
             <section>
-              <h4>
-                {t(
-                  'portfolio.content-creation.cards.card1.card1Modal.keyPoints.title'
-                )}
-              </h4>
+              <h4>Puncte Cheie</h4>
               <StyledUl>
-                {project.projectKeyPoints?.map((point) => (
+                {project.project_key_points.map((item) => (
                   <li>
                     <FontAwesomeIcon icon={faCheckSquare} />
-                    {t(point)}
+                    {item}
                   </li>
                 ))}
               </StyledUl>
             </section>
             {/* Full Image */}
             <section>
-              <h4>
-                {t(
-                  'portfolio.content-creation.cards.card1.card1Modal.liveProject.title'
-                )}
-              </h4>
+              <h4>Proiect Live</h4>
               <StyledButton
                 href="#!"
                 className="btn btn-success"
@@ -279,96 +235,71 @@ function CardFlip({ project }) {
                   setOpen(true);
                 }}
               >
-                {t(
-                  'portfolio.content-creation.cards.card1.card1Modal.liveProject.btnText'
-                )}
+                Previzualizare Live
               </StyledButton>
 
               {/* Lightbox */}
               <Lightbox
                 open={open}
                 close={() => setOpen(false)}
-                slides={[{ src: project.image }]}
+                slides={[{ src: project.card_img }]}
               />
             </section>
           </>
         ) : (
-          ''
+          ""
         )}
         {/* Reel */}
-        {project.category === 'Reel' ? (
+        {project.category === "Reel" ? (
           <>
-            <h3>
-              {t('portfolio.content-creation.cards.card1.card1Modal.title')}
-            </h3>
-            <h4>
-              {t(
-                'portfolio.content-creation.cards.card1.card1Modal.more.title'
-              )}{' '}
-              {project.companyName}
-            </h4>
-            <p>{t(project.aboutCompany)}</p>
+            <h3>Prezentare Proiect</h3>
+            <h4>Mai multe despre {project.name}</h4>
+            <p>{project.business_description}</p>
             {/* Challenges */}
             <section>
-              <h4>{t(project.projectChallenges?.title)}</h4>
+              <h4>Provocări ale Proiectului</h4>
               <StyledUl>
-                {project.projectChallenges?.challenges.map((ch) => (
+                {project.project_challenges?.map((item) => (
                   <li>
                     <FontAwesomeIcon icon={faCheckSquare} />
-                    {t(ch)}
+                    {item}
                   </li>
                 ))}
               </StyledUl>
             </section>
             {/* Solution */}
             <section>
-              <h4>
-                {t(
-                  'portfolio.content-creation.cards.card3.card3Modal.solution.title'
-                )}
-              </h4>
-              <p>{t(project.projectSolution)}</p>
+              <h4>Soluție</h4>
+              <p>{project.project_solution}</p>
             </section>
             {/* Results */}
             <section>
-              <h4>
-                {t(
-                  'portfolio.content-creation.cards.card3.card3Modal.results.title'
-                )}
-              </h4>
-              <p>{t(project.projectResults?.generalText)}</p>
+              <h4>Rezultate</h4>
+              <p>{project.project_results.project_results_intro}</p>
               <StyledUl>
-                {project.projectResults?.listResults?.map((res) => (
+                {project.project_results.project_results_list.map((item) => (
                   <li>
                     <FontAwesomeIcon icon={faCheckSquare} />
-                    {t(res)}
+                    {item}
                   </li>
                 ))}
               </StyledUl>
             </section>
             {/* Key Points */}
             <section>
-              <h4>
-                {t(
-                  'portfolio.content-creation.cards.card3.card3Modal.keyPoints.title'
-                )}
-              </h4>
+              <h4>Puncte Cheie</h4>
               <StyledUl>
-                {project.projectKeyPoints?.map((point) => (
+                {project.project_key_points.map((item) => (
                   <li>
                     <FontAwesomeIcon icon={faCheckSquare} />
-                    {t(point)}
+                    {item}
                   </li>
                 ))}
               </StyledUl>
             </section>
             {/* Full Image */}
             <section>
-              <h4>
-                {t(
-                  'portfolio.content-creation.cards.card3.card3Modal.liveProject.title'
-                )}
-              </h4>
+              <h4>Video complet</h4>
               <StyledButton
                 href="#!"
                 className="btn btn-success"
@@ -377,9 +308,7 @@ function CardFlip({ project }) {
                   setOpen(true);
                 }}
               >
-                {t(
-                  'portfolio.content-creation.cards.card3.card3Modal.liveProject.btnText'
-                )}
+                Vezi video-ul complet
               </StyledButton>
 
               {/* Lightbox */}
@@ -389,25 +318,23 @@ function CardFlip({ project }) {
                 close={() => setOpen(false)}
                 slides={[
                   {
-                    type: 'video',
+                    type: "video",
                     width: 1080,
                     height: 1920,
                     poster: project.poster,
                     sources: [
                       {
                         src: project.video,
-                        type: 'video/mp4',
+                        type: "video/mp4",
                       },
                     ],
                   },
-                  // ...
                 ]}
-                // ...
               />
             </section>
           </>
         ) : (
-          ''
+          ""
         )}
       </Modal>
     </div>

@@ -1,13 +1,13 @@
-import Footer from '../components/Footer';
-import Navigation from '../components/Navigation';
-import SideButtons from '../components/SideButtons';
-import WhatsAppButton from '../components/WhatsAppButton';
-import Header from '../components/Header';
-import contactHeaderImg from '../assets/contact_us_header.jpg';
-import MainSection from './Contact/MainSection';
-import CookiePopup from '../components/Cookies/CookiePopup';
-import BackToTop from '../components/BackToTop';
-import styled from 'styled-components';
+import Footer from "../components/Footer";
+import Navigation from "../components/Navigation";
+import SideButtons from "../components/SideButtons";
+import WhatsAppButton from "../components/WhatsAppButton";
+import Header from "../components/Header";
+import contactHeaderImg from "../assets/contact_us_header.jpg";
+import MainSection from "./Contact/MainSection";
+import CookiePopup from "../components/Cookies/CookiePopup";
+import BackToTop from "../components/BackToTop";
+import styled from "styled-components";
 
 const StyledContact = styled.div`
   background-color: rgba(58, 97, 122, 0.8);
@@ -20,9 +20,9 @@ function Contact() {
       <Navigation />
       <Header
         bgImage={contactHeaderImg}
-        title="header.contact.title"
-        text1="header.contact.text1"
-        text2="header.contact.text2"
+        title="Hai să Discutăm Despre Proiectul Tău Digital"
+        text1="Indiferent dacă plănuiești un website nou, o aplicație web personalizată sau o campanie publicitară, suntem aici să te ascultăm și să te ajutăm să găsești soluția potrivită pentru afacerea ta."
+        text2="Povestește-ne despre obiectivele, provocările sau ideile tale și vom construi mai departe împreună."
       />
       <MainSection />
       <SideButtons />

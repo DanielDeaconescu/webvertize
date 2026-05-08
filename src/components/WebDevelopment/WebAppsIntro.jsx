@@ -1,6 +1,5 @@
-import { useTranslation } from 'react-i18next';
-import webAppsImg from '../../assets/web_app_image.jpg';
-import styled from 'styled-components';
+import webAppsImg from "../../assets/web_app_image.jpg";
+import styled from "styled-components";
 
 const StyledSection = styled.section`
   display: flex;
@@ -46,22 +45,28 @@ const StyledP = styled.p`
 `;
 
 function WebAppsIntro() {
-  const { t } = useTranslation();
-
   return (
     <StyledSection className="container">
       <div className="row">
-        <h2 className="mb-3">{t('webapps.webAppsIntro.title')}</h2>
+        <h2 className="mb-3">De ce contează aplicațiile web personalizate</h2>
         <div className="col-sm-12 col-xl-6 d-flex align-items-center justify-content-center">
           <WebsAppsImage src={webAppsImg} className="img-fluid" />
         </div>
         <div className="col-sm-12 col-xl-6">
           <SectionTextContent>
             <StyledP className="fs-5">
-              {t('webapps.webAppsIntro.text.text1')}
+              Proiectăm și dezvoltăm aplicații web personalizate, adaptate
+              modului real în care funcționează afacerea ta — de la sisteme
+              interne de management până la platforme orientate către clienți.
             </StyledP>
             <StyledP className="fs-5">
-              {t('webapps.webAppsIntro.text.text2')}
+              Fie că ai nevoie de o platformă de gestionare a sarcinilor pentru
+              echipa ta, un dashboard intern pentru monitorizarea operațiunilor
+              zilnice, un sistem de ticketing personalizat pentru interacțiunea
+              cu clienții sau un sistem de chat live integrat care conectează
+              departamentele, aplicațiile noastre sunt construite pentru a
+              simplifica complexitatea, a reduce munca repetitivă și a deschide
+              noi oportunități de scalare.
             </StyledP>
           </SectionTextContent>
         </div>

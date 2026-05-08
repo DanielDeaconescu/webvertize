@@ -1,9 +1,7 @@
-import { useEffect, useState } from 'react';
-import Turnstile from './Turnstile';
-import { useForm } from 'react-hook-form';
-import toast from 'react-hot-toast';
-import styled from 'styled-components';
-import { useTranslation } from 'react-i18next';
+import { useState } from "react";
+import Turnstile from "./Turnstile";
+import { useForm } from "react-hook-form";
+import styled from "styled-components";
 
 const StyledForm = styled.form`
   display: flex;
@@ -27,60 +25,61 @@ function Form({ onValidSubmit, isLoading }) {
 
     onValidSubmit({ ...data, cf_turnstile_token: turnstileToken });
   }
-  const { t } = useTranslation();
 
   return (
     <StyledForm onSubmit={handleSubmit(submitHandler)}>
       <div className="mb-3">
         <label htmlFor="name" className="form-label fs-5">
-          {t('contactForm.nameLabel')}:
+          Nume:
         </label>
         <input
           type="text"
           className="form-control fs-5"
           name="name"
-          {...register('name', { required: 'contactForm.errors.nameError' })}
+          {...register("name", { required: 'Câmpul "Nume" este obligatoriu!' })}
         />
         {errors?.name && (
-          <small className="text-danger">{t(errors.name?.message)}</small>
+          <small className="text-danger">{errors.name?.message}</small>
         )}
       </div>
       <div className="mb-3">
         <label htmlFor="email" className="form-label fs-5">
-          {t('contactForm.emailLabel')}:
+          Email:
         </label>
         <input
           type="email"
           className="form-control fs-5"
           name="email"
-          {...register('email', { required: 'contactForm.errors.emailError' })}
+          {...register("email", {
+            required: 'Câmpul "Email" este obligatoriu!',
+          })}
         />
         {errors?.email && (
-          <small className="text-danger">{t(errors.email?.message)}</small>
+          <small className="text-danger">{errors.email?.message}</small>
         )}
       </div>
       <div className="mb-3">
         <label htmlFor="project-description" className="form-label fs-5">
-          {t('contactForm.projectDescriptionLabel')}:
+          Descrierea proiectului:
         </label>
         <textarea
           name="project-description"
           id="form-message"
           className="form-control fs-5"
-          {...register('project-description', {
-            required: 'contactForm.errors.descriptionError',
+          {...register("project-description", {
+            required: 'Câmpul "Descrierea proiectului" este obligatoriu!',
           })}
         ></textarea>
-        {errors['project-description'] && (
+        {errors["project-description"] && (
           <small className="text-danger">
-            {t(errors['project-description']?.message)}
+            {errors["project-description"]?.message}
           </small>
         )}
       </div>
       <input
         type="hidden"
         name="cf_turnstile_token"
-        value={turnstileToken || ''}
+        value={turnstileToken || ""}
       />
       <div className="mb-3 d-flex justify-content-center">
         <Turnstile onVerify={setTurnstileToken} />
@@ -89,10 +88,8 @@ function Form({ onValidSubmit, isLoading }) {
         type="submit"
         className="d-flex align-items-center justify-content-center gap-2 btn btn-primary w-100 fs-5"
       >
-        {isLoading ? <div class="spinner-border" role="status"></div> : ''}
-        {isLoading
-          ? t('contactForm.submitBtnLoading')
-          : t('contactForm.submitBtn')}
+        {isLoading ? <div class="spinner-border" role="status"></div> : ""}
+        {isLoading ? "Se trimite..." : "Trimite"}
       </button>
     </StyledForm>
   );

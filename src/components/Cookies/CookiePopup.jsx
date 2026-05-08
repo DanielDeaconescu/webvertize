@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 const StyledCookiePopup = styled.div`
   position: fixed;
@@ -51,12 +51,12 @@ const StyledP = styled.p`
 function CookiePopup() {
   const { t } = useTranslation();
   const [acceptedCookies, setAcceptedCookies] = useState(
-    localStorage.getItem('WebvertizeAcceptedCookies') === 'true'
+    localStorage.getItem("WebvertizeAcceptedCookies") === "true",
   );
 
   function handleAcceptedCookies() {
-    setAcceptedCookies('true');
-    localStorage.setItem('WebvertizeAcceptedCookies', 'true');
+    setAcceptedCookies("true");
+    localStorage.setItem("WebvertizeAcceptedCookies", "true");
   }
 
   return (
@@ -67,16 +67,22 @@ function CookiePopup() {
             <div className="row">
               {/* Message */}
               <div className="col-md-8 mb-3">
-                <StyledP>{t('cookiePopup.text')}</StyledP>
+                <StyledP>
+                  În prezent, Webvertize nu utilizează niciun tip de cookie. În
+                  cazul în care vom implementa cookie-uri în viitor, ne vom
+                  asigura că vă înștiințăm. Vă rugăm să verificați periodic
+                  pagina noastră de cookies pentru mai multe informații și
+                  actualizări.
+                </StyledP>
               </div>
               {/* Buttons */}
               <div className="col-md-4 d-flex align-items-center">
                 <ButtonsContainer>
                   <StyledButton onClick={() => handleAcceptedCookies()}>
-                    {t('cookiePopup.okBtn')}
+                    Ok
                   </StyledButton>
                   <StyledLink to="/cookies">
-                    {t('cookiePopup.moreAboutCookiesBtn')}
+                    Mai multe despre cookie-uri
                   </StyledLink>
                 </ButtonsContainer>
               </div>

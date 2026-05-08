@@ -1,8 +1,7 @@
-import Card from './Card';
-import styled from 'styled-components';
-import bgWebsitesImage from '../assets/websites_image.jpg';
-import bgWebAppsImage from '../assets/web_apps_image.jpg';
-import { useTranslation } from 'react-i18next';
+import Card from "./Card";
+import styled from "styled-components";
+import bgWebsitesImage from "../assets/websites_image.jpg";
+import bgWebAppsImage from "../assets/web_apps_image.jpg";
 
 const StyledWebDev = styled.div`
   padding-top: 5rem;
@@ -32,35 +31,36 @@ const StyledWebDev = styled.div`
 `;
 
 function WebDev() {
-  const { t } = useTranslation();
-
   return (
     <StyledWebDev className="container">
-      <h1>{t('homepage.webdev.title')}</h1>
-      <p className="fs-4">{t('homepage.webdev.subtitle')}</p>
+      <h1>Dezvoltare web – website-uri și aplicații web</h1>
+      <p className="fs-4">
+        Soluții web moderne, concepute pentru a susține, optimiza și dezvolta
+        afacerea ta.
+      </p>
       <div className="container">
         <div className="row">
           <div className="col-md-6 mb-4">
             <Card
-              title="homepage.webdev.websitesCard.title"
-              subtitle="homepage.webdev.websitesCard.subtitle"
-              text="homepage.webdev.websitesCard.text"
+              title="Website-uri"
+              subtitle="Website-uri de prezentare și o prezență online esențială"
+              text="Livrăm website-uri de prezentare rapide, moderne și responsive, optimizate pentru dispozitive mobile și adaptate identității brandului tău. Funcționalități suplimentare pot fi integrate în funcție de nevoile afacerii tale."
               link1="/portfolio"
               link2="/websites"
               icon="websites-icon"
               bgImage={bgWebsitesImage}
-              bgcolor={'rgba(110, 162, 193, 0.7)'}
+              bgcolor={"rgba(110, 162, 193, 0.7)"}
               overlayOpacity={0.35}
               blur={5}
-              caseStudiesBtn="homepage.webdev.websitesCard.caseStudiesBtn"
-              exploreServicesBtn="homepage.webdev.websitesCard.exploreServicesBtn"
+              caseStudiesBtn="Vezi studii de caz"
+              exploreServicesBtn="Descoperă serviciile"
             />
           </div>
           <div className="col-md-6 mb-4">
             <Card
-              title="homepage.webdev.webAppsCard.title"
-              subtitle="homepage.webdev.webAppsCard.subtitle"
-              text="homepage.webdev.webAppsCard.text"
+              title="Aplicații Web"
+              subtitle="Instrumente interne și soluții personalizate pentru afaceri"
+              text="Aplicații interne personalizate, concepute pentru întreprinderi mici și mijlocii. Optimizează-ți operațiunile cu instrumente construite în jurul fluxurilor tale de lucru specifice."
               link1="/portfolio"
               link2="/web-apps"
               icon="web-app-icon"
@@ -68,8 +68,8 @@ function WebDev() {
               bgcolor="rgba(199, 204, 210, 0.5)"
               overlayOpacity={0.35}
               blur={5}
-              caseStudiesBtn="homepage.webdev.webAppsCard.caseStudiesBtn"
-              exploreServicesBtn="homepage.webdev.webAppsCard.exploreServicesBtn"
+              caseStudiesBtn="Vezi studii de caz"
+              exploreServicesBtn="Descoperă serviciile"
             />
           </div>
         </div>

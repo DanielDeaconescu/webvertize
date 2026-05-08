@@ -1,11 +1,11 @@
-import { useEffect } from 'react';
-import styled from 'styled-components';
-import discoveryImg from '../../assets/discovery.jpg';
-import uiUxImg from '../../assets/ui_ux_design.jpg';
-import developmentImg from '../../assets/development.jpg';
-import testingImg from '../../assets/testing_optimization.jpg';
-import launchImg from '../../assets/launch_support.jpg';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useEffect } from "react";
+import styled from "styled-components";
+import discoveryImg from "../../assets/discovery.jpg";
+import uiUxImg from "../../assets/ui_ux_design.jpg";
+import developmentImg from "../../assets/development.jpg";
+import testingImg from "../../assets/testing_optimization.jpg";
+import launchImg from "../../assets/launch_support.jpg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faRocket,
   faBoxOpen,
@@ -13,8 +13,8 @@ import {
   faUser,
   faClock,
   faStar,
-} from '@fortawesome/free-solid-svg-icons';
-import { useTranslation } from 'react-i18next';
+} from "@fortawesome/free-solid-svg-icons";
+import { useTranslation } from "react-i18next";
 
 const Section = styled.section`
   width: 100%;
@@ -69,7 +69,7 @@ const Card = styled.li`
   /* Dark overlay */
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     background: rgba(0, 0, 0, 0.65);
@@ -150,275 +150,189 @@ export default function ServicesStackedCards() {
   const { t } = useTranslation();
   const steps = [
     {
-      title: 'Discovery',
-      titleKey: 'servicesStackedCards.cards.card1.title',
-      objective: {
-        title: 'Objective',
-        titleKey: 'servicesStackedCards.objective',
-        content: 'servicesStackedCards.cards.card1.objective',
-        contentKey: 'servicesStackedCards.cards.card1.objective',
-      },
+      title: "Descoperire",
+      objective:
+        "Înțelegerea afacerii tale, a obiectivelor, a publicului și a concurenței pentru a crea o bază solidă pentru proiectul tău.",
       list: [
         {
-          itemTitle: 'Start',
-          itemTitleKey: 'servicesStackedCards.cards.card1.list.item1.itemTitle',
+          itemTitle: "Început",
           itemText:
-            'We start by learning everything about your business - your objectives, target customers, unique value propositions and competitors.',
-          itemTextKey: 'servicesStackedCards.cards.card1.list.item1.itemText',
+            "Începem prin a învăța totul despre afacerea ta – obiective, clienți țintă, propuneri unice de valoare și concurență.",
         },
         {
-          itemTitle: 'Deliverables',
-          itemTitleKey: 'servicesStackedCards.cards.card1.list.item2.itemTitle',
+          itemTitle: "Rezultate livrabile",
           itemText:
-            'Clear project brief, success criteria, digital strategy document.',
-          itemTextKey: 'servicesStackedCards.cards.card1.list.item2.itemText',
+            "Brief clar de proiect, criterii de succes, document de strategie digitală.",
         },
         {
-          itemTitle: 'Tools & Methods',
-          itemTitleKey: 'servicesStackedCards.cards.card1.list.item3.itemTitle',
+          itemTitle: "Instrumente și metode",
           itemText:
-            'Questions, strategy workshops, competitor research and analytics review.',
-          itemTextKey: 'servicesStackedCards.cards.card1.list.item3.itemText',
+            "Întrebări, workshop-uri de strategie, cercetare a concurenței și analiza datelor.",
         },
         {
-          itemTitle: 'Client Role',
-          itemTitleKey: 'servicesStackedCards.cards.card1.list.item4.itemTitle',
+          itemTitle: "Rolul clientului",
           itemText:
-            'Provide business insights, answer questions, share branding materials or information about past campaigns.',
-          itemTextKey: 'servicesStackedCards.cards.card1.list.item4.itemText',
+            "Furnizarea de informații despre afacere, răspunsuri la întrebări, materiale de branding sau detalii despre campanii anterioare.",
         },
         {
-          itemTitle: 'Timeline Expectation',
-          itemTitleKey: 'servicesStackedCards.cards.card1.list.item5.itemTitle',
-          itemText: 'Typically 1-2 weeks, depending on project complexity.',
-          itemTextKey: 'servicesStackedCards.cards.card1.list.item5.itemText',
+          itemTitle: "Estimarea duratei",
+          itemText:
+            "De obicei 1–2 săptămâni, în funcție de complexitatea proiectului.",
         },
         {
-          itemTitle: 'Value',
-          itemTitleKey: 'servicesStackedCards.cards.card1.list.item6.itemTitle',
+          itemTitle: "Valoare",
           itemText:
-            'Ensures that all the decisions in design and development are aligned with your business goals, saving time and preventing misalignment later.',
-          itemTextKey: 'servicesStackedCards.cards.card1.list.item6.itemText',
+            "Asigură că toate deciziile de design și dezvoltare sunt aliniate obiectivelor tale, economisind timp și prevenind eventuale nealinieri ulterioare.",
         },
       ],
       image: discoveryImg,
     },
     {
-      title: 'UX/UI Design',
-      titleKey: 'servicesStackedCards.cards.card2.title',
-      objective: {
-        title: 'Objective',
-        titleKey: 'servicesStackedCards.cards.card2.title',
-        content:
-          'Define the structure and visual identity of your website or app to ensure usability and brand alignment.',
-        contentKey: 'servicesStackedCards.cards.card2.objective',
-      },
+      title: "Design UX/UI",
+      objective:
+        "Definirea structurii și identității vizuale a website-ului sau aplicației pentru a asigura utilizabilitatea și alinierea cu brandul.",
       list: [
         {
-          itemTitle: 'Start',
-          itemTitleKey: 'servicesStackedCards.cards.card2.list.item1.itemTitle',
+          itemTitle: "Început",
           itemText:
-            "Based on the Discovery phase, we create wireframes, user flows and visual mockups that reflect your brand and your audience's needs.",
-          itemTextKey: 'servicesStackedCards.cards.card2.list.item1.itemText',
+            "Pe baza fazei de Descoperire, creăm wireframe-uri, fluxuri de utilizatori și mockup-uri vizuale care reflectă brandul tău și nevoile publicului țintă.",
         },
         {
-          itemTitle: 'Deliverables',
-          itemTitleKey: 'servicesStackedCards.cards.card2.list.item2.itemTitle',
+          itemTitle: "Rezultate livrabile",
           itemText:
-            'Wireframes, interactive prototypes, style guide, design assets.',
-          itemTextKey: 'servicesStackedCards.cards.card2.list.item2.itemText',
+            "Wireframe-uri, prototipuri interactive, ghid de stil, resurse de design.",
         },
         {
-          itemTitle: 'Tools & Methods',
-          itemTitleKey: 'servicesStackedCards.cards.card2.list.item3.itemTitle',
-          itemText: 'Figma, Adobe XD and design workshops.',
-          itemTextKey: 'servicesStackedCards.cards.card2.list.item3.itemText',
+          itemTitle: "Instrumente și metode",
+          itemText: "Figma, Adobe XD și workshop-uri de design.",
         },
         {
-          itemTitle: 'Client Role',
-          itemTitleKey: 'servicesStackedCards.cards.card2.list.item4.itemTitle',
+          itemTitle: "Rolul clientului",
           itemText:
-            'Review and approve wireframes and mockups and provide feedback on visual preferences.',
-          itemTextKey: 'servicesStackedCards.cards.card2.list.item4.itemText',
+            "Revizuirea și aprobarea wireframe-urilor și mockup-urilor, oferind feedback privind preferințele vizuale.",
         },
         {
-          itemTitle: 'Timeline Expectation',
-          itemTitleKey: 'servicesStackedCards.cards.card2.list.item5.itemTitle',
+          itemTitle: "Estimarea duratei",
           itemText:
-            '2-3 weeks for a standard website; more for complex web applications.',
-          itemTextKey: 'servicesStackedCards.cards.card2.list.item5.itemText',
+            "2–3 săptămâni pentru un website standard; mai mult pentru aplicații web complexe.",
         },
         {
-          itemTitle: 'Value',
-          itemTitleKey: 'servicesStackedCards.cards.card2.list.item6.itemTitle',
+          itemTitle: "Valoare",
           itemText:
-            'Helps you visualize your product early, reduces risk of costly changes during development and ensures usability and accessibility.',
-          itemTextKey: 'servicesStackedCards.cards.card2.list.item6.itemText',
+            "Ajută la vizualizarea produsului timpuriu, reduce riscul modificărilor costisitoare în dezvoltare și asigură utilizabilitatea și accesibilitatea.",
         },
       ],
       image: uiUxImg,
     },
     {
-      title: 'servicesStackedCards.cards.card3.title',
-      titleKey: 'servicesStackedCards.cards.card3.title',
-      objective: {
-        titleKey: 'servicesStackedCards.cards.card3.title',
-        title: 'Objective',
-        content:
-          'Turn designs into a fully functional, responsive, and high-performance digital product.',
-        contentKey: 'servicesStackedCards.cards.card3.objective',
-      },
+      title: "Dezvoltare",
+      objective:
+        "Transformarea designurilor într-un produs digital complet funcțional, responsive și performant.",
       list: [
         {
-          itemTitle: 'Start',
-          itemTitleKey: 'servicesStackedCards.cards.card3.list.item1.itemTitle',
+          itemTitle: "Început",
           itemText:
-            'We translate designs into clean, optimized code, integrating required functionality, animations and third-party tools.',
-          itemTextKey: 'servicesStackedCards.cards.card3.list.item1.itemText',
+            "Transpunem designurile în cod curat și optimizat, integrând funcționalitățile necesare, animațiile și instrumentele terțe.",
         },
         {
-          itemTitle: 'Deliverables',
-          itemTitleKey: 'servicesStackedCards.cards.card3.list.item2.itemTitle',
+          itemTitle: "Rezultate livrabile",
           itemText:
-            'Fully functional website or web app, including CMS setup if applicable, initial content upload.',
-          itemTextKey: 'servicesStackedCards.cards.card3.list.item2.itemText',
+            "Website sau aplicație web complet funcțională, inclusiv configurarea CMS dacă este cazul și încărcarea conținutului inițial.",
         },
         {
-          itemTitle: 'Tools & Methods',
-          itemTitleKey: 'servicesStackedCards.cards.card3.list.item3.itemTitle',
+          itemTitle: "Instrumente și metode",
           itemText:
-            'HTML, CSS, JavaScript (React, Vue, etc.), Bootstrap, APIs, version control (Git).',
-          itemTextKey: 'servicesStackedCards.cards.card3.list.item3.itemText',
+            "HTML, CSS, JavaScript (React, Vue etc.), Bootstrap, API-uri, controlul versiunilor (Git).",
         },
         {
-          itemTitle: 'Client Role',
-          itemTitleKey: 'servicesStackedCards.cards.card3.list.item4.itemTitle',
+          itemTitle: "Rolul clientului",
           itemText:
-            'Provide final content and approve major development milestones.',
-          itemTextKey: 'servicesStackedCards.cards.card3.list.item4.itemText',
+            "Furnizarea conținutului final și aprobarea etapelor majore de dezvoltare.",
         },
         {
-          itemTitle: 'Timeline Expectation',
-          itemTitleKey: 'servicesStackedCards.cards.card3.list.item5.itemTitle',
+          itemTitle: "Estimarea duratei",
           itemText:
-            'Usually 3–6 weeks depending on complexity. We provide regular progress updates along the way.',
-          itemTextKey: 'servicesStackedCards.cards.card3.list.item5.itemText',
+            "De obicei 3–6 săptămâni, în funcție de complexitate. Oferim actualizări regulate de progres.",
         },
         {
-          itemTitle: 'Value',
-          itemTitleKey: 'servicesStackedCards.cards.card3.list.item6.itemTitle',
+          itemTitle: "Valoare",
           itemText:
-            'You get a modern, scalable and performant solution built with best practices.',
-          itemTextKey: 'servicesStackedCards.cards.card3.list.item6.itemText',
+            "Primești o soluție modernă, scalabilă și performantă construită conform celor mai bune practici.",
         },
       ],
       image: developmentImg,
     },
     {
-      title: 'Testing & Optimization',
-      titleKey: 'servicesStackedCards.cards.card4.title',
-      objective: {
-        titleKey: 'servicesStackedCards.cards.card4.title',
-        title: 'Objective',
-        content:
-          'Ensure quality, performance and compatibility across devices and browsers.',
-        contentKey: 'servicesStackedCards.cards.card4.objective',
-      },
+      title: "Testare & Optimizare",
+      objective:
+        "Asigurarea calității, performanței și compatibilității pe toate dispozitivele și browserele.",
       list: [
         {
-          itemTitle: 'Start',
-          itemTitleKey: 'servicesStackedCards.cards.card4.list.item1.itemTitle',
+          itemTitle: "Început",
           itemText:
-            'We conduct extensive testing, including functional testing, responsiveness, accessibility, speed optimization and SEO checks.',
-          itemTextKey: 'servicesStackedCards.cards.card4.list.item1.itemText',
+            "Realizăm teste extinse, inclusiv teste funcționale, responsive, accesibilitate, optimizare viteză și verificări SEO.",
         },
         {
-          itemTitle: 'Deliverables',
-          itemTitleKey: 'servicesStackedCards.cards.card4.list.item2.itemTitle',
-          itemText: 'Test reports, bug fixes, optimization recommendations.',
-          itemTextKey: 'servicesStackedCards.cards.card4.list.item2.itemText',
-        },
-        {
-          itemTitle: 'Tools & Methods',
-          itemTitleKey: 'servicesStackedCards.cards.card4.list.item3.itemTitle',
+          itemTitle: "Rezultate livrabile",
           itemText:
-            'Browser testing (Chrome, Safari, Firefox), Lighthouse audits, automated and manual QA tests.',
-          itemTextKey: 'servicesStackedCards.cards.card4.list.item3.itemText',
+            "Rapoarte de testare, corectarea erorilor, recomandări de optimizare.",
         },
         {
-          itemTitle: 'Client Role',
-          itemTitleKey: 'servicesStackedCards.cards.card4.list.item4.itemTitle',
+          itemTitle: "Instrumente și metode",
           itemText:
-            'Participate in User Acceptance Testing (UAT) and provide feedback on final functionality.',
-          itemTextKey: 'servicesStackedCards.cards.card4.list.item4.itemText',
+            "Testare în browsere (Chrome, Safari, Firefox), audituri Lighthouse, teste QA manuale și automate.",
         },
         {
-          itemTitle: 'Timeline Expectation',
-          itemTitleKey: 'servicesStackedCards.cards.card4.list.item5.itemTitle',
-          itemText: '1–2 weeks; may vary for complex applications.',
-          itemTextKey: 'servicesStackedCards.cards.card4.list.item5.itemText',
-        },
-        {
-          itemTitle: 'Value',
-          itemTitleKey: 'servicesStackedCards.cards.card4.list.item6.itemTitle',
+          itemTitle: "Rolul clientului",
           itemText:
-            'Guarantees a smooth, reliable and user-friendly experience for the users of the digital product.',
-          itemTextKey: 'servicesStackedCards.cards.card4.list.item6.itemText',
+            "Participarea la User Acceptance Testing (UAT) și oferirea de feedback asupra funcționalității finale.",
+        },
+        {
+          itemTitle: "Estimarea duratei",
+          itemText: "1–2 săptămâni; poate varia pentru aplicații complexe.",
+        },
+        {
+          itemTitle: "Valoare",
+          itemText:
+            "Garantează o experiență fluidă, fiabilă și prietenoasă pentru utilizatori.",
         },
       ],
       image: testingImg,
     },
     {
-      title: 'Launch & Support',
-      titleKey: 'servicesStackedCards.cards.card5.title',
-      objective: {
-        title: 'Objective',
-        content:
-          'Deploy your product live and provide ongoing support to ensure continued success.',
-        contentKey: 'servicesStackedCards.cards.card5.objective',
-      },
+      title: "Lansare & Suport",
+      objective:
+        "Implementarea produsului live și oferirea de suport continuu pentru succesul constant.",
       list: [
         {
-          itemTitle: 'Start',
-          itemTitleKey: 'servicesStackedCards.cards.card5.list.item1.itemTitle',
+          itemTitle: "Început",
           itemText:
-            'We deploy the product to your hosting environment, configure analytics and monitor performance in the initial weeks.',
-          itemTextKey: 'servicesStackedCards.cards.card5.list.item1.itemText',
+            "Implementăm produsul pe mediul tău de hosting, configurăm analytics și monitorizăm performanța în săptămânile inițiale.",
         },
         {
-          itemTitle: 'Deliverables',
-          itemTitleKey: 'servicesStackedCards.cards.card5.list.item2.itemTitle',
+          itemTitle: "Rezultate livrabile",
           itemText:
-            'Live website/web app, training for CMS (if applicable), documentation, post-launch support period.',
-          itemTextKey: 'servicesStackedCards.cards.card5.list.item2.itemText',
+            "Website/aplicație live, instruire CMS (dacă este cazul), documentație, perioada de suport post-lansare.",
         },
         {
-          itemTitle: 'Tools & Methods',
-          itemTitleKey: 'servicesStackedCards.cards.card5.list.item3.itemTitle',
+          itemTitle: "Instrumente și metode",
           itemText:
-            'Hosting setup, monitoring tools, analytics integration, optional maintenance agreements.',
-          itemTextKey: 'servicesStackedCards.cards.card5.list.item3.itemText',
+            "Configurare hosting, instrumente de monitorizare, integrare analytics, acorduri opționale de mentenanță.",
         },
         {
-          itemTitle: 'Client Role',
-          itemTitleKey: 'servicesStackedCards.cards.card5.list.item4.itemTitle',
+          itemTitle: "Rolul clientului",
           itemText:
-            'Approve final launch, communicate any post-launch updates needed.',
-          itemTextKey: 'servicesStackedCards.cards.card5.list.item4.itemText',
+            "Aprobarea lansării finale și comunicarea oricăror actualizări necesare post-lansare.",
         },
         {
-          itemTitle: 'Timeline Expectation',
-          itemTitleKey: 'servicesStackedCards.cards.card5.list.item5.itemTitle',
+          itemTitle: "Estimarea duratei",
           itemText:
-            'Launch typically 1–2 days after testing; support period as agreed.',
-          itemTextKey: 'servicesStackedCards.cards.card5.list.item5.itemText',
+            "Lansarea are loc de obicei 1–2 zile după testare; perioada de suport conform acordului.",
         },
         {
-          itemTitle: 'Value',
-          itemTitleKey: 'servicesStackedCards.cards.card5.list.item6.itemTitle',
+          itemTitle: "Valoare",
           itemText:
-            'You can confidently go live knowing everything works, and you have a partner to help with improvements and updates.',
-          itemTextKey: 'servicesStackedCards.cards.card5.list.item6.itemText',
+            "Poți lansa cu încredere, știind că totul funcționează și că ai un partener pentru îmbunătățiri și actualizări.",
         },
       ],
       image: launchImg,
@@ -426,10 +340,10 @@ export default function ServicesStackedCards() {
   ];
 
   useEffect(() => {
-    const container = document.querySelector('.js-stack-cards');
+    const container = document.querySelector(".js-stack-cards");
     if (!container) return;
 
-    const items = container.getElementsByClassName('js-stack-cards__item');
+    const items = container.getElementsByClassName("js-stack-cards__item");
     let marginY = 64;
     const cardHeight = items[0].offsetHeight;
     const windowHeight = window.innerHeight;
@@ -463,21 +377,24 @@ export default function ServicesStackedCards() {
       items[i].style.transform = `translateY(${marginY * i}px)`;
     }
 
-    window.addEventListener('scroll', scrollHandler);
-    return () => window.removeEventListener('scroll', scrollHandler);
+    window.addEventListener("scroll", scrollHandler);
+    return () => window.removeEventListener("scroll", scrollHandler);
   }, []);
 
   return (
     <Section className="container">
-      <SectionTitle>{t('servicesStackedCards.title')}</SectionTitle>
-      <Subtitle className="fs-5">{t('servicesStackedCards.subtitle')}</Subtitle>
+      <SectionTitle>
+        Procesul nostru – Cum dăm viață proiectului tău
+      </SectionTitle>
+      <Subtitle className="fs-5">
+        O abordare transparentă, pas cu pas, de la idee până la lansare.
+      </Subtitle>
       <CardsList className="js-stack-cards">
         {steps.map((step, i) => (
           <Card key={i} bg={step.image} className="js-stack-cards__item">
-            <Title>{t(step.titleKey)}</Title>
+            <Title>{step.title}</Title>
             <Text className="fs-5">
-              <strong>{t('servicesStackedCards.objective')}</strong>:{' '}
-              {t(step.objective.contentKey)}
+              <strong>Obiectiv</strong>: {step.objective}
             </Text>
             <StyledUl>
               {step.list?.map((item, i) => (
@@ -486,8 +403,8 @@ export default function ServicesStackedCards() {
                     <FontAwesomeIcon icon={icons[i]} />
                   </div>
                   <StyledLiInner className="fs-5">
-                    <strong className="fs-5">{t(item.itemTitleKey)}</strong>:{' '}
-                    {t(item.itemTextKey)}
+                    <strong className="fs-5">{item.itemTitle}</strong>:{" "}
+                    {item.itemText}
                   </StyledLiInner>
                 </StyledLi>
               ))}

@@ -1,10 +1,10 @@
-import styled from 'styled-components';
-import Logo from '../components/Logo';
-import { Link, useNavigate } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleLeft } from '@fortawesome/free-solid-svg-icons';
-import { useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
+import styled from "styled-components";
+import Logo from "../components/Logo";
+import { Link, useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleLeft } from "@fortawesome/free-solid-svg-icons";
+import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 const StyledTooManyRequests = styled.div`
   height: 100vh;
@@ -38,31 +38,33 @@ function TooManyRequests() {
   // Check for the sessionStorage flag - if it doesn't exist, redirect to "/"
   const navigate = useNavigate();
   useEffect(() => {
-    const flag = sessionStorage.getItem('tooManyRequests');
+    const flag = sessionStorage.getItem("tooManyRequests");
 
     if (!flag) {
-      navigate('/');
+      navigate("/");
       return;
     }
 
     // if accessed correctly, remove the flag so refreshing the page doesn't show the content again
-    sessionStorage.removeItem('tooManyRequests');
+    sessionStorage.removeItem("tooManyRequests");
   }, [navigate]);
 
   return (
     <StyledTooManyRequests>
       <Logo />
       <TooManyRequestsText>
-        <h3>{t('tooManyRequestsPage.title')}</h3>
+        <h3>Prea multe solicitări!</h3>
         <p className="fs-5 w-75 text-center fs-4">
-          {t('tooManyRequestsPage.text')}
+          Din motive de securitate, limităm numărul de trimiteri ale
+          formularului într-un anumit interval de timp. Te rugăm să încerci din
+          nou mâine. Mulțumim!
         </p>
       </TooManyRequestsText>
       <StyledLink to="/">
         <div>
           <FontAwesomeIcon icon={faCircleLeft} />
         </div>
-        <div>{t('tooManyRequestsPage.buttonText')}</div>
+        <div>Înapoi la pagina principală</div>
       </StyledLink>
     </StyledTooManyRequests>
   );

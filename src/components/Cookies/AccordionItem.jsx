@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import styled from 'styled-components';
-import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useTranslation } from 'react-i18next';
+import { useState } from "react";
+import styled from "styled-components";
+import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useTranslation } from "react-i18next";
 
 const Item = styled.div`
   display: flex;
@@ -15,7 +15,7 @@ const Item = styled.div`
   border-top: 4px solid #fff;
   border-bottom: 4px solid #fff;
 
-  border-top: ${(props) => (props.isOpen ? '4px solid #1b3c53' : 'unset')};
+  border-top: ${(props) => (props.isOpen ? "4px solid #1b3c53" : "unset")};
 `;
 
 const NumberTitle = styled.div`
@@ -69,7 +69,7 @@ function AccordionItem({ num, title, text, curOpen, onOpen, children }) {
       <NumberTitle className="d-flex">
         <NumberTitleInner>
           <Number>{num < 9 ? `0${num}` : num}</Number>
-          <Title className="fs-4">{t(title)}</Title>
+          <Title className="fs-4">{title}</Title>
         </NumberTitleInner>
 
         <Icon>

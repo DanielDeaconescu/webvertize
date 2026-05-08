@@ -3,10 +3,10 @@ import {
   faGears,
   faHandshake,
   faRocket,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useTranslation } from 'react-i18next';
-import styled from 'styled-components';
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useTranslation } from "react-i18next";
+import styled from "styled-components";
 
 const Pillars = styled.div``;
 
@@ -50,9 +50,9 @@ function OurPrinciples() {
 
   return (
     <Pillars className="container mb-5">
-      <PillarsTitle>{t('homepage.ourCorePrinciples.title')}</PillarsTitle>
+      <PillarsTitle>Principiile noastre de bază</PillarsTitle>
       <SubtitleCorePrinciples className="fs-5">
-        {t('homepage.ourCorePrinciples.subtitle')}
+        Modul în care abordăm fiecare proiect și parteneriat
       </SubtitleCorePrinciples>
       <div className="container">
         <PillarsRow className="row d-flex align-items-stretch">
@@ -61,10 +61,12 @@ function OurPrinciples() {
               <div className="card-body">
                 <h5 className="card-title d-flex align-items-center gap-3 fs-5">
                   <FontAwesomeIcon icon={faChartLine} />
-                  {t('homepage.ourCorePrinciples.cards.card1.cardTitle')}
+                  Strategie orientată spre creștere
                 </h5>
                 <p className="card-text fs-6">
-                  {t('homepage.ourCorePrinciples.cards.card1.cardText')}
+                  Soluțiile noastre digitale sunt concepute pentru a susține
+                  obiectivele afacerii tale — notorietatea brandului, ratele de
+                  conversie, relațiile cu clienții și nu numai.
                 </p>
               </div>
             </Card>
@@ -74,10 +76,12 @@ function OurPrinciples() {
               <div className="card-body">
                 <h5 className="card-title d-flex gap-2 align-items-center">
                   <FontAwesomeIcon icon={faGears} />
-                  {t('homepage.ourCorePrinciples.cards.card2.cardTitle')}
+                  Eficiență prin tehnologie
                 </h5>
                 <p className="card-text">
-                  {t('homepage.ourCorePrinciples.cards.card2.cardText')}
+                  Optimizăm procesele de business prin aplicații web,
+                  automatizări și instrumente moderne care ajută afacerea ta să
+                  funcționeze mai eficient.
                 </p>
               </div>
             </Card>
@@ -87,10 +91,13 @@ function OurPrinciples() {
               <div className="card-body">
                 <h5 className="card-title d-flex gap-2 align-items-center">
                   <FontAwesomeIcon icon={faHandshake} />
-                  {t('homepage.ourCorePrinciples.cards.card3.cardTitle')}
+                  Parteneriate pe termen lung
                 </h5>
                 <p className="card-text">
-                  {t('homepage.ourCorePrinciples.cards.card3.cardText')}
+                  Credem că rezultatele excelente vin din colaborări pe termen
+                  lung — nu din livrări punctuale. Lucrăm alături de afacerea
+                  ta, adaptând soluțiile pe măsură ce obiectivele tale
+                  evoluează.
                 </p>
               </div>
             </Card>
@@ -100,10 +107,13 @@ function OurPrinciples() {
               <div className="card-body">
                 <h5 className="card-title d-flex gap-2 align-items-center">
                   <FontAwesomeIcon icon={faRocket} />
-                  {t('homepage.ourCorePrinciples.cards.card4.cardTitle')}
+                  Prezența ta digitală, dusă la nivelul următor
                 </h5>
                 <p className="card-text">
-                  {t('homepage.ourCorePrinciples.cards.card3.cardText')}
+                  Credem că rezultatele excelente vin din colaborări pe termen
+                  lung — nu din livrări punctuale. Lucrăm alături de afacerea
+                  ta, adaptând soluțiile pe măsură ce obiectivele tale
+                  evoluează.
                 </p>
               </div>
             </Card>

@@ -1,11 +1,11 @@
-import { faMessage } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Form from './Form';
-import toast from 'react-hot-toast';
-import ModalForm from './ModalForm';
+import { faMessage } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Form from "./Form";
+import toast from "react-hot-toast";
+import ModalForm from "./ModalForm";
 
 const StyledFormButton = styled.a`
   display: flex;
@@ -34,29 +34,29 @@ function FormButton() {
 
   async function handleValidSubmit(data) {
     handleLoading(true);
-    const res = await fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });
 
     if (res.ok) {
       handleLoading(false);
-      document.body.classList.remove('modal-open');
-      document.querySelectorAll('.modal-backdrop').forEach((el) => el.remove());
+      document.body.classList.remove("modal-open");
+      document.querySelectorAll(".modal-backdrop").forEach((el) => el.remove());
       setShowForm(false);
-      sessionStorage.setItem('formSubmitted', 'true');
-      navigate('/thank-you');
+      sessionStorage.setItem("formSubmitted", "true");
+      navigate("/thank-you");
     } else if (res.status === 429) {
       handleLoading(false);
-      document.body.classList.remove('modal-open');
-      document.querySelectorAll('.modal-backdrop').forEach((el) => el.remove());
+      document.body.classList.remove("modal-open");
+      document.querySelectorAll(".modal-backdrop").forEach((el) => el.remove());
       setShowForm(false);
-      sessionStorage.setItem('tooManyRequests', 'true');
-      navigate('/too-many-requests');
+      sessionStorage.setItem("tooManyRequests", "true");
+      navigate("/too-many-requests");
     } else if (res.status === 400) {
       handleLoading(false);
-      toast.error('Captcha verification failed!');
+      toast.error("Captcha verification failed!");
     }
   }
 
@@ -68,7 +68,7 @@ function FormButton() {
 
       <ModalForm
         show={showForm}
-        title="Contact Form"
+        title="Formular de contact"
         onClose={() => handleClose()}
       >
         <Form onValidSubmit={handleValidSubmit} isLoading={isLoading} />

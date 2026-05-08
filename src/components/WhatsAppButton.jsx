@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useTranslation } from 'react-i18next';
+import styled from "styled-components";
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useTranslation } from "react-i18next";
 
 const WhatsAppButtonContainer = styled.div`
   display: flex;
@@ -38,13 +38,12 @@ const WhatsAppMessage = styled.div`
 `;
 
 function WhatsAppButton() {
-  const { t } = useTranslation();
   return (
     <WhatsAppButtonContainer>
-      <StyledWhatsAppButton href="https://wa.me/+40750419349" target="_blank">
+      <StyledWhatsAppButton href="https://wa.me/+40775511874" target="_blank">
         <StyledWhatsAppIcon icon={faWhatsapp} />
       </StyledWhatsAppButton>
-      <WhatsAppMessage>{t('whatsAppComponent.text')}</WhatsAppMessage>
+      <WhatsAppMessage>Contactează-ne</WhatsAppMessage>
     </WhatsAppButtonContainer>
   );
 }

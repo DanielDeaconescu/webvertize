@@ -1,6 +1,5 @@
-import styled from 'styled-components';
-import websitesImg from '../../assets/custom-websites-image.jpg';
-import { useTranslation } from 'react-i18next';
+import styled from "styled-components";
+import websitesImg from "../../assets/custom-websites-image.jpg";
 
 const StyledSection = styled.section`
   display: flex;
@@ -42,18 +41,25 @@ const StyledP = styled.p`
 `;
 
 function WebsitesIntro() {
-  const { t } = useTranslation();
   return (
     <StyledSection className="container">
       <div className="row">
-        <h2 className="mb-3">{t('websites.websitesIntro.title')}</h2>
+        <h2 className="mb-3">
+          Website-uri personalizate, create pentru nevoile reale ale afacerii
+          tale
+        </h2>
         <div className="col-sm-12 col-xl-6 mb-4">
           <WebsitesImage src={websitesImg} className="img-fluid" />
         </div>
         <div className="col-sm-12 col-xl-6">
           <SectionTextContent>
             <StyledP className="fs-5">
-              {t('websites.websitesIntro.text')}
+              La Webvertize, suntem specializați în dezvoltarea de website-uri
+              rapide, moderne și responsive, adaptate brandului și obiectivelor
+              tale de business. Website-urile noastre nu sunt concepute doar
+              pentru a arăta profesional, ci și pentru a oferi o experiență
+              fluentă vizitatorilor tăi, indiferent de dispozitivul folosit —
+              desktop, tabletă sau telefon mobil.
             </StyledP>
           </SectionTextContent>
         </div>

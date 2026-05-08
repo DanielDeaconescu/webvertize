@@ -3,11 +3,10 @@ import {
   faBullhorn,
   faFilm,
   faSquareCheck,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const StyledSection1 = styled.section`
   padding-top: 4rem;
@@ -82,132 +81,69 @@ const StyledLink = styled(Link)`
 `;
 
 function Section1() {
-  const { t } = useTranslation();
+  const items = [
+    {
+      icon: faBorderAll,
+      title: "Grafice Promoționale cu Imagine Împărțită",
+      text: "Graficele promoționale cu imagine împărțită sunt vizualuri structurate pe mai multe secțiuni, concepute pentru a transmite mai multe idei într-un singur cadru coerent.",
+      list: [
+        "Evidențierea mai multor servicii într-un singur vizual",
+        "Prezentarea rezultatelor de tip «înainte și după»",
+        "Promovarea ofertelor sau a campaniilor sezoniere pentru produse și servicii",
+        "Creșterea clarității, încrederii și notorietății brandului tău",
+      ],
+    },
+    {
+      icon: faFilm,
+      title: "Reels Promoționale (Videoclipuri Scurte)",
+      text: "Reels sunt în prezent unul dintre cele mai eficiente formate de conținut pentru a ajunge la audiențe noi. Videoclipurile scurte optimizate pentru Facebook și Instagram includ:",
+      list: [
+        "Explicații concise ale serviciilor",
+        "Mesaje axate pe beneficii",
+        "Integrarea identității vizuale (logo, culori, slogan)",
+        "Încheiere cu un apel clar la acțiune",
+      ],
+    },
+    {
+      icon: faBullhorn,
+      title: "Vizualuri Optimizate pentru Google Ads",
+      text: "Materiale vizuale curate, de înaltă calitate, realizate conform formatelor recomandate de Google pentru a îmbunătăți vizibilitatea și rata de click.",
+      list: ["Asset-uri de Text", "Asset-uri Vizuale", "Asset-uri Video"],
+    },
+  ];
+
   return (
     <StyledSection1 className="container">
-      <Title>{t('AdsContentCreation.section1.title')}</Title>
+      <Title>Creare de Conținut pentru Reclame</Title>
       <Subtitle className="fs-5 mb-4">
-        {t('AdsContentCreation.section1.subtitle')}
+        Vizualuri de Înaltă Calitate, Concepute pentru Performanță
       </Subtitle>
-      <InnerTitle>{t('AdsContentCreation.section1.title2')}</InnerTitle>
+      <InnerTitle>Conținutul creat de noi</InnerTitle>
       <StyledUl className="fs-5">
-        <Item className="row">
-          <div className="col-md-10">
-            <ItemTitle>
-              <FontAwesomeIcon icon={faBorderAll} />
-              {t('AdsContentCreation.section1.list.item1.title')}
-            </ItemTitle>
-            <ItemDescription>
-              {t('AdsContentCreation.section1.list.item1.subtitle')}
-            </ItemDescription>
-            <InnerUl>
-              <InnerUlItem>
-                <FontAwesomeIcon icon={faSquareCheck} />
-                {t(
-                  'AdsContentCreation.section1.list.item1.listInner.itemInner1'
-                )}
-              </InnerUlItem>
-              <InnerUlItem>
-                <FontAwesomeIcon icon={faSquareCheck} />
-                {t(
-                  'AdsContentCreation.section1.list.item1.listInner.itemInner2'
-                )}
-              </InnerUlItem>
-              <InnerUlItem>
-                <FontAwesomeIcon icon={faSquareCheck} />
-                {t(
-                  'AdsContentCreation.section1.list.item1.listInner.itemInner3'
-                )}
-              </InnerUlItem>
-              <InnerUlItem>
-                <FontAwesomeIcon icon={faSquareCheck} />
-                {t(
-                  'AdsContentCreation.section1.list.item1.listInner.itemInner4'
-                )}
-              </InnerUlItem>
-            </InnerUl>
-          </div>
-          <div className="col-md-2">
-            <StyledLink to="/portfolio">
-              {t('AdsContentCreation.section1.list.item1.listInner.buttonText')}
-            </StyledLink>
-          </div>
-        </Item>
-        <Item className="row">
-          <div className="col-md-10 mb-4">
-            <ItemTitle>
-              <FontAwesomeIcon icon={faFilm} />
-              {t('AdsContentCreation.section1.list.item2.title')}
-            </ItemTitle>
-            <ItemDescription>
-              {t('AdsContentCreation.section1.list.item2.subtitle')}
-            </ItemDescription>
-            <InnerUl>
-              <InnerUlItem>
-                <FontAwesomeIcon icon={faSquareCheck} />
-                {t(
-                  'AdsContentCreation.section1.list.item2.listInner.itemInner1'
-                )}
-              </InnerUlItem>
-              <InnerUlItem>
-                <FontAwesomeIcon icon={faSquareCheck} />
-                {t(
-                  'AdsContentCreation.section1.list.item2.listInner.itemInner2'
-                )}
-              </InnerUlItem>
-              <InnerUlItem>
-                <FontAwesomeIcon icon={faSquareCheck} />
-                {t(
-                  'AdsContentCreation.section1.list.item2.listInner.itemInner3'
-                )}
-              </InnerUlItem>
-              <InnerUlItem>
-                <FontAwesomeIcon icon={faSquareCheck} />
-                {t(
-                  'AdsContentCreation.section1.list.item2.listInner.itemInner4'
-                )}
-              </InnerUlItem>
-            </InnerUl>
-          </div>
-          <div className="col-md-2">
-            <StyledLink to="/portfolio">
-              {t('AdsContentCreation.section1.list.item2.listInner.buttonText')}
-            </StyledLink>
-          </div>
-        </Item>
-
-        <Item className="row">
-          <div className="col-md-10 mb-4">
-            <ItemTitle>
-              <FontAwesomeIcon icon={faBullhorn} />
-              {t('AdsContentCreation.section1.list.item3.title')}
-            </ItemTitle>
-            <ItemDescription>
-              {t('AdsContentCreation.section1.list.item3.subtitle')}
-            </ItemDescription>
-            <InnerUl>
-              <InnerUlItem>
-                <FontAwesomeIcon icon={faSquareCheck} />
-                {t(
-                  'AdsContentCreation.section1.list.item3.listInner.itemInner1'
-                )}
-              </InnerUlItem>
-              <InnerUlItem>
-                <FontAwesomeIcon icon={faSquareCheck} />
-                {t(
-                  'AdsContentCreation.section1.list.item3.listInner.itemInner2'
-                )}
-              </InnerUlItem>
-              <InnerUlItem>
-                <FontAwesomeIcon icon={faSquareCheck} />
-                {t(
-                  'AdsContentCreation.section1.list.item3.listInner.itemInner3'
-                )}
-              </InnerUlItem>
-            </InnerUl>
-          </div>
-          <div className="col-md-2"></div>
-        </Item>
+        {items.map((i, index) => (
+          <Item className="row">
+            <div className="col-md-10">
+              <ItemTitle>
+                <FontAwesomeIcon icon={i.icon} />
+                {i.title}
+              </ItemTitle>
+              <ItemDescription>{i.text}</ItemDescription>
+              <InnerUl>
+                {i.list.map((n) => (
+                  <InnerUlItem>
+                    <FontAwesomeIcon icon={faSquareCheck} />
+                    {n}
+                  </InnerUlItem>
+                ))}
+              </InnerUl>
+            </div>
+            {index !== 2 && (
+              <div className="col-md-2">
+                <StyledLink to="/portfolio">Vezi Proiecte</StyledLink>
+              </div>
+            )}
+          </Item>
+        ))}
       </StyledUl>
     </StyledSection1>
   );
