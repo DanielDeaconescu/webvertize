@@ -18,7 +18,6 @@ import { Toaster } from "react-hot-toast";
 import ScrollToTop from "./components/ScrollToTop";
 import LandingPage from "./pages/LandingPage";
 import PackagesPage from "./pages/PackagesPage";
-import ThankYouRo from "./pages/ThankYouRo";
 import AppLayout from "./components/AppLayout";
 
 function App() {
@@ -33,7 +32,6 @@ function App() {
           <Route path="/dezvoltare-web-ro" element={<LandingPage />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/thank-you" element={<ThankYou />} />
           {/* Services (Dropdown) Routes */}
           <Route path="/websites" element={<WebsitesPage />} />
           <Route path="/web-apps" element={<WebAppsPage />} />
@@ -45,7 +43,7 @@ function App() {
           <Route path="/cookies" element={<Cookies />} />
         </Route>
 
-        <Route path="/multumim" element={<ThankYouRo />} />
+        <Route path="/thank-you" element={<ThankYou />} />
         <Route path="/too-many-requests" element={<TooManyRequests />} />
       </Routes>
 
