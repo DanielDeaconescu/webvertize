@@ -88,7 +88,7 @@ const StyledButton = styled.button`
   @media (max-width: 576px) {
     font-size: 0.9rem;
     white-space: nowrap;
-    padding: 0.25rem 0.5rem;
+    padding: 0.5rem 1rem;
   }
 
   @media (min-width: 576px) {
@@ -115,7 +115,7 @@ const PricesButton = styled(Link)`
   @media (max-width: 576px) {
     font-size: 0.9rem;
     white-space: nowrap;
-    padding: 0.25rem 0.5rem;
+    padding: 0.5rem 1rem;
   }
 
   &:hover {
