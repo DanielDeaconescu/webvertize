@@ -20,8 +20,7 @@ function Contact() {
       <Header
         bgImage={contactHeaderImg}
         title="Hai să Discutăm Despre Proiectul Tău Digital"
-        text1="Indiferent dacă plănuiești un website nou, o aplicație web personalizată sau o campanie publicitară, suntem aici să te ascultăm și să te ajutăm să găsești soluția potrivită pentru afacerea ta."
-        text2="Povestește-ne despre obiectivele, provocările sau ideile tale și vom construi mai departe împreună."
+        text1="Povestește-ne despre obiectivele, provocările sau ideile tale și vom construi mai departe împreună."
       />
       <MainSection />
     </StyledContact>

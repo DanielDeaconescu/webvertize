@@ -85,7 +85,7 @@ function Section1() {
     {
       icon: faBorderAll,
       title: "Grafice Promoționale cu Imagine Împărțită",
-      text: "Graficele promoționale cu imagine împărțită sunt vizualuri structurate pe mai multe secțiuni, concepute pentru a transmite mai multe idei într-un singur cadru coerent.",
+      text: "Vizualuri structurate pe mai multe secțiuni, concepute pentru a transmite mai multe idei într-un singur cadru coerent.",
       list: [
         "Evidențierea mai multor servicii într-un singur vizual",
         "Prezentarea rezultatelor de tip «înainte și după»",
@@ -108,17 +108,17 @@ function Section1() {
       icon: faBullhorn,
       title: "Vizualuri Optimizate pentru Google Ads",
       text: "Materiale vizuale curate, de înaltă calitate, realizate conform formatelor recomandate de Google pentru a îmbunătăți vizibilitatea și rata de click.",
-      list: ["Asset-uri de Text", "Asset-uri Vizuale", "Asset-uri Video"],
+      list: [
+        "Titluri și descrieri optimizate pentru click",
+        "Imagini și bannere în formatele recomandate de Google",
+        "Clipuri video scurte adaptate pentru campaniile Performance Max",
+      ],
     },
   ];
 
   return (
     <StyledSection1 className="container">
       <Title>Creare de Conținut pentru Reclame</Title>
-      <Subtitle className="fs-5 mb-4">
-        Vizualuri de Înaltă Calitate, Concepute pentru Performanță
-      </Subtitle>
-      <InnerTitle>Conținutul creat de noi</InnerTitle>
       <StyledUl className="fs-5">
         {items.map((i, index) => (
           <Item className="row">

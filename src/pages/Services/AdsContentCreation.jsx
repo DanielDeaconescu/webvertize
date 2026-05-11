@@ -4,7 +4,6 @@ import Header from "../../components/Header";
 import Section1 from "../../components/AdsContentCreation/Section1";
 import Section2 from "../../components/AdsContentCreation/Section2";
 import Section3 from "../../components/AdsContentCreation/Section3";
-import Section4 from "../../components/AdsContentCreation/Section4";
 import CTA from "../../components/CTA";
 import bgImage from "../../assets/header_ads_content_creation.jpg";
 import SideButtons from "../../components/SideButtons";
@@ -24,14 +23,15 @@ function AdsContentCreation() {
       <Header
         bgImage={bgImage}
         title="Publicitate și Creare de Conținut"
-        text1="Afacerile moderne nu se pot baza doar pe servicii bune — au nevoie de publicitate clară și profesionistă care să ajungă la publicul potrivit, la momentul potrivit. La Webvertize, combinăm crearea de conținut, strategia campaniilor publicitare și optimizarea continuă pentru a ne asigura că afacerea ta este vizibilă acolo unde contează cel mai mult."
+        text1="Serviciile bune nu se vând singure — au nevoie de publicitate clară și profesionistă care să ajungă la publicul potrivit, la momentul potrivit. La Webvertize, gestionăm crearea de conținut și campaniile publicitare de la strategie până la optimizare continuă."
       />
       <Section1 />
+      {/* TO DO: Split Section2 in 3: Intro, Procesul nostru, Tipuri de campanii */}
       <Section2 />
+      {/* TO DO: Split Section3 in 3: Intro (title + paragraph), Obiective de campanie, Formate disponibile (lista cu 9 items) */}
       <Section3 />
-      <Section4 />
       <CTA
-        title="Ești gata să crești prin publicitate mai eficientă?"
+        title="Programează un apel și spune-ne despre afacerea ta."
         text="Programează un apel și hai să construim campanii care ajung la clienții potriviți, cu mesajul potrivit."
       />
 

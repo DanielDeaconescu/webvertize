@@ -1,15 +1,10 @@
 import "../App.css";
 import { Link, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import About from "./pages/Services";
 import Contact from "./pages/Contact";
 import Navigation from "./components/Navigation";
-import OurMission from "./pages/Services";
 import Portfolio from "./pages/Portfolio";
 import ThankYou from "./pages/ThankYou";
-import TooManyRequests from "./pages/TooManyRequests";
-import AiAutomation from "./pages/Services/AiAutomation";
-import AdCampaigns from "./pages/Services/AdsContentCreation";
 import WebsitesPage from "./pages/Services/WebsitesPage";
 import WebAppsPage from "./pages/Services/WebAppsPage";
 import AdvertisingContentCreation from "./pages/Services/AdsContentCreation";
@@ -19,6 +14,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import LandingPage from "./pages/LandingPage";
 import PackagesPage from "./pages/PackagesPage";
 import AppLayout from "./components/AppLayout";
+import TooManyRequests from "./pages/TooManyRequests";
 
 function App() {
   return (
@@ -35,7 +31,6 @@ function App() {
           {/* Services (Dropdown) Routes */}
           <Route path="/websites" element={<WebsitesPage />} />
           <Route path="/web-apps" element={<WebAppsPage />} />
-          <Route path="/ai-automation" element={<AiAutomation />} />
           <Route
             path="/advertising-content-creation"
             element={<AdvertisingContentCreation />}

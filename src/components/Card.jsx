@@ -6,7 +6,7 @@ import { faGlobe, faGear } from "@fortawesome/free-solid-svg-icons";
 const StyledCard = styled.div`
   height: 100%;
   position: relative;
-  padding: 5rem 1rem;
+  padding: 2rem 0.5rem;
   border: none;
   border-radius: 1rem;
   overflow: hidden;
@@ -66,6 +66,7 @@ const CardBody = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 0.5rem;
   height: 100%;
   padding: 1rem;
   flex-grow: 1 !important;
@@ -81,6 +82,10 @@ const StyledLink = styled(Link)`
   color: #fff;
   transition: all 0.3s ease;
   margin-right: 0.5rem;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &:hover {
     background-color: rgb(60, 110, 150);

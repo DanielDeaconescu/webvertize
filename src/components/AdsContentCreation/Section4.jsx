@@ -7,11 +7,8 @@ import {
   faHandshake,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useTranslation } from "react-i18next";
 
-const StyledSection4 = styled.div`
-  /* border: 1px solid black; */
-`;
+const StyledSection4 = styled.div``;
 
 const ContentRow = styled.div`
   @media (max-width: 1200px) {
@@ -48,8 +45,6 @@ const StyledUl = styled.ul`
 const Item = styled.li``;
 
 function Section4() {
-  const { t } = useTranslation();
-
   const reasons = [
     {
       icon: faPenNib,

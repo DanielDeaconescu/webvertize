@@ -15,6 +15,11 @@ const StyledHeader = styled.header`
   background-repeat: no-repeat;
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
+  height: ${(props) => (props.page === "cookies" ? "100vh" : "unset")};
+  display: ${(props) => (props.page === "cookies" ? "flex" : "unset")};
+  justify-content: ${(props) =>
+    props.page === "cookies" ? "center" : "unset"};
+  align-items: ${(props) => (props.page === "cookies" ? "center" : "unset")};
 
   &::before {
     content: "";
@@ -79,7 +84,7 @@ const StyledButton = styled.button`
   }
 `;
 
-function Header({ bgImage, title, text1, text2 }) {
+function Header({ bgImage, title, text1, text2, page }) {
   const navigate = useNavigate();
   const [showForm, setShowForm] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -118,13 +123,13 @@ function Header({ bgImage, title, text1, text2 }) {
 
   return (
     <>
-      <StyledHeader $bgImage={bgImage}>
+      <StyledHeader $bgImage={bgImage} page="cookies">
         <TextContent className="container">
           <Title>{title}</Title>
           <StyledP className="fs-4 text-center">
             <strong>{text1}</strong> {text2}
           </StyledP>
-          {title !== "Webvertize Cookie Policy" && (
+          {title !== "Politica de Cookie-uri Webvertize" && (
             <StyledButton onClick={() => setShowForm(true)}>
               Programează un apel
             </StyledButton>

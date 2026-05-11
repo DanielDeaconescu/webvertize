@@ -43,7 +43,28 @@ const StyledFontAwesomeIocn = styled(FontAwesomeIcon)`
 `;
 
 function WebsitesFeatures() {
-  const { t } = useTranslation();
+  const cardItems = [
+    {
+      title: "Chat live",
+      text: "Comunicare directă cu vizitatorii site-ului, în timp real.",
+    },
+    {
+      title: "Prezentări de produse",
+      text: "Galerii interactive și prezentări vizuale pentru a evidenția produsele și serviciile tale.",
+    },
+    {
+      title: "Formulare",
+      text: "Formulare de contact și solicitări, stocate în siguranță în baza de date.",
+    },
+    {
+      title: "Funcționalitate de autentificare",
+      text: "Autentificare securizată și panou de administrare pentru gestionarea conținutului.",
+    },
+    {
+      title: "Hărți și elemente interactive",
+      text: "Hărți, media încorporată și alte elemente interactive adaptate afacerii tale.",
+    },
+  ];
 
   return (
     <StyledWebsitesFeatures>
@@ -54,119 +75,32 @@ function WebsitesFeatures() {
             <h2 className="mb-3">Funcționalități și capabilități</h2>
             <div className="col-12 mb-4">
               <StyledP className="fs-5 mb-4">
-                Începem cu website-uri de prezentare care evidențiază brandul și
-                serviciile tale, apoi le extindem cu funcționalități
-                personalizate, în funcție de nevoile afacerii tale. Aceste
-                funcționalități pot include:
+                Construim website-uri de prezentare și le extindem cu
+                funcționalități personalizate în funcție de nevoile afacerii
+                tale:
               </StyledP>
 
               <div>
                 <StyledUl className="fs-5 row">
-                  <li>
-                    <div className="card rounded-4">
-                      <div className="card-body">
-                        <div className="card-title">
-                          <div className="d-flex gap-2">
-                            <div>
-                              <StyledFontAwesomeIocn icon={faComments} />
-                            </div>
-                            <div>
-                              <strong>Chat live</strong>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="card-text">
-                          Integrare chat live pentru a comunica direct cu
-                          clienții tăi.
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="card rounded-4">
-                      <div className="card-body">
-                        <div className="card-title">
-                          <div className="d-flex gap-2">
-                            <div>
-                              <StyledFontAwesomeIocn icon={faImages} />
-                            </div>
-                            <div>
-                              <strong>Prezentări de produse</strong>
+                  {cardItems.map((item) => (
+                    <li>
+                      <div className="card rounded-4">
+                        <div className="card-body">
+                          <div className="card-title">
+                            <div className="d-flex gap-2">
+                              <div>
+                                <StyledFontAwesomeIocn icon={faComments} />
+                              </div>
+                              <div>
+                                <strong>{item.title}</strong>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div className="card-text">
-                          Prezentări interactive de produse și galerii de
-                          imagini pentru a evidenția ofertele tale.
+                          <div className="card-text">{item.text}</div>
                         </div>
                       </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="card rounded-4">
-                      <div className="card-body">
-                        <div className="card-title">
-                          <div className="d-flex gap-2">
-                            <div>
-                              <StyledFontAwesomeIocn icon={faMessage} />
-                            </div>
-
-                            <div>
-                              <strong>Formulare</strong>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="card-text">
-                          Formulare de contact și trimiterea solicitărilor,
-                          stocate în siguranță în baze de date.
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="card rounded-4">
-                      <div className="card-body">
-                        <div className="card-title">
-                          <div className="d-flex gap-2">
-                            <div>
-                              <StyledFontAwesomeIocn
-                                icon={faArrowRightToBracket}
-                              />
-                            </div>
-                            <div>
-                              <strong>Funcționalitate de autentificare</strong>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="card-text">
-                          Autentificare pentru utilizatori și panouri de
-                          administrare pentru gestionarea conținutului.
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="card rounded-4">
-                      <div className="card-body">
-                        <div className="card-title">
-                          <div className="d-flex gap-2">
-                            <div>
-                              <StyledFontAwesomeIocn icon={faMapLocationDot} />
-                            </div>
-                            <div>
-                              <strong>
-                                Hărți și alte elemente interactive
-                              </strong>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="card-text">
-                          Hărți, media încorporată sau alte elemente interactive
-                          adaptate afacerii tale.
-                        </div>
-                      </div>
-                    </div>
-                  </li>
+                    </li>
+                  ))}
                 </StyledUl>
               </div>
             </div>

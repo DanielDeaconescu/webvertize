@@ -50,12 +50,12 @@ function WebAppsFeatures() {
     },
     {
       title: "Integrare cu baze de date",
-      text: "Baze de date structurate, sigure și scalabile, care stochează informațiile tale, le fac ușor de căutat și susțin rapoartele.",
+      text: "Baze de date structurate, sigure și scalabile — ușor de căutat și pregătite pentru rapoarte.",
       icon: faDatabase,
     },
     {
       title: "Fluxuri de formulare și introducere date",
-      text: "Formulare dinamice, validări, trimiteri de date, atașamente și fluxuri interne de aprobare care automatizează munca manuală.",
+      text: "Formulare dinamice cu validări, atașamente și fluxuri de aprobare — pentru a automatiza munca manuală.",
       icon: faListCheck,
     },
     {
@@ -70,7 +70,7 @@ function WebAppsFeatures() {
     },
     {
       title: "Autentificare și management utilizatori",
-      text: "Acces securizat prin parolă, sisteme de autentificare, creare de conturi sau SSO, în funcție de nevoile afacerii tale.",
+      text: "Acces securizat prin parolă, autentificare, creare de conturi sau SSO — adaptat nevoilor afacerii tale.",
       icon: faUserLock,
     },
     {
@@ -86,10 +86,7 @@ function WebAppsFeatures() {
         <h2 className="mb-3">Funcționalități & capabilități</h2>
         <div className="col-12 mb-4">
           <StyledP className="fs-5 mb-4">
-            La Webvertize, fiecare aplicație pe care o dezvoltăm îmbină
-            performanța tehnică cu ușurința în utilizare și fiabilitatea pe
-            termen lung. În funcție de nevoile afacerii tale, soluția noastră
-            poate include:
+            În funcție de nevoile afacerii tale, soluția poate include:
           </StyledP>
 
           <div>

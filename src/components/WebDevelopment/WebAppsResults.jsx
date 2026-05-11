@@ -8,7 +8,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
-import { useTranslation } from "react-i18next";
 
 const StyledSection3 = styled.section`
   display: flex;
@@ -36,8 +35,6 @@ const StyledFontAwesomeIocn = styled(FontAwesomeIcon)`
 `;
 
 function WebAppsResults() {
-  const { t } = useTranslation();
-
   const items = [
     {
       title: "Economisi timp",

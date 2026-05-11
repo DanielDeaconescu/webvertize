@@ -5,7 +5,6 @@ import {
   faRocket,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 
 const Pillars = styled.div``;
@@ -46,8 +45,6 @@ const Card = styled.div`
 `;
 
 function OurPrinciples() {
-  const { t } = useTranslation();
-
   return (
     <Pillars className="container mb-5">
       <PillarsTitle>Principiile noastre de bază</PillarsTitle>

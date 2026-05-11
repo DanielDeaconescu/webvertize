@@ -326,28 +326,28 @@ function SectionWebsites() {
     <StyledSectionWebsites className="container">
       {/* Websites */}
       <section className="mb-4">
-        <h2>Website-uri – Creative & Funcționale</h2>
+        <h2>Website-uri</h2>
         <StyledP className="fs-5">
-          Descoperă portofoliul nostru de website-uri responsive, ușor de
-          utilizat, create pentru a îmbunătăți prezența online a afacerii tale.
+          Proiecte livrate — fiecare cu provocări diferite și soluții construite
+          de la zero.
         </StyledP>
         <div className="container">{renderCards(websites)}</div>
       </section>
       {/* Web Apps */}
       <section className="mb-4">
-        <h2>Aplicații Web – Eficiente & Scalabile</h2>
+        <h2>Aplicații Web</h2>
         <StyledP className="fs-5">
-          Explorează instrumentele noastre interne și aplicațiile web care
-          eficientizează procesele de business și cresc productivitatea.
+          Instrumente interne și aplicații web care eficientizează procesele de
+          business și cresc productivitatea.
         </StyledP>
         <div className="container">{renderCards(webApps)}</div>
       </section>
       {/* Content Creation */}
       <section className="mb-4">
-        <h2>Creare de Conținut – Captivant & Impactant</h2>
+        <h2>Creare de Conținut</h2>
         <StyledP className="fs-5">
-          Descoperă materialele noastre publicitare, grafica și proiectele media
-          create pentru a atrage și a capta atenția publicului tău.
+          Materiale publicitare, grafică și proiecte media create pentru a
+          atrage atenția publicului tău.
         </StyledP>
         <div className="container">{renderCards(content)}</div>
       </section>

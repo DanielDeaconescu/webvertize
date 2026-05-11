@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import AccordionItem from "./AccordionItem";
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
 
 const faqs = [
   {
@@ -39,7 +38,6 @@ const Accordion = styled.div`
 `;
 
 function AccordionFAQ() {
-  const { t } = useTranslation();
   const [curOpen, setIsOpen] = useState(null);
   return (
     <Accordion className="container">

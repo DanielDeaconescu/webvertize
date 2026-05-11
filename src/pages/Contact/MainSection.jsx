@@ -2,7 +2,6 @@ import styled from "styled-components";
 import Form from "../../components/Form";
 import { fa1, fa2, fa3 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -38,7 +37,6 @@ const StyledUl = styled.ul`
 `;
 
 function MainSection() {
-  const { t } = useTranslation();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -80,8 +78,7 @@ function MainSection() {
           <Text>
             <h3>Hai să începem conversația</h3>
             <p className="fs-5">
-              Completează formularul de mai jos, iar noi te vom contacta prin
-              email pentru a programa un apel și a discuta despre proiectul tău.
+              Completează formularul și te contactăm în cel mai scurt timp.
             </p>
           </Text>
 
@@ -90,14 +87,6 @@ function MainSection() {
         {/* CTA */}
         <div className="col-md-6">
           <h3>La ce să te aștepți</h3>
-          <StyledP className="fs-5">
-            Folosește formularul pentru a lua legătura cu noi, iar noi te vom
-            contacta pentru a programa un apel. Indiferent dacă ai deja un
-            proiect clar în minte sau încă explorezi idei, ne vom lua timp să
-            îți înțelegem nevoile și să discutăm împreună cea mai bună direcție
-            de urmat.
-          </StyledP>
-          <h4>Ce urmează</h4>
           <StyledUl>
             <li className="fs-5">
               <FontAwesomeIcon icon={fa1} />

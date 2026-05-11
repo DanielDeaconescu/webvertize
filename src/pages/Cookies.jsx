@@ -14,9 +14,9 @@ function Cookies() {
         bgImage={cookiesHeader}
         title="Politica de Cookie-uri Webvertize"
         text1="În prezent, Webvertize nu utilizează cookie-uri pe acest website. În cazul în care acest lucru se va schimba în viitor, vom actualiza această pagină în mod corespunzător și vom explica exact ce date sunt colectate și de ce."
-        text2="Mai jos vei găsi informații generale despre cookie-uri — ce sunt și cum sunt utilizate în mod obișnuit — precum și detalii despre modul în care cookie-urile pot fi implementate pe Webvertize, atunci când este cazul."
+        page="cookies"
       />
-      <MainContent />
+      {/* <MainContent /> */}
     </div>
   );
 }

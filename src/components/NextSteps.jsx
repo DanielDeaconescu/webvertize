@@ -89,65 +89,57 @@ const ItemTitle = styled.h5`
 `;
 
 function NextSteps() {
+  const stepsList = [
+    {
+      number: "1",
+      name: "Descoperire",
+      description:
+        "Înțelegem afacerea ta, obiectivele și nevoile specifice înainte de orice altceva.",
+    },
+    {
+      number: "2",
+      name: "Design UI",
+      description:
+        "Creăm intern wireframe-uri și mockup-uri vizuale înainte de dezvoltare. În funcție de complexitatea proiectului, acestea pot fi împărtășite cu tine pentru feedback.",
+    },
+    {
+      number: "3",
+      name: "Dezvoltare",
+      description:
+        "Construim website-ul cu tehnologii moderne, performante și scalabile.",
+    },
+    {
+      number: "4",
+      name: "Testare și optimizare",
+      description:
+        "Testăm fiecare funcționalitate și optimizăm performanța înainte de lansare.",
+    },
+    {
+      number: "5",
+      name: "Lansare și suport",
+      description:
+        "Publicăm website-ul și rămânem alături de tine după lansare.",
+    },
+  ];
+
   return (
     <StyledNextSteps className="container">
       <Header className="mb-2">
         <StyledH3>Cum funcționează mai exact</StyledH3>
         <StyledP className="fs-5">
-          Un proces simplu și transparent încă de la prima discuție și până la
-          lansare.
+          Simplu și transparent - de la prima discuție și până la lansare
         </StyledP>
       </Header>
       <StyledUl>
-        <StyledLi>
-          <ItemNumber>1</ItemNumber>
-          <ItemText>
-            <ItemTitle>Descoperire</ItemTitle>
-            <StyledP2>
-              Înțelegem afacerea ta, obiectivele și nevoile specifice înainte de
-              orice altceva.
-            </StyledP2>
-          </ItemText>
-        </StyledLi>
-        <StyledLi>
-          <ItemNumber>2</ItemNumber>
-          <ItemText>
-            <ItemTitle>Design UI</ItemTitle>
-            <StyledP2>
-              Înțelegem afacerea ta, obiectivele și nevoile specifice înainte de
-              orice altceva.
-            </StyledP2>
-          </ItemText>
-        </StyledLi>
-        <StyledLi>
-          <ItemNumber>3</ItemNumber>
-          <ItemText>
-            <ItemTitle>Dezvoltare</ItemTitle>
-            <StyledP2>
-              Construim website-ul cu tehnologii moderne, performante și
-              scalabile.
-            </StyledP2>
-          </ItemText>
-        </StyledLi>
-        <StyledLi>
-          <ItemNumber>4</ItemNumber>
-          <ItemText>
-            <ItemTitle>Testare și optimizare</ItemTitle>
-            <StyledP2>
-              Testăm fiecare funcționalitate și optimizăm performanța înainte de
-              lansare.
-            </StyledP2>
-          </ItemText>
-        </StyledLi>
-        <StyledLi>
-          <ItemNumber>5</ItemNumber>
-          <ItemText>
-            <ItemTitle>Lansare și suport</ItemTitle>
-            <StyledP2>
-              Publicăm website-ul și rămânem alături de tine după lansare.
-            </StyledP2>
-          </ItemText>
-        </StyledLi>
+        {stepsList.map((step) => (
+          <StyledLi>
+            <ItemNumber>{step.number}</ItemNumber>
+            <ItemText>
+              <ItemTitle>{step.name}</ItemTitle>
+              <StyledP2>{step.description}</StyledP2>
+            </ItemText>
+          </StyledLi>
+        ))}
       </StyledUl>
     </StyledNextSteps>
   );

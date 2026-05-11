@@ -21,15 +21,12 @@ function Portfolio() {
       <Header
         bgImage={bgImage}
         title="Proiecte și Studii de Caz"
-        text1="Explorează proiectele noastre și descoperă cum dezvoltarea web și publicitatea pot deveni un proces clar și plăcut — nu unul complicat."
-        text2="La Webvertize, credem că construirea unei prezențe online este un proces colaborativ, bazat pe comunicare, transparență și încredere. De la concept la lansare, lucrăm îndeaproape cu clienții noștri pentru a crea soluții digitale care susțin obiectivele lor de business."
+        text1="Explorează proiectele noastre și vezi cum arată în practică soluțiile pe care le construim."
       />
-
       <SectionWebsites />
-
       <CTA
-        title="Ești gata să crești prin publicitate mai eficientă?"
-        text="Programează un apel și hai să construim campanii care ajung la clienții potriviți, cu mesajul potrivit."
+        title="Vrei un proiect similar pentru afacerea ta?"
+        text="Programează un apel și spune-ne despre nevoile afacerii tale."
       />
     </StyledPortfolio>
   );

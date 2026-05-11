@@ -54,12 +54,12 @@ function WebsitesIntro() {
         <div className="col-sm-12 col-xl-6">
           <SectionTextContent>
             <StyledP className="fs-5">
-              La Webvertize, suntem specializați în dezvoltarea de website-uri
-              rapide, moderne și responsive, adaptate brandului și obiectivelor
-              tale de business. Website-urile noastre nu sunt concepute doar
-              pentru a arăta profesional, ci și pentru a oferi o experiență
-              fluentă vizitatorilor tăi, indiferent de dispozitivul folosit —
-              desktop, tabletă sau telefon mobil.
+              Fiecare website pe care îl construim pornește de la o înțelegere
+              clară a afacerii tale — publicul țintă, obiectivele de business și
+              identitatea brandului. Rezultatul este un site care nu doar arată
+              profesional, ci lucrează activ pentru tine: atrage vizitatori,
+              comunică clar ceea ce oferi și convinge potențialii clienți să ia
+              legătura cu tine.
             </StyledP>
           </SectionTextContent>
         </div>

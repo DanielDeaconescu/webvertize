@@ -8,7 +8,6 @@ import {
   faMobileScreenButton,
   faCartShopping,
   faImage,
-  faPlayCircle,
   faImages,
   faLayerGroup,
   faMobileScreen,
@@ -18,11 +17,9 @@ import {
   faCubes,
   faCirclePlay,
 } from "@fortawesome/free-solid-svg-icons";
-import { useTranslation } from "react-i18next";
 
 const StyledSection3 = styled.section`
   padding-bottom: 4rem;
-  /* border: 1px solid white; */
 `;
 
 const ContentRow = styled.div`
@@ -38,9 +35,7 @@ const TitleTotal = styled.div``;
 
 const Title = styled.h2``;
 
-const Subtitle = styled.div`
-  /* margin-top: -12px; */
-`;
+const Subtitle = styled.div``;
 
 const StyledUl = styled.ul`
   list-style-type: none;
@@ -50,8 +45,6 @@ const StyledUl = styled.ul`
 `;
 
 function Section3() {
-  const { t } = useTranslation();
-
   const campaignObjectives = [
     {
       icon: faEye,
@@ -94,7 +87,6 @@ function Section3() {
     { icon: faFilm, adText: "Reclame Slideshow" },
     { icon: faBookOpen, adText: "Reclame Stories" },
     { icon: faSquarePollVertical, adText: "Reclame cu Poll" },
-    { icon: faCubes, adText: "Reclame cu Realitate Augmentată" },
   ];
 
   return (
@@ -102,15 +94,7 @@ function Section3() {
       <ContentRow className="row">
         <TitleTotal className="mb-4">
           <Title>Reclame Facebook & Instagram</Title>
-          <Subtitle className="fs-5">
-            Atinge, Implică și Convertește prin Publicitate Meta
-          </Subtitle>
         </TitleTotal>
-
-        <p className="fs-4">
-          Platformele Meta oferă opțiuni avansate de publicitate, cu targetare
-          precisă bazată pe interese, comportamente și date demografice.
-        </p>
         <h2>Obiectivele de Campanie pe care le Susținem</h2>
         <StyledUl>
           {campaignObjectives.map((item) => (

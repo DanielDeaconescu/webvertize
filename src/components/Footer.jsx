@@ -9,7 +9,6 @@ import Modal from "./Modal";
 import Form from "./Form";
 import { Link } from "react-router-dom";
 import ModalForm from "./ModalForm";
-import { useTranslation } from "react-i18next";
 
 const StyledFooter = styled.footer`
   padding: 2.5rem;
@@ -83,7 +82,6 @@ const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
 function Footer() {
   const navigate = useNavigate();
   const [showForm, setShowForm] = useState(false);
-  const { t } = useTranslation();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -125,13 +123,13 @@ function Footer() {
         <div className="container">
           <FooterRow className="row d-flex">
             <LogoWrapper className="col-md-4 d-flex">
-              <StyledLinkLogo to="/">
+              <div>
                 <Logo theme={"light"} />
-              </StyledLinkLogo>
+              </div>
             </LogoWrapper>
             <QuickLinksWrapper className="col-md-4 d-flex">
               <div>
-                <h3>Link-uri utile</h3>
+                <h3>Navigare</h3>
                 <StyledUl>
                   <li>
                     <StyledFontAwesomeIcon icon={faCheckCircle} />

@@ -14,7 +14,6 @@ import {
   faClock,
   faStar,
 } from "@fortawesome/free-solid-svg-icons";
-import { useTranslation } from "react-i18next";
 
 const Section = styled.section`
   width: 100%;
@@ -147,17 +146,17 @@ const StyledLi = styled.li`
 
 export default function ServicesStackedCards() {
   const icons = [faRocket, faBoxOpen, faToolbox, faUser, faClock, faStar];
-  const { t } = useTranslation();
+
   const steps = [
     {
       title: "Descoperire",
       objective:
-        "Înțelegerea afacerii tale, a obiectivelor, a publicului și a concurenței pentru a crea o bază solidă pentru proiectul tău.",
+        "Înțelegem afacerea ta, obiectivele, publicul și concurența — baza oricărui proiect reușit.",
       list: [
         {
           itemTitle: "Început",
           itemText:
-            "Începem prin a învăța totul despre afacerea ta – obiective, clienți țintă, propuneri unice de valoare și concurență.",
+            "Purtăm o discuție structurată cu tine — întrebări despre afacere, clienți țintă, concurență și ce te diferențiază pe piață — pentru a construi o imagine clară înainte de a scrie o singură linie de cod.",
         },
         {
           itemTitle: "Rezultate livrabile",
@@ -167,7 +166,7 @@ export default function ServicesStackedCards() {
         {
           itemTitle: "Instrumente și metode",
           itemText:
-            "Întrebări, workshop-uri de strategie, cercetare a concurenței și analiza datelor.",
+            "Întrebări structurate, cercetare a concurenței, analiză de date.",
         },
         {
           itemTitle: "Rolul clientului",
@@ -182,7 +181,7 @@ export default function ServicesStackedCards() {
         {
           itemTitle: "Valoare",
           itemText:
-            "Asigură că toate deciziile de design și dezvoltare sunt aliniate obiectivelor tale, economisind timp și prevenind eventuale nealinieri ulterioare.",
+            "Toate deciziile de design și dezvoltare pornesc aliniate obiectivelor tale — economisind timp și evitând corecții costisitoare.",
         },
       ],
       image: discoveryImg,
@@ -190,12 +189,12 @@ export default function ServicesStackedCards() {
     {
       title: "Design UX/UI",
       objective:
-        "Definirea structurii și identității vizuale a website-ului sau aplicației pentru a asigura utilizabilitatea și alinierea cu brandul.",
+        "Definim structura și identitatea vizuală a proiectului — utilizabilitate și aliniere cu brandul tău.",
       list: [
         {
           itemTitle: "Început",
           itemText:
-            "Pe baza fazei de Descoperire, creăm wireframe-uri, fluxuri de utilizatori și mockup-uri vizuale care reflectă brandul tău și nevoile publicului țintă.",
+            "Creăm wireframe-uri, fluxuri de utilizatori și mockup-uri vizuale bazate pe faza de Descoperire.",
         },
         {
           itemTitle: "Rezultate livrabile",
@@ -219,7 +218,7 @@ export default function ServicesStackedCards() {
         {
           itemTitle: "Valoare",
           itemText:
-            "Ajută la vizualizarea produsului timpuriu, reduce riscul modificărilor costisitoare în dezvoltare și asigură utilizabilitatea și accesibilitatea.",
+            "Vizualizezi produsul înainte de dezvoltare, reducând riscul modificărilor costisitoare",
         },
       ],
       image: uiUxImg,
@@ -227,12 +226,12 @@ export default function ServicesStackedCards() {
     {
       title: "Dezvoltare",
       objective:
-        "Transformarea designurilor într-un produs digital complet funcțional, responsive și performant.",
+        "Transformăm designurile într-un produs digital complet funcțional, responsive și performant.",
       list: [
         {
           itemTitle: "Început",
           itemText:
-            "Transpunem designurile în cod curat și optimizat, integrând funcționalitățile necesare, animațiile și instrumentele terțe.",
+            "Transpunem designurile în cod curat și optimizat, integrând funcționalitățile, animațiile și instrumentele necesare.",
         },
         {
           itemTitle: "Rezultate livrabile",
@@ -251,13 +250,12 @@ export default function ServicesStackedCards() {
         },
         {
           itemTitle: "Estimarea duratei",
-          itemText:
-            "De obicei 3–6 săptămâni, în funcție de complexitate. Oferim actualizări regulate de progres.",
+          itemText: "De obicei 3–6 săptămâni, în funcție de complexitate.",
         },
         {
           itemTitle: "Valoare",
           itemText:
-            "Primești o soluție modernă, scalabilă și performantă construită conform celor mai bune practici.",
+            "O soluție modernă, scalabilă și performantă, construită conform celor mai bune practici.",
         },
       ],
       image: developmentImg,
@@ -270,7 +268,7 @@ export default function ServicesStackedCards() {
         {
           itemTitle: "Început",
           itemText:
-            "Realizăm teste extinse, inclusiv teste funcționale, responsive, accesibilitate, optimizare viteză și verificări SEO.",
+            "Testăm funcționalitatea, responsive-ul, accesibilitatea, viteza și SEO-ul de bază.",
         },
         {
           itemTitle: "Rezultate livrabile",
@@ -293,8 +291,7 @@ export default function ServicesStackedCards() {
         },
         {
           itemTitle: "Valoare",
-          itemText:
-            "Garantează o experiență fluidă, fiabilă și prietenoasă pentru utilizatori.",
+          itemText: "O experiență fluidă și fiabilă pentru utilizatorii tăi.",
         },
       ],
       image: testingImg,
@@ -307,7 +304,7 @@ export default function ServicesStackedCards() {
         {
           itemTitle: "Început",
           itemText:
-            "Implementăm produsul pe mediul tău de hosting, configurăm analytics și monitorizăm performanța în săptămânile inițiale.",
+            "Implementăm produsul pe hosting, configurăm analytics și monitorizăm performanța în săptămânile inițiale.",
         },
         {
           itemTitle: "Rezultate livrabile",
@@ -332,7 +329,7 @@ export default function ServicesStackedCards() {
         {
           itemTitle: "Valoare",
           itemText:
-            "Poți lansa cu încredere, știind că totul funcționează și că ai un partener pentru îmbunătățiri și actualizări.",
+            "Lansezi cu încredere, cu un partener disponibil pentru îmbunătățiri și actualizări.",
         },
       ],
       image: launchImg,

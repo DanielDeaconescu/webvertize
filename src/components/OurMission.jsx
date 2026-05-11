@@ -41,29 +41,14 @@ function OurMission() {
   return (
     <StyledOurMission className="container mb-4">
       <StyledH2>Misiunea noastră</StyledH2>
-      <Subtitle className="fs-5">
-        Soluții digitale concepute pentru a-ți dezvolta afacerea
-      </Subtitle>
       <Description>
         <TitleContainer></TitleContainer>
         <StyledP className="fs-4">
-          La Webvertize, misiunea noastră este să ajutăm afacerile să își
-          construiască prezența online puternică pe care o merită. Facem acest
-          lucru prin livrarea de website-uri de înaltă calitate, aplicații web,
-          conținut atractiv și campanii publicitare orientate spre performanță,
-          care susțin creșterea reală a afacerii.
-        </StyledP>
-        <StyledP className="fs-4">
-          Credem că transformarea digitală ar trebui să fie o experiență
-          plăcută, nu una stresantă. Prin dedicare, transparență și o abordare
-          colaborativă, lucrăm alături de tine pentru a-ți înțelege nevoile și a
-          oferi soluții care generează un impact măsurabil.
-        </StyledP>
-        <StyledP className="fs-4">
-          Scopul nostru nu este doar finalizarea unui proiect — ci construirea
-          unui parteneriat pe termen lung, în care succesul este împărtășit,
-          obiectivele sunt atinse împreună, iar afacerea ta evoluează cu
-          încredere în mediul digital.
+          La Webvertize, ajutăm afacerile să își construiască prezența online pe
+          care o merită — prin website-uri de calitate, aplicații web și
+          campanii publicitare orientate spre rezultate reale. Lucrăm direct cu
+          tine, fără intermediari, și livrăm soluții adaptate nevoilor reale ale
+          afacerii tale.
         </StyledP>
       </Description>
     </StyledOurMission>

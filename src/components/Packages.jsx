@@ -71,11 +71,7 @@ function Packages({ page }) {
             <Logo />
           </div>
         )}
-        <StyledH1>Un website profesional pentru afacerea ta</StyledH1>
-        <StyledP className="fs-4">
-          Alege pachetul potrivit și hai să construim împreună prezența online
-          pe care afacerea ta o merită.{" "}
-        </StyledP>
+        <StyledH1>Ce include fiecare pachet</StyledH1>
       </Header>
       <PackagesContainer className="container">
         {packages.map((item) => (

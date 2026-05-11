@@ -88,7 +88,7 @@ function Section2() {
       icon: faUserGear,
       title:
         "Configurarea contului folosind propriul tău profil Google (păstrezi controlul complet)",
-      text: "Începem prin a te ajuta să îți configurezi contul Google Ads folosind propriul profil Google, astfel încât să deții controlul total asupra acestuia. După configurare, acordăm accesul de administrare necesar și începem să construim o strategie bazată pe claritate, relevanță și optimizare continuă.",
+      text: "Te ajutăm să configurezi contul Google Ads pe propriul profil Google — astfel încât să deții controlul total. Acordăm accesul de administrare necesar și construim strategia de la zero.",
     },
     {
       icon: faBullseye,
@@ -104,7 +104,7 @@ function Section2() {
       icon: faSliders,
       title:
         "Optimizări continue ale ofertelor, cuvintelor-cheie și targetării",
-      text: "Campaniile tale sunt într-o evoluție constantă. Ajustăm ofertele, actualizăm cuvintele-cheie, modificăm tipurile de potrivire, îmbunătățim targetarea și testăm variații noi pentru a menține eficiența și relevanța. Astfel, reclamele se adaptează comportamentului real al utilizatorilor și condițiilor din piață.",
+      text: "Campaniile tale sunt într-o evoluție constantă. Ajustăm ofertele, actualizăm cuvintele-cheie, modificăm tipurile de potrivire, îmbunătățim targetarea și testăm variații noi pentru a menține eficiența și relevanța.",
     },
     {
       icon: faBell,
@@ -181,9 +181,6 @@ function Section2() {
       <div className="row">
         <TitleTotal>
           <Title>Campanii Google Ads</Title>
-          <Subtitle className="fs-5">
-            Publicitate Bazată pe Căutări, cu Rezultate Măsurabile
-          </Subtitle>
         </TitleTotal>
 
         <Content>
@@ -196,12 +193,11 @@ function Section2() {
             </div>
             <div className="col-sm-12 col-xl-8 d-flex align-items-center justify-content-center">
               <StyledP className="fs-5">
-                Campaniile Google Ads sunt cele mai eficiente atunci când sunt
-                construite pe obiective clare, targetare precisă și optimizare
-                continuă. Lucrăm împreună cu tine pentru a crea o structură de
-                campanie adaptată obiectivelor afacerii tale, rafinăm constant
-                performanța și oferim rapoarte transparente, astfel încât să
-                înțelegi întotdeauna cum funcționează investiția ta.
+                Campaniile Google Ads funcționează cel mai bine cu obiective
+                clare, targetare precisă și optimizare continuă. Construim
+                structura campaniei împreună cu tine, rafinăm constant
+                performanța și livrăm rapoarte transparente — astfel încât să
+                înțelegi întotdeauna cum lucrează investiția ta.
               </StyledP>
             </div>
           </ContentRow>
