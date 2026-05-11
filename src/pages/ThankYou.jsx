@@ -58,8 +58,10 @@ function ThankYou() {
     <ThankYouContainer>
       <Logo />
       <ThankYouText>
-        <h3>Îți mulțumim pentru completarea formularului!</h3>
-        <p className="fs-5">
+        <h3 className="text-center">
+          Îți mulțumim pentru completarea formularului!
+        </h3>
+        <p className="fs-5 text-center">
           Vom analiza solicitarea ta și te vom contacta în cel mai scurt timp
           posibil.
         </p>
