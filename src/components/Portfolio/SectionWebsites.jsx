@@ -130,7 +130,7 @@ function SectionWebsites() {
           "Website-ul a rezolvat problema de vizibilitate online pentru firmă și a oferit vizitatorilor acestuia posibilitatea de a completa un formular pentru a primi un preț aproximativ pentru reparațiile de care au nevoie.",
         project_results_list: [
           "Prezentare clară a serviciilor, tarifelor și informațiilor de contact",
-          "Imagini de prezentare relevante firmei",
+          "Formular de reparații integrat — clienții pot trimite detaliile reparației de care au nevoie înainte de a se deplasa la service",
           "Expunerea locației service-ului pentru creșterea vizitelor clienților",
         ],
       },
@@ -250,7 +250,7 @@ function SectionWebsites() {
         "Utilizarea unor imagini de înaltă calitate care să susțină vizual mesajul și să încurajeze acțiunea",
       ],
       project_solution:
-        "Am abordat designul posterului prin stabilirea inițială a poziționării elementelor-cheie — imagini, titlu și detalii ale ofertei. Obiectivul a fost crearea unui poster atractiv vizual, care să transmită eficient oferta serviciului și să capteze atenția potențialilor clienți.",
+        "Am abordat designul ținând cont de specificul serviciilor CERTICORP — mai puțin cunoscute publicului larg. Prioritatea a fost claritatea mesajului: ce oferă compania, când ai nevoie de aceste servicii și cum poți lua legătura. Elementele vizuale au fost alese pentru a sugera context și a face conținutul imediat de înțeles pentru un public neexperimentat în audit energetic.",
       project_results: {
         project_results_intro:
           "Posterul final comunică oferta CERTICORP într-un mod clar și eficient, ajutând potențialii clienți să înțeleagă când este necesar să apeleze la serviciile companiei: ",
