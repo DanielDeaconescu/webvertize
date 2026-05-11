@@ -85,6 +85,12 @@ const StyledButton = styled.button`
   z-index: 2;
   font-size: 1.15rem;
 
+  @media (max-width: 576px) {
+    font-size: 0.9rem;
+    white-space: nowrap;
+    padding: 0.25rem 0.5rem;
+  }
+
   @media (min-width: 576px) {
     &:hover {
       background-color: #455e6b;
@@ -97,6 +103,7 @@ const PricesButton = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 0.25rem;
   background: rgba(255, 255, 255, 0.15);
   color: white;
   border: 2px solid white;
@@ -104,6 +111,12 @@ const PricesButton = styled(Link)`
   transition: all 0.3s ease;
   font-size: 1.15rem;
   padding: 1rem 2rem;
+
+  @media (max-width: 576px) {
+    font-size: 0.9rem;
+    white-space: nowrap;
+    padding: 0.25rem 0.5rem;
+  }
 
   &:hover {
     background-color: rgba(27, 60, 83, 0.5);
