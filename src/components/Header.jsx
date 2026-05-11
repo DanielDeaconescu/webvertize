@@ -16,7 +16,7 @@ const StyledHeader = styled.header`
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
   height: ${(props) => (props.page === "cookies" ? "100vh" : "unset")};
-  display: ${(props) => (props.page === "cookies" ? "flex" : "unset")};
+  display: ${(props) => (props.page === "cookies" ? "flex" : "block")};
   justify-content: ${(props) =>
     props.page === "cookies" ? "center" : "unset"};
   align-items: ${(props) => (props.page === "cookies" ? "center" : "unset")};
@@ -123,7 +123,7 @@ function Header({ bgImage, title, text1, text2, page }) {
 
   return (
     <>
-      <StyledHeader $bgImage={bgImage} page="cookies">
+      <StyledHeader $bgImage={bgImage} page={page}>
         <TextContent className="container">
           <Title>{title}</Title>
           <StyledP className="fs-4 text-center">
