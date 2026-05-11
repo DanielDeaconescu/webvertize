@@ -15,7 +15,7 @@ import LandingPage from "./pages/LandingPage";
 import PackagesPage from "./pages/PackagesPage";
 import AppLayout from "./components/AppLayout";
 import TooManyRequests from "./pages/TooManyRequests";
-import { Analytics } from "@vercel/analytics/next";
+import { Analytics } from "@vercel/analytics";
 
 function App() {
   return (
