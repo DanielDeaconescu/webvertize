@@ -23,6 +23,7 @@ function Home() {
       <Header
         title="Website-uri, Aplicații Web și Publicitate"
         text1="Website-uri profesionale, aplicații web și publicitate — tot ce are nevoie afacerea ta pentru a crește online."
+        page="home"
         bgImage={homepageHeader}
       />
       <WebDev />

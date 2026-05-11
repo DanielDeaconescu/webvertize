@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import ModalForm from "./ModalForm";
 import Form from "./Form";
 import ScheduleACallButton from "./ScheduleACallButton";
 import toast from "react-hot-toast";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTag } from "@fortawesome/free-solid-svg-icons";
 
 const StyledHeader = styled.header`
   position: relative;
@@ -67,6 +69,11 @@ const StyledP = styled.p`
   }
 `;
 
+const ActionButtonsContainer = styled.div`
+  display: flex;
+  gap: 1rem;
+`;
+
 const StyledButton = styled.button`
   background-color: #344955;
   border: none;
@@ -76,11 +83,30 @@ const StyledButton = styled.button`
   transition: all 0.3s ease;
   position: relative;
   z-index: 2;
+  font-size: 1.15rem;
 
   @media (min-width: 576px) {
     &:hover {
       background-color: #455e6b;
     }
+  }
+`;
+
+const PricesButton = styled(Link)`
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  border: 2px solid white;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  font-size: 1.15rem;
+  padding: 1rem 2rem;
+
+  &:hover {
+    background-color: rgba(27, 60, 83, 0.5);
   }
 `;
 
@@ -129,11 +155,19 @@ function Header({ bgImage, title, text1, text2, page }) {
           <StyledP className="fs-4 text-center">
             <strong>{text1}</strong> {text2}
           </StyledP>
-          {title !== "Politica de Cookie-uri Webvertize" && (
-            <StyledButton onClick={() => setShowForm(true)}>
-              Programează un apel
-            </StyledButton>
-          )}
+          <ActionButtonsContainer>
+            {title !== "Politica de Cookie-uri Webvertize" && (
+              <StyledButton onClick={() => setShowForm(true)}>
+                Programează un apel
+              </StyledButton>
+            )}
+            {page === "home" && (
+              <PricesButton to="/prices">
+                <FontAwesomeIcon icon={faTag} />
+                Pachete & Prețuri
+              </PricesButton>
+            )}
+          </ActionButtonsContainer>
         </TextContent>
       </StyledHeader>
 
