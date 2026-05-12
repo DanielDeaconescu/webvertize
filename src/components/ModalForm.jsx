@@ -1,6 +1,6 @@
-import { useEffect, useRef } from 'react';
-import { Modal as BSModal } from 'bootstrap';
-import LogoImg from '../assets/logo_no_text_simple_final.png';
+import { useEffect, useRef } from "react";
+import { Modal as BSModal } from "bootstrap";
+import LogoImg from "../assets/logo_no_text_simple_final.png";
 
 function ModalForm({ show, onClose, title, children, isLoading }) {
   const modalRef = useRef(null);
@@ -14,7 +14,7 @@ function ModalForm({ show, onClose, title, children, isLoading }) {
     });
 
     // Trigger onClose AFTER Bootstrap fully hides modal
-    modalRef.current.addEventListener('hidden.bs.modal', onClose);
+    modalRef.current.addEventListener("hidden.bs.modal", onClose);
   }, [onClose]);
 
   // Reactively show/hide

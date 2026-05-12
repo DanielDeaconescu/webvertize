@@ -12,7 +12,7 @@ const SideButtonsContainer = styled.div`
   position: fixed;
   right: 1rem;
   bottom: 50%;
-  z-index: 99;
+  z-index: 9999;
 `;
 
 function SideButtons() {

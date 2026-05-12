@@ -9,6 +9,7 @@ import Packages from "../components/Packages";
 import NextSteps from "../components/NextSteps";
 import Header from "../components/Header";
 import pricesHeaderImg from "../assets/prices_header_img.jpg";
+import CTA from "../components/CTA";
 
 const StyledPackagesPage = styled.div`
   background-color: #d3d3d3;
@@ -26,6 +27,10 @@ function LandingPage() {
       />
       <Packages />
       <NextSteps />
+      <CTA
+        title="Ai găsit pachetul potrivit?"
+        text="Programează un apel și discutăm detaliile înainte de orice angajament."
+      />
     </StyledPackagesPage>
   );
 }

@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ctaImage from "../assets/CTA_image.jpg";
 import ModalForm from "./ModalForm";
-import { useTranslation } from "react-i18next";
 
 const CTAWrapper = styled.div`
   background-color: #37353e;
@@ -63,7 +62,6 @@ const StyledButton = styled.button`
 function CTA({ title, text }) {
   const navigate = useNavigate();
   const [showForm, setShowForm] = useState(false);
-  const { t } = useTranslation();
 
   async function handleSubmit(e) {
     e.preventDefault();
