@@ -27,7 +27,6 @@ function App() {
         <Route element={<AppLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/prices" element={<PackagesPage />} />
-          <Route path="/dezvoltare-web-ro" element={<LandingPage />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/contact" element={<Contact />} />
           {/* Services (Dropdown) Routes */}
@@ -40,6 +39,7 @@ function App() {
           <Route path="/cookies" element={<Cookies />} />
         </Route>
 
+        <Route path="/dezvoltare-web-ro" element={<LandingPage />} />
         <Route path="/thank-you" element={<ThankYou />} />
         <Route path="/too-many-requests" element={<TooManyRequests />} />
       </Routes>
