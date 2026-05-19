@@ -56,7 +56,7 @@ function CTAButton({ type }) {
       setShowForm(false);
       setLoading(false);
       sessionStorage.setItem("landingFormSubmitted", "true");
-      navigate("/multumim");
+      navigate("/thank-you");
     } else if (res.status === 429) {
       document.body.classList.remove("modal-open");
       document.querySelectorAll(".modal-backdrop").forEach((el) => el.remove());
