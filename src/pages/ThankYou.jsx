@@ -69,6 +69,16 @@ function ThankYou() {
 
   gtag('config', 'AW-18172690170');`}
         </script>
+
+        {/* Event snippet for Submit lead form */}
+
+        <script>
+          {`gtag('event', 'conversion', {
+      'send_to': 'AW-18172690170/ditJCKSz6q8cEPr9tNlD',
+      'value': 1.0,
+      'currency': 'RON'
+  });`}
+        </script>
       </Helmet>
       <Logo />
       <ThankYouText>
