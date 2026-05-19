@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -56,6 +57,19 @@ function ThankYou() {
 
   return (
     <ThankYouContainer>
+      <Helmet>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18172690170"
+        ></script>
+        <script>
+          {`window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-18172690170');`}
+        </script>
+      </Helmet>
       <Logo />
       <ThankYouText>
         <h3 className="text-center">

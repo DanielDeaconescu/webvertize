@@ -10,6 +10,7 @@ import NextSteps from "../components/NextSteps";
 import Header from "../components/Header";
 import pricesHeaderImg from "../assets/prices_header_img.jpg";
 import CTA from "../components/CTA";
+import { Helmet } from "react-helmet";
 
 const StyledPackagesPage = styled.div`
   background-color: #d3d3d3;
@@ -19,6 +20,19 @@ const StyledPackagesPage = styled.div`
 function LandingPage() {
   return (
     <StyledPackagesPage>
+      <Helmet>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18172690170"
+        ></script>
+        <script>
+          {`window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-18172690170');`}
+        </script>
+      </Helmet>
       <Header
         bgImage={pricesHeaderImg}
         title="Alege pachetul potrivit pentru afacerea ta"

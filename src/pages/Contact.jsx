@@ -8,6 +8,7 @@ import MainSection from "./Contact/MainSection";
 import CookiePopup from "../components/Cookies/CookiePopup";
 import BackToTop from "../components/BackToTop";
 import styled from "styled-components";
+import { Helmet } from "react-helmet";
 
 const StyledContact = styled.div`
   background-color: rgba(58, 97, 122, 0.8);
@@ -17,6 +18,19 @@ const StyledContact = styled.div`
 function Contact() {
   return (
     <StyledContact>
+      <Helmet>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18172690170"
+        ></script>
+        <script>
+          {`window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-18172690170');`}
+        </script>
+      </Helmet>
       <Header
         bgImage={contactHeaderImg}
         title="Hai să Discutăm Despre Proiectul Tău Digital"

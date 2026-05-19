@@ -9,6 +9,7 @@ import WhatsAppButton from "../components/WhatsAppButton";
 import CookiePopup from "../components/Cookies/CookiePopup";
 import BackToTop from "../components/BackToTop";
 import styled from "styled-components";
+import { Helmet } from "react-helmet";
 
 const StyledPortfolio = styled.div`
   background-color: #2a4f68;
@@ -18,6 +19,19 @@ const StyledPortfolio = styled.div`
 function Portfolio() {
   return (
     <StyledPortfolio>
+      <Helmet>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18172690170"
+        ></script>
+        <script>
+          {`window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-18172690170');`}
+        </script>
+      </Helmet>
       <Header
         bgImage={bgImage}
         title="Proiecte și Studii de Caz"

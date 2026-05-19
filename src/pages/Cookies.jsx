@@ -6,10 +6,24 @@ import cookiesHeader from "../assets/cookies_header.jpg";
 import CookiePopup from "../components/Cookies/CookiePopup";
 import BackToTop from "../components/BackToTop";
 import WhatsAppButton from "../components/WhatsAppButton";
+import { Helmet } from "react-helmet";
 
 function Cookies() {
   return (
     <div>
+      <Helmet>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18172690170"
+        ></script>
+        <script>
+          {`window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-18172690170');`}
+        </script>
+      </Helmet>
       <Header
         bgImage={cookiesHeader}
         title="Politica de Cookie-uri Webvertize"

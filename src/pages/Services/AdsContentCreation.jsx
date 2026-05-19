@@ -11,6 +11,7 @@ import WhatsAppButton from "../../components/WhatsAppButton";
 import CookiePopup from "../../components/Cookies/CookiePopup";
 import styled from "styled-components";
 import BackToTop from "../../components/BackToTop";
+import { Helmet } from "react-helmet";
 
 const StyledAdsContentCreation = styled.div`
   background-color: #2a566f;
@@ -20,6 +21,19 @@ const StyledAdsContentCreation = styled.div`
 function AdsContentCreation() {
   return (
     <StyledAdsContentCreation>
+      <Helmet>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18172690170"
+        ></script>
+        <script>
+          {`window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-18172690170');`}
+        </script>
+      </Helmet>
       <Header
         bgImage={bgImage}
         title="Publicitate și Creare de Conținut"

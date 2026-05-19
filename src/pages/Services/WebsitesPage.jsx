@@ -12,6 +12,7 @@ import Header from "../../components/Header";
 import websitesHeader from "../../assets/websites_header.jpg";
 import WebsitesIntro from "../../components/WebDevelopment/WebsitesIntro";
 import WebsitesFeatures from "../../components/WebDevelopment/WebsitesFeatures";
+import { Helmet } from "react-helmet";
 
 const StyledWebsitesPage = styled.div`
   background-color: hsl(203, 53%, 13%, 0.9);
@@ -21,6 +22,19 @@ const StyledWebsitesPage = styled.div`
 function WebsitesPage() {
   return (
     <StyledWebsitesPage>
+      <Helmet>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18172690170"
+        ></script>
+        <script>
+          {`window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-18172690170');`}
+        </script>
+      </Helmet>
       <Header
         title="Website-uri care îți reprezintă afacerea"
         text1="Website-ul afacerii tale este o extensie a brandului și un instrument puternic de interacțiune cu clienții."

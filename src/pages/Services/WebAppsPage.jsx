@@ -11,6 +11,7 @@ import BackToTop from "../../components/BackToTop";
 import WebAppsFeatures from "../../components/WebDevelopment/WebAppsFeatures";
 import Header from "../../components/Header";
 import webAppsHeader from "../../assets/web_apps_header.jpg";
+import { Helmet } from "react-helmet";
 
 const StyledWebAppsPage = styled.div`
   background-color: #1f465f;
@@ -20,6 +21,19 @@ const StyledWebAppsPage = styled.div`
 function WebAppsPage() {
   return (
     <StyledWebAppsPage>
+      <Helmet>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18172690170"
+        ></script>
+        <script>
+          {`window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-18172690170');`}
+        </script>
+      </Helmet>
       <Header
         title="Aplicații Web Personalizate"
         text1="Webvertize intervine atunci când soluțiile software standard nu se potrivesc perfect, oferind flexibilitatea de care afacerea ta are nevoie pentru a funcționa eficient."
