@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
-import { set, useForm } from 'react-hook-form';
-import LoadingSpinner from './LoadingSpinner';
-import styled from 'styled-components';
+import { useCallback, useEffect, useRef, useState } from "react";
+import { set, useForm } from "react-hook-form";
+import LoadingSpinner from "./LoadingSpinner";
+import styled from "styled-components";
 
 const StyledForm = styled.form`
   display: flex;
@@ -50,25 +50,37 @@ function LandingContactForm({
 
   // registering the virtual field
   useEffect(() => {
-    register('cf_turnstile_token', { required: true });
+    register("cf_turnstile_token", { required: true });
   }, [register]);
 
-  const onTurnstileSuccess = (token) => {
-    setValue('cf_turnstile_token', token, {
-      shouldValidate: true,
-    });
-  };
+  const onTurnstileSuccess = useCallback(
+    (token) => {
+      setValue("cf_turnstile_token", token, {
+        shouldValidate: true,
+      });
+    },
+    [setValue],
+  );
 
   // Rendering the turnstile
   useEffect(() => {
-    if (!window.turnstile) return;
+    let intervalId;
 
-    widgetRef.current = window.turnstile.render(ref.current, {
-      sitekey: '0x4AAAAAACGwYToVvX6OMIl0',
-      callback: onTurnstileSuccess,
-    });
+    const initTurnstile = () => {
+      if (!window.turnstile) return;
+
+      clearInterval(intervalId);
+
+      widgetRef.current = window.turnstile.render(ref.current, {
+        sitekey: "0x4AAAAAACGwYToVvX6OMIl0",
+        callback: onTurnstileSuccess,
+      });
+    };
+
+    intervalId = setInterval(initTurnstile, 100);
 
     return () => {
+      clearInterval(intervalId);
       if (widgetRef.current !== null) {
         window.turnstile.remove(widgetRef.current);
       }
@@ -90,7 +102,7 @@ function LandingContactForm({
             type="text"
             name="name"
             className="form-control"
-            {...register('name', {
+            {...register("name", {
               required: "Câmplul 'Nume' este obligatoriu!",
             })}
           />
@@ -106,7 +118,7 @@ function LandingContactForm({
             type="text"
             name="phone"
             className="form-control"
-            {...register('phone', {
+            {...register("phone", {
               required: "Câmplul 'Număr de telefon' este obligatoriu!",
             })}
           />
@@ -118,7 +130,7 @@ function LandingContactForm({
           <label htmlFor="package" className="form-label">
             Pachet de interes <span className="text-muted">(opțional)</span>
           </label>
-          <select id="package" className="form-select" {...register('package')}>
+          <select id="package" className="form-select" {...register("package")}>
             <option value="basic">Pachetul Basic</option>
             <option value="standard">Pachetul Standard</option>
             <option value="premium">Pachetul Premium</option>
@@ -135,7 +147,7 @@ function LandingContactForm({
             className="form-control"
             placeholder="Spune-ne puțin despre afacerea ta..."
             rows="4"
-            {...register('message')}
+            {...register("message")}
           ></textarea>
         </div>
         {/* Turnstile */}
