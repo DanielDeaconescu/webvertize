@@ -27,8 +27,38 @@ const RequestButton = styled.button`
   padding: 0.75rem 1.5rem;
   margin-top: auto;
   font-size: 1.125rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.02em;
+  transition: all 0.2s ease;
+  cursor: pointer;
+
+  ${(props) =>
+    props.type === "standard" &&
+    `
+    &:hover {
+      background-color: #16303f;
+      transform: translateY(-1px);
+    }
+  `}
+
+  ${(props) =>
+    props.type === "cta" &&
+    `
+  &:hover {
+    background-color: #d94e0f;
+    transform: translateY(-1px);
+  }
+`}
+
+${(props) =>
+    (props.type === "basic" || props.type === "premium") &&
+    `
+  &:hover {
+    background-color: #1b3c53;
+    color: #fff;
+    transform: translateY(-1px);
+  }
+`}
 `;
 
 function CTAButton({ type }) {
@@ -48,7 +78,7 @@ function CTAButton({ type }) {
       body: JSON.stringify(data),
     });
 
-    const resData = res.json();
+    const resData = await res.json();
 
     if (res.ok) {
       document.body.classList.remove("modal-open");

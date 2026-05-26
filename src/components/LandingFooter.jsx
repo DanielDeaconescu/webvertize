@@ -1,52 +1,38 @@
 import styled from "styled-components";
 import Logo from "./Logo";
-import FacebookIcon from "./FacebookIcon";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopyright } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import Modal from "./Modal";
-import Form from "./Form";
-import { Link } from "react-router-dom";
-import ModalForm from "./ModalForm";
-import { useTranslation } from "react-i18next";
 
 const StyledFooter = styled.footer`
-  padding: 1rem;
+  display: flex;
+  padding: 2rem 1rem;
   background-color: rgb(34, 40, 49);
   color: #fff;
-`;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  margin: 0 2rem;
 
-const StyledLink = styled.a`
-  text-decoration: none;
-  cursor: pointer;
-  color: #fff;
-
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-const StyledLinkLogo = styled(Link)`
-  text-decoration: none;
-  cursor: pointer;
-  color: #fff;
-`;
-
-const StyledRegularLink = styled(Link)`
-  text-decoration: none;
-  color: #fff;
-
-  &:hover {
-    text-decoration: underline;
+  @media (max-width: 576px) {
+    margin: 0 1rem 0 1rem;
   }
 `;
 
 const FooterRow = styled.div`
   display: flex;
+  justify-content: space-between;
   align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0.5rem 0;
 
   @media (max-width: 768px) {
     display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
   }
 `;
 
@@ -61,43 +47,40 @@ const LogoWrapper = styled.div`
 
 const Copyright = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.4rem;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
   @media (max-width: 768px) {
     justify-content: center;
   }
 `;
 
-const CopyrightText = styled.div``;
+const WhatsAppLink = styled.a`
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.875rem;
+  text-decoration: none;
+
+  &:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
+`;
+
+const CopyrightText = styled.div`
+  font-size: 0.875rem;
+`;
 
 const FooterYear = styled.div`
   display: flex;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
   justify-content: center;
   @media (max-width: 768px) {
     justify-content: center;
   }
-`;
-
-const QuickLinksWrapper = styled.div`
-  justify-content: center;
-
-  @media (max-width: 768px) {
-    justify-content: flex-start;
-  }
-`;
-
-const SocialMediaWrapper = styled.div`
-  justify-content: center;
-
-  @media (max-width: 768px) {
-    justify-content: flex-start;
-  }
-`;
-
-const StyledUl = styled.ul`
-  list-style-type: none;
-  padding: 0;
 `;
 
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
@@ -110,23 +93,34 @@ function LandingFooter() {
   const year = date.getFullYear();
 
   return (
-    <StyledFooter className="d-flex justify-content-between">
-      <div className="container">
-        <FooterRow className="row d-flex">
-          <LogoWrapper className="col-md-4 d-flex">
-            <Logo theme={"light"} />
-          </LogoWrapper>
-          {/* Copyright */}
-          <Copyright className="col-md-4">
+    <StyledFooter>
+      <FooterRow>
+        <LogoWrapper>
+          <Logo theme={"light"} />
+        </LogoWrapper>
+        {/* Copyright */}
+        <Copyright>
+          <div className="d-flex gap-1 align-items-center">
             <FontAwesomeIcon icon={faCopyright} />
             <CopyrightText>
-              Webvertize - Toate drepturile rezervate.
+              Webvertize SRL - Toate drepturile rezervate.
             </CopyrightText>
-          </Copyright>
+          </div>
+
           {/* Year */}
-          <FooterYear className="col-md-4 d-flex">{year}</FooterYear>
-        </FooterRow>
-      </div>
+          <FooterYear>{year}</FooterYear>
+        </Copyright>
+        {/* WhatsApp link */}
+        <div>
+          <WhatsAppLink
+            href="https://wa.me/+40775511874"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Contactează-ne pe WhatsApp
+          </WhatsAppLink>
+        </div>
+      </FooterRow>
     </StyledFooter>
   );
 }

@@ -2,29 +2,32 @@ import {
   faCheck,
   faInfo,
   faInfoCircle,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import styled from 'styled-components';
-import CTAButton from './CTAButton';
-import { useState } from 'react';
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import styled from "styled-components";
+import CTAButton from "./CTAButton";
 
 const StyledPackage = styled.div`
   display: flex;
   flex-direction: column;
   padding: 1.5rem;
   border: ${(props) =>
-    props.type === 'standard' ? '5px solid #1b3c53' : '5px solid grey'};
+    props.type === "standard" ? "5px solid #1b3c53" : "5px solid #e5e7eb"};
+  box-shadow: ${(props) =>
+    props.type === "standard"
+      ? "0 4px 16px rgba(27, 60, 83, 0.15)"
+      : "0 2px 8px rgba(0, 0, 0, 0.06)"};
   border-radius: 1rem;
   background-color: #fff;
   color: #000;
-  flex: ${(props) => (props.type === 'standard' ? '1.2' : '1')};
-  margin-top: ${(props) => (props.type === 'standard' ? '-12px' : 'unset')};
-  margin-bottom: ${(props) => (props.type === 'standard' ? '-12px' : 'unset')};
+  flex: ${(props) => (props.type === "standard" ? "1.2" : "1")};
+  margin-top: ${(props) => (props.type === "standard" ? "-12px" : "unset")};
+  margin-bottom: ${(props) => (props.type === "standard" ? "-12px" : "unset")};
   color: #6b7280;
 
   @media (max-width: 576px) {
     order: ${(props) =>
-      props.type === 'standard' ? '1' : props.type === 'basic' ? '2' : '3'};
+      props.type === "standard" ? "1" : props.type === "basic" ? "2" : "3"};
     margin-top: 0;
     margin-bottom: 0;
     padding: 0.85rem;
@@ -32,7 +35,7 @@ const StyledPackage = styled.div`
 
   @media (min-width: 576px) and (max-width: 768px) {
     order: ${(props) =>
-      props.type === 'standard' ? '1' : props.type === 'basic' ? '2' : '3'};
+      props.type === "standard" ? "1" : props.type === "basic" ? "2" : "3"};
     margin-top: 0;
     margin-bottom: 0;
     padding: 2rem;
@@ -40,7 +43,7 @@ const StyledPackage = styled.div`
 
   @media (min-width: 768px) and (max-width: 1024px) {
     order: ${(props) =>
-      props.type === 'standard' ? '1' : props.type === 'basic' ? '2' : '3'};
+      props.type === "standard" ? "1" : props.type === "basic" ? "2" : "3"};
     margin-top: 0;
     margin-bottom: 0;
     padding: 2rem;
@@ -66,7 +69,7 @@ const Header = styled.div`
 `;
 
 const PopularityBadge = styled.div`
-  background-color: #2a566f;
+  background-color: #f25912;
   color: #fff;
   border-radius: 0.5rem;
   padding: 0.25rem 1rem;
@@ -91,6 +94,7 @@ const TitlePriceContainer = styled.div`
 
 const Title = styled.h3`
   font-weight: 600;
+  color: #1b3c53;
 
   @media (max-width: 768px) {
     font-size: 1.4rem;
@@ -113,7 +117,12 @@ const PriceInner = styled.div`
   color: #1b3c53;
 `;
 
-const Description = styled.div``;
+const Description = styled.div`
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-top: 0.5rem;
+  color: #6b7280;
+`;
 
 const Main = styled.div`
   border-bottom: 1px solid #4d4d4d;
@@ -123,6 +132,9 @@ const Main = styled.div`
 
 const MainTitle = styled.h5`
   text-transform: uppercase;
+  color: #1b3c53;
+  font-size: 0.75rem;
+  letter-spacing: 0.05rem;
 `;
 
 const MainList = styled.ul`
@@ -135,10 +147,12 @@ const ListItem = styled.li`
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  padding: 0.25rem 0;
+  align-items: flex-start;
 `;
 
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
-  color: ${(props) => (props.type !== 'basic' ? '#2e6b94' : '#9ca3af ')};
+  color: ${(props) => (props.type !== "basic" ? "#2e6b94" : "#1b3c53")};
   font-size: 1.25rem;
 `;
 
@@ -161,8 +175,8 @@ const FooterList = styled.ul`
 `;
 
 const Disclaimer = styled.div`
-  border-top: 1px solid #4d4d4d;
-  border-bottom: 1px solid #4d4d4d;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
   padding: 1rem 0;
   font-style: italic;
   font-size: 1rem;
@@ -170,11 +184,11 @@ const Disclaimer = styled.div`
   align-items: center;
   gap: 0.5rem;
   margin-bottom: 1rem;
-  color: #4d4d4d;
+  color: #6b7280;
 `;
 
 const DisclaimerText = styled.div`
-  color: #4d4d4d;
+  color: #6b7280;
   font-size: 0.9rem;
 `;
 
@@ -195,7 +209,7 @@ function Package({
     <StyledPackage type={type}>
       {/* Header */}
       <Header>
-        {title.toLowerCase() == 'standard' && (
+        {title.toLowerCase() == "standard" && (
           <PopularityBadge>Cel mai popular</PopularityBadge>
         )}
         <TitlePriceContainer>
@@ -211,7 +225,7 @@ function Package({
         <MainTitle>Caracteristici</MainTitle>
         <MainList>
           {featuresList.map((f, index) => {
-            if (index === 0 && type !== 'basic')
+            if (index === 0 && type !== "basic")
               return <ListItemInclude type={type}>{f}</ListItemInclude>;
             return (
               <ListItem type={type}>
@@ -227,7 +241,7 @@ function Package({
         <FooterTitle>Mentenanță</FooterTitle>
         <FooterList>
           {maintenanceList.map((item, index) => {
-            if (index === 0 && type !== 'basic')
+            if (index === 0 && type !== "basic")
               return <ListItemInclude type={type}>{item}</ListItemInclude>;
             return (
               <ListItem type={type}>

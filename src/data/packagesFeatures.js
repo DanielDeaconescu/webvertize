@@ -5,13 +5,13 @@ export const packages = [
     price: "3.000",
     features: [
       "Până la 5 pagini la alegere",
-      "Design responsiv (telefon, tabletă, desktop)",
+      "Design responsive (telefon, tabletă, desktop)",
       "Pagină de portofoliu — 4 proiecte",
-      "2 galerii foto (12 imagini total)",
-      "Landing page inclus pentru campanii Google Ads",
+      "2 galerii foto (12 imagini în total)",
+      "Landing page dedicat pentru campanii publicitare Google Ads",
       "Formular cu validare și protecție anti-spam, cu trimitere automată pe email",
       "SEO tehnic de bază",
-      "Panou de administrare pentru editarea textelor și imaginilor de pe website",
+      "Panou de administrare propriu — editezi texte și imagini singur, fără programator",
     ],
     maintenance: [
       "Monitorizare front-end și back-end (formulare, email-uri)",
@@ -33,7 +33,7 @@ export const packages = [
       "Portofoliu extins — 8 proiecte",
       "4 galerii foto (24 imagini total)",
       "Gestionarea solicitărilor din formular în panou (inclusiv răspuns prin email direct din platformă)",
-      "Pagină de certificări inclusă (certificate, contracte, documente relevante)",
+      "Secțiune dedicată pentru certificări, contracte și documente de încredere",
     ],
     maintenance: [
       "TOT CE INCLUDE BASIC, PLUS:",
@@ -45,7 +45,7 @@ export const packages = [
   },
   {
     title: "PREMIUM",
-    desc: "Tot ce include Standard, plus un sistem de live chat pentru comunicare în timp real cu clienții.",
+    desc: "Tot ce include Standard, plus live chat în timp real cu clienții și un blog editabil direct din panoul de administrare.",
     price: "8.000",
     features: [
       "TOT CE INCLUDE STANDARD, PLUS: ",
@@ -53,11 +53,13 @@ export const packages = [
       "Portofoliu extins — (12 proiecte)",
       "8 galerii foto (48 imagini total)",
       "Live chat integrat în website",
+      "Blog/Noutăți editabil direct din panoul de administrare",
       "Panou de admin pentru chat (utilizatori, mesaje, notificări în timp real)",
     ],
     maintenance: [
       "TOT CE INCLUDE STANDARD, PLUS: ",
       "Monitorizare completă a sistemului de chat (utilizatori, mesaje, notificări)",
+      "Implementarea ideilor de funcționalități noi conform trendurilor din lumea tehnologiei, adaptate afacerii tale",
     ],
     disclaimer:
       "Fiecare afacere este unică, astfel că prețul final îl stabilim împreună în funcție de nevoile tale specifice.",

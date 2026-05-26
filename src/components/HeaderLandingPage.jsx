@@ -6,38 +6,26 @@ import Form from "./Form";
 import ScheduleACallButton from "./ScheduleACallButton";
 import toast from "react-hot-toast";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTag } from "@fortawesome/free-solid-svg-icons";
+import { faComments } from "@fortawesome/free-solid-svg-icons";
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 
 const StyledHeader = styled.header`
   position: relative;
-  padding: 4rem;
-  background-image: url(${(props) => props.$bgImage});
-  background-color: ${(props) =>
-    props.page === "landing" ? "#1b3c53" : "none"};
+  padding: 5rem 4rem;
+  background-color: #1b3c53;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
-  height: ${(props) => (props.page === "cookies" ? "100vh" : "unset")};
-  display: ${(props) => (props.page === "cookies" ? "flex" : "block")};
-  justify-content: ${(props) =>
-    props.page === "cookies" ? "center" : "unset"};
-  align-items: ${(props) => (props.page === "cookies" ? "center" : "unset")};
-
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-color: ${(props) =>
-      props.page === "landing" ? "transparent" : "rgba(0, 0, 0, 0.7)"};
-    z-index: 1;
-    border-radius: inherit;
-    transition: all 0.3s ease;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 2rem 2rem 2rem;
 
   @media (max-width: 576px) {
     padding: 1.5rem;
+    margin: 0 1rem 1rem 1rem;
   }
 `;
 
@@ -50,6 +38,7 @@ const TextContent = styled.div`
   position: relative;
   z-index: 2;
   color: #fff;
+  max-width: 800px;
 
   @media (max-width: 576px) {
     gap: 0.25rem;
@@ -58,6 +47,8 @@ const TextContent = styled.div`
 
 const Title = styled.h1`
   text-align: center;
+  font-weight: 700;
+  line-height: 1.2;
   @media (max-width: 576px) {
     font-size: 1.5rem;
     text-align: center;
@@ -65,7 +56,9 @@ const Title = styled.h1`
 `;
 
 const StyledP = styled.p`
-  text-align: justify;
+  text-align: center;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
 
   @media (max-width: 576px) {
     font-size: 1rem !important;
@@ -75,10 +68,25 @@ const StyledP = styled.p`
 const ActionButtonsContainer = styled.div`
   display: flex;
   gap: 1rem;
+  margin-top: 0.5rem;
+  @media (max-width: 576px) {
+    flex-direction: column;
+    width: 100%;
+  }
+`;
+
+const TrustLine = styled.div`
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
 `;
 
 const StyledButton = styled.button`
-  background-color: #344955;
+  background-color: #f25912;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   border: none;
   padding: 1rem 2rem;
   color: #fff;
@@ -88,7 +96,14 @@ const StyledButton = styled.button`
   z-index: 2;
   font-size: 1.15rem;
 
+  &:hover {
+    background-color: #d94e0f;
+    transform: translateY(-1px);
+  }
+
   @media (max-width: 576px) {
+    justify-content: center;
+    width: 100%;
     font-size: 0.9rem;
     white-space: nowrap;
     padding: 0.5rem 1rem;
@@ -96,8 +111,34 @@ const StyledButton = styled.button`
 
   @media (min-width: 576px) {
     &:hover {
-      background-color: #455e6b;
+      background-color: #d94e0f;
     }
+  }
+`;
+
+const WhatsAppButton = styled.a`
+  background-color: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  padding: 0.875rem 2rem;
+  color: #fff;
+  border-radius: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: #fff;
+    color: #fff;
+  }
+
+  @media (max-width: 576px) {
+    justify-content: center;
+    width: 100%;
   }
 `;
 
@@ -126,14 +167,7 @@ const PricesButton = styled(Link)`
   }
 `;
 
-function Header({
-  bgImage,
-  title,
-  text1,
-  text2,
-  page,
-  btnText = "Programează un apel",
-}) {
+function Header({ title, text1, text2 }) {
   const navigate = useNavigate();
   const [showForm, setShowForm] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -172,25 +206,27 @@ function Header({
 
   return (
     <>
-      <StyledHeader $bgImage={bgImage} page={page}>
+      <StyledHeader>
         <TextContent className="container">
           <Title>{title}</Title>
           <StyledP className="fs-4 text-center">
             <strong>{text1}</strong> {text2}
           </StyledP>
           <ActionButtonsContainer>
-            {title !== "Politica de Cookie-uri Webvertize" && (
-              <StyledButton onClick={() => setShowForm(true)}>
-                {btnText}
-              </StyledButton>
-            )}
-            {page === "home" && (
-              <PricesButton to="/prices">
-                <FontAwesomeIcon icon={faTag} />
-                Pachete & Prețuri
-              </PricesButton>
-            )}
+            <StyledButton onClick={() => setShowForm(true)}>
+              <FontAwesomeIcon icon={faComments} />
+              Hai să discutăm
+            </StyledButton>
+            <WhatsAppButton
+              href="https://wa.me/+40775511874"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FontAwesomeIcon icon={faWhatsapp} />
+              WhatsApp
+            </WhatsAppButton>
           </ActionButtonsContainer>
+          <TrustLine>Primul pas nu presupune niciun cost</TrustLine>
         </TextContent>
       </StyledHeader>
 
