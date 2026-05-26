@@ -10,6 +10,7 @@ import { Helmet } from "react-helmet";
 import Header from "../components/Header";
 import WhatsAAppLandingPage from "../components/WhatsAppLandingPage";
 import HeaderLandingPage from "../components/HeaderLandingPage";
+import LandingTestimonials from "../components/LandingTestimonials";
 
 const StyledPackagesPage = styled.div`
   background-color: #d3d3d3;
@@ -40,6 +41,7 @@ cu panou de administrare inclus. Editezi singur, fără programator."
       />
       <Packages page="landing" />
       <NextSteps />
+      <LandingTestimonials />
       <LandingPageCTA />
       <WhatsAAppLandingPage />
       <BackToTop />
