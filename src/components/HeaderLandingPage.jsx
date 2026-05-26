@@ -139,6 +139,9 @@ const WhatsAppButton = styled.a`
   @media (max-width: 576px) {
     justify-content: center;
     width: 100%;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    padding: 0.5rem 1rem;
   }
 `;
 
