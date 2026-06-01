@@ -10,7 +10,7 @@ import NextSteps from "../components/NextSteps";
 import Header from "../components/Header";
 import pricesHeaderImg from "../assets/prices_header_img.jpg";
 import CTA from "../components/CTA";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 const StyledPackagesPage = styled.div`
   background-color: #d3d3d3;

@@ -1,20 +1,57 @@
 import styled from "styled-components";
+import {
+  SectionLabel,
+  SectionHeading,
+  SectionSubtitle,
+} from "../styles/shared";
 
 const StyledNextSteps = styled.div`
+  padding: var(--section-padding);
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color--border);
+  border-bottom: 1px solid var(--color-border);
+  background-image: radial-gradient(
+    ellipse 60% 50% at 50% 0%,
+    rgba(0, 194, 203, 0.05) 0%,
+    transparent 70%
+  );
+`;
+
+const NextStepsInner = styled.div`
+  max-width: 640px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  color: #000;
-  padding: 4rem 0;
-  background-color: #f9fafb;
-  border-radius: 1rem;
-  margin: 0 2rem 2rem 2rem;
+  gap: 2.5rem;
+`;
 
-  @media (max-width: 768px) {
-    padding: 2rem 1.5rem;
-    margin: 0 1rem 1rem 1rem;
+const StyledLi = styled.li`
+  display: flex;
+  gap: 1.25rem;
+  position: relative;
+
+  &:not(:last-child) {
+    padding-bottom: 2rem;
   }
+
+  &:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    left: 23px;
+    top: 48px;
+    bottom: 0;
+    width: 1px;
+    background-color: var(--color-border);
+  }
+`;
+
+const SectionHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: center;
 `;
 
 const Header = styled.div`
@@ -72,38 +109,45 @@ const StyledUl = styled.ul`
   width: 100%;
 `;
 
-const StyledLi = styled.li`
-  display: flex;
-  gap: 1rem;
-  color: #1b3c53;
-  font-size: 1.1rem;
-`;
-
 const ItemNumber = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 50%;
-  padding: 1rem;
   width: 48px;
   height: 48px;
-  aspect-ratio: 1 / 1;
-  font-size: 1rem;
-  font-weight: 600;
-  background-color: #1b3c53;
-  color: #fff;
+  border-radius: 50%;
+  font-family: var(--font-family);
+  font-size: 0.9rem;
+  font-weight: 700;
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
 `;
 
 const ItemText = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  gap: 0.3rem;
+  padding-top: 0.75rem;
 `;
 
 const ItemTitle = styled.h5`
+  font-family: var(--font-family);
+  font-size: 0.95rem;
   font-weight: 600;
-  color: #1b3c53;
-  margin-bottom: 0.25rem;
+  color: var(--color-text);
+  margin: 0;
+`;
+
+const ItemDescription = styled.p`
+  font-family: var(--font-family);
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+  margin: 0;
 `;
 
 function NextSteps() {
@@ -142,24 +186,29 @@ function NextSteps() {
 
   return (
     <StyledNextSteps>
-      <Header className="mb-2">
-        <StyledH3>Cum funcționează mai exact</StyledH3>
-        <StyledP className="fs-5">
-          Simplu și transparent - de la prima discuție până la lansare și
-          dincolo de ea
-        </StyledP>
-      </Header>
-      <StyledUl>
-        {stepsList.map((step) => (
-          <StyledLi>
-            <ItemNumber>{step.number}</ItemNumber>
-            <ItemText>
-              <ItemTitle>{step.name}</ItemTitle>
-              <StyledP2>{step.description}</StyledP2>
-            </ItemText>
-          </StyledLi>
-        ))}
-      </StyledUl>
+      <div className="container">
+        <NextStepsInner>
+          <SectionHeader>
+            <SectionLabel>Cum funcționează</SectionLabel>
+            <SectionHeading>Cum funcționează mai exact</SectionHeading>
+            <SectionSubtitle>
+              Simplu și transparent — de la prima discuție până la lansare și
+              dincolo de ea.
+            </SectionSubtitle>
+          </SectionHeader>
+          <StyledUl>
+            {stepsList.map((step) => (
+              <StyledLi key={step.number}>
+                <ItemNumber>{step.number}</ItemNumber>
+                <ItemText>
+                  <ItemTitle>{step.name}</ItemTitle>
+                  <ItemDescription>{step.description}</ItemDescription>
+                </ItemText>
+              </StyledLi>
+            ))}
+          </StyledUl>
+        </NextStepsInner>
+      </div>
     </StyledNextSteps>
   );
 }

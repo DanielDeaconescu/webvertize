@@ -10,34 +10,34 @@ import { faTag } from "@fortawesome/free-solid-svg-icons";
 
 const StyledHeader = styled.header`
   position: relative;
-  padding: 4rem;
+  padding: clamp(5rem, 12vw, 9rem) clamp(1.5rem, 5vw, 4rem);
   background-image: url(${(props) => props.$bgImage});
-  background-color: ${(props) =>
-    props.page === "landing" ? "#1b3c53" : "none"};
+  background-color: var(--color-primary-dark);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  border-bottom-left-radius: 1rem;
-  border-bottom-right-radius: 1rem;
-  height: ${(props) => (props.page === "cookies" ? "100vh" : "unset")};
-  display: ${(props) => (props.page === "cookies" ? "flex" : "block")};
-  justify-content: ${(props) =>
-    props.page === "cookies" ? "center" : "unset"};
-  align-items: ${(props) => (props.page === "cookies" ? "center" : "unset")};
+  border-bottom-left-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+  min-height: ${(props) => (props.page === "cookies" ? "100vh" : "60vh")};
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &::before {
     content: "";
     position: absolute;
     inset: 0;
-    background-color: ${(props) =>
-      props.page === "landing" ? "transparent" : "rgba(0, 0, 0, 0.7)"};
+    background: ${(props) =>
+      props.page === "landing"
+        ? "linear-gradient(135deg, rgba(17, 38, 56, 0.85) 0%, rgba(27, 60, 83, 0.6) 100%)"
+        : "linear-gradient(135deg, rgba(10, 15, 20, 0.88) 0%, rgba(27, 60, 83, 0.7) 100%)"};
     z-index: 1;
     border-radius: inherit;
-    transition: all 0.3s ease;
   }
 
   @media (max-width: 576px) {
-    padding: 1.5rem;
+    padding: clamp(3rem, 8vw, 5rem) 1.25rem;
+    min-height: ${(props) => (props.page === "cookies" ? "100vh" : "50vh")};
   }
 `;
 
@@ -45,84 +45,129 @@ const TextContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
   justify-content: center;
   position: relative;
   z-index: 2;
-  color: #fff;
+  color: var(--color-text);
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto;
 
   @media (max-width: 576px) {
-    gap: 0.25rem;
+    gap: 1rem;
   }
 `;
 
 const Title = styled.h1`
+  font-family: var(--font-family);
+  font-size: var(--font-hero);
+  font-weight: 800;
+  color: var(--color-text);
   text-align: center;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin: 0;
+
   @media (max-width: 576px) {
-    font-size: 1.5rem;
-    text-align: center;
+    font-size: clamp(1.6rem, 7vw, 2.2rem);
   }
 `;
 
 const StyledP = styled.p`
-  text-align: justify;
+  font-family: var(--font-family);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  text-align: center;
+  line-height: 1.7;
+  margin: 0;
+  max-width: 620px;
 
-  @media (max-width: 576px) {
-    font-size: 1rem !important;
+  strong {
+    color: var(--color-text);
+    font-weight: 600;
   }
 `;
 
 const ActionButtonsContainer = styled.div`
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0.5rem;
+
+  @media (max-width: 576px) {
+    gap: 0.75rem;
+  }
 `;
 
 const StyledButton = styled.button`
-  background-color: #344955;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--color-accent);
+  color: var(--color-bg);
   border: none;
-  padding: 1rem 2rem;
-  color: #fff;
-  border-radius: 0.5rem;
-  transition: all 0.3s ease;
+  padding: 0.8rem 2rem;
+  border-radius: var(--radius-btn);
+  font-family: var(--font-family);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition:
+    background-color var(--transition),
+    transform var(--transition);
   position: relative;
   z-index: 2;
-  font-size: 1.15rem;
+  white-space: nowrap;
 
-  @media (max-width: 576px) {
-    font-size: 0.9rem;
-    white-space: nowrap;
-    padding: 0.5rem 1rem;
+  &:hover {
+    background-color: var(--color-accent-dim);
+    transform: translateY(-2px);
   }
 
-  @media (min-width: 576px) {
-    &:hover {
-      background-color: #455e6b;
-    }
+  @media (max-width: 576px) {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
   }
 `;
 
 const PricesButton = styled(Link)`
-  text-decoration: none;
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 0.25rem;
-  background: rgba(255, 255, 255, 0.15);
-  color: white;
-  border: 2px solid white;
-  border-radius: 0.5rem;
-  transition: all 0.3s ease;
-  font-size: 1.15rem;
-  padding: 1rem 2rem;
-
-  @media (max-width: 576px) {
-    font-size: 0.9rem;
-    white-space: nowrap;
-    padding: 0.5rem 1rem;
-  }
+  justify-content: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  background-color: transparent;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-btn);
+  padding: 0.8rem 2rem;
+  font-family: var(--font-family);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition),
+    transform var(--transition);
+  position: relative;
+  z-index: 2;
 
   &:hover {
-    background-color: rgba(27, 60, 83, 0.5);
+    background-color: var(--color-surface-2);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 576px) {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
   }
 `;
 
@@ -152,15 +197,11 @@ function Header({
 
     if (res.ok) {
       handleLoading(false);
-      document.body.classList.remove("modal-open");
-      document.querySelectorAll(".modal-backdrop").forEach((el) => el.remove());
       setShowForm(false);
       sessionStorage.setItem("formSubmitted", "true");
       navigate("/thank-you");
     } else if (res.status === 429) {
       handleLoading(false);
-      document.body.classList.remove("modal-open");
-      document.querySelectorAll(".modal-backdrop").forEach((el) => el.remove());
       setShowForm(false);
       sessionStorage.setItem("tooManyRequests", "true");
       navigate("/too-many-requests");
@@ -173,7 +214,7 @@ function Header({
   return (
     <>
       <StyledHeader $bgImage={bgImage} page={page}>
-        <TextContent className="container">
+        <TextContent>
           <Title>{title}</Title>
           <StyledP className="fs-4 text-center">
             <strong>{text1}</strong> {text2}

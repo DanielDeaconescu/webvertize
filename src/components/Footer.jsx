@@ -11,72 +11,112 @@ import { Link } from "react-router-dom";
 import ModalForm from "./ModalForm";
 
 const StyledFooter = styled.footer`
-  padding: 2.5rem;
-  background-color: rgb(34, 40, 49);
-  color: #fff;
+  padding: clamp(2.5rem, 5vw, 4rem) 0;
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text);
 `;
 
 const StyledLink = styled.a`
   text-decoration: none;
   cursor: pointer;
-  color: #fff;
+  color: var(--color-accent);
+  font-weight: 500;
+  transition: color var(--transition);
 
   &:hover {
-    text-decoration: underline;
+    color: var(--color-text);
   }
 `;
 const StyledLinkLogo = styled(Link)`
   text-decoration: none;
   cursor: pointer;
-  color: #fff;
 `;
 
 const StyledRegularLink = styled(Link)`
   text-decoration: none;
-  color: #fff;
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  transition: color var(--transition);
 
   &:hover {
-    text-decoration: underline;
+    color: var(--color-text);
+    text-decoration: none;
   }
 `;
 
 const FooterRow = styled.div`
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  width: 100%;
+
   @media (max-width: 768px) {
-    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+`;
+
+const FooterBottom = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 2rem;
+  margin-top: 2rem;
+  border-top: 1px solid var(--color-border);
+  font-size: var(--font-small);
+  color: var(--color-text-muted);
+
+  @media (max-width: 576px) {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
   }
 `;
 
 const LogoWrapper = styled.div`
-  justify-content: center;
-
-  @media (max-width: 768px) {
-    justify-content: flex-start;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1;
 `;
 
 const QuickLinksWrapper = styled.div`
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+`;
 
-  @media (max-width: 768px) {
-    justify-content: flex-start;
-  }
+const FooterHeading = styled.h3`
+  font-family: var(--font-family);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 1.25rem;
 `;
 
 const SocialMediaWrapper = styled.div`
-  justify-content: center;
-
-  @media (max-width: 768px) {
-    justify-content: flex-start;
-  }
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 `;
 
 const StyledUl = styled.ul`
   list-style-type: none;
   padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
 `;
 
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
-  color: #fff;
+  color: var(--color-accent);
+  font-size: 0.75rem;
+  margin-right: 0.5rem;
+  flex-shrink: 0;
 `;
 
 function Footer() {
@@ -119,48 +159,49 @@ function Footer() {
 
   return (
     <>
-      <StyledFooter className="d-flex justify-content-between">
+      <StyledFooter>
         <div className="container">
-          <FooterRow className="row d-flex">
-            <LogoWrapper className="col-md-4 d-flex">
-              <div>
-                <Logo theme={"light"} />
-              </div>
+          <FooterRow>
+            <LogoWrapper>
+              <Logo theme="light" />
             </LogoWrapper>
-            <QuickLinksWrapper className="col-md-4 d-flex">
-              <div>
-                <h3>Navigare</h3>
-                <StyledUl>
-                  <li>
-                    <StyledFontAwesomeIcon icon={faCheckCircle} />
-                    <StyledLink onClick={() => setShowForm(true)}>
-                      Programează un apel
-                    </StyledLink>
-                  </li>
-                  <li>
-                    <StyledFontAwesomeIcon icon={faCheckCircle} />
-                    <StyledRegularLink to="/">Acasă</StyledRegularLink>
-                  </li>
-                  <li>
-                    <StyledFontAwesomeIcon icon={faCheckCircle} />
-                    <StyledRegularLink to="/websites">
-                      Servicii
-                    </StyledRegularLink>
-                  </li>
-                  <li>
-                    <StyledFontAwesomeIcon icon={faCheckCircle} />
-                    <StyledRegularLink to="/contact">Contact</StyledRegularLink>
-                  </li>
-                </StyledUl>
-              </div>
+            <QuickLinksWrapper>
+              <FooterHeading>Navigare</FooterHeading>
+              <StyledUl>
+                <li>
+                  <StyledFontAwesomeIcon icon={faCheckCircle} />
+                  <StyledLink onClick={() => setShowForm(true)}>
+                    Programează un apel
+                  </StyledLink>
+                </li>
+                <li>
+                  <StyledFontAwesomeIcon icon={faCheckCircle} />
+                  <StyledRegularLink to="/">Acasă</StyledRegularLink>
+                </li>
+                <li>
+                  <StyledFontAwesomeIcon icon={faCheckCircle} />
+                  <StyledRegularLink to="/websites">Servicii</StyledRegularLink>
+                </li>
+                <li>
+                  <StyledFontAwesomeIcon icon={faCheckCircle} />
+                  <StyledRegularLink to="/contact">Contact</StyledRegularLink>
+                </li>
+              </StyledUl>
             </QuickLinksWrapper>
-            <SocialMediaWrapper className="col-md-4 d-flex">
-              <div>
-                <h3>Rețele de Socializare</h3>
-                <FacebookIcon color="light" />
-              </div>
+            <SocialMediaWrapper>
+              <FooterHeading>Rețele de Socializare</FooterHeading>
+              <FacebookIcon color="light" />
             </SocialMediaWrapper>
           </FooterRow>
+          <FooterBottom>
+            <span>
+              © {new Date().getFullYear()} Webvertize SRL. Toate drepturile
+              rezervate.
+            </span>
+            <StyledRegularLink to="/cookies">
+              Politică de Cookies
+            </StyledRegularLink>
+          </FooterBottom>
         </div>
       </StyledFooter>
       <ModalForm

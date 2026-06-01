@@ -11,7 +11,7 @@ import BackToTop from "../../components/BackToTop";
 import WebAppsFeatures from "../../components/WebDevelopment/WebAppsFeatures";
 import Header from "../../components/Header";
 import webAppsHeader from "../../assets/web_apps_header.jpg";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 const StyledWebAppsPage = styled.div`
   background-color: #1f465f;

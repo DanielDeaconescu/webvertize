@@ -3,10 +3,17 @@ import logoImg from "../assets/logo_no_text_simple_final.png";
 import logoImgLight from "../assets/logo_no_text_light.png";
 import { useTranslation } from "react-i18next";
 
-const StyledLogo = styled.div``;
+const StyledLogo = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+`;
 
 const StyledLogoImg = styled.img`
   width: 75px;
+  height: auto;
+  display: block;
+  flex-shrink: 0;
 
   @media (max-width: 576px) {
     width: 50px;
@@ -18,10 +25,13 @@ const StyledLogoImg = styled.img`
 `;
 
 const LogoTitle = styled.div`
-  font-family: "Montserrat";
+  font-family: var(--font-logo);
   font-weight: 800;
   font-size: 1.8rem;
-  color: ${(props) => (props.theme === "light" ? "#fff" : "#1b3c53")};
+  color: ${({ theme }) =>
+    theme === "light" ? "var(--color-text)" : "var(--color-primary)"};
+  letter-spacing: -0.02em;
+  line-height: 1.1;
 
   @media (max-width: 576px) {
     font-size: 1.4rem;
@@ -37,40 +47,42 @@ const LogoTitle = styled.div`
 `;
 
 const LogoSubtitle = styled.div`
-  font-family: "Montserrat";
+  font-family: var(--font-logo);
   font-weight: 600;
-  color: ${(props) => (props.theme === "light" ? "#fff" : "#1b3c53")};
-  font-size: 1rem;
-  margin-top: -10px;
-  font-size: 1rem;
+  font-size: 0.72rem;
+  color: ${({ theme }) =>
+    theme === "light"
+      ? "var(--color-text-secondary)"
+      : "var(--color-primary-light)"};
+  margin-top: -4px;
+  letter-spacing: 0.06em;
   white-space: nowrap;
 
   @media (max-width: 576px) {
-    font-size: 0.8rem;
+    font-size: 0.62rem;
   }
 
   @media (min-width: 576px) and (max-width: 768px) {
-    font-size: 0.7rem;
-    margin-top: -5px;
+    font-size: 0.6rem;
+    margin-top: -3px;
   }
 
   @media (min-width: 768px) and (max-width: 992px) {
-    font-size: 0.7rem;
+    font-size: 0.62rem;
   }
 `;
 
 function Logo({ theme }) {
-  const { t, i18n } = useTranslation();
   return (
-    <StyledLogo className="d-flex justify-content-center align-items-center">
-      <div>
-        {theme === "light" ? (
-          <StyledLogoImg src={logoImgLight} />
-        ) : (
-          <StyledLogoImg src={logoImg} />
-        )}
-      </div>
-      <div className="d-flex justify-content-center align-items-left flex-column">
+    <StyledLogo>
+      <StyledLogoImg
+        src={theme === "light" ? logoImgLight : logoImg}
+        alt="Webvertize logo"
+        width="75"
+        height="75"
+      />
+
+      <div style={{ display: "flex", flexDirection: "column" }}>
         <LogoTitle theme={theme}>Webvertize</LogoTitle>
         <LogoSubtitle theme={theme}>Dezvoltare Web și Publicitate</LogoSubtitle>
       </div>

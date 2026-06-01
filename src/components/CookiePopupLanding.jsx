@@ -76,9 +76,9 @@ function CookiePopupLanding() {
   return (
     <CookiePopup>
       <StyledP>
-        Acest site folosește cookie-uri pentru măsurarea performanței
-        reclamelor. Prin continuarea navigării, ești de acord cu utilizarea
-        acestora.
+        Webvertize utilizează cookie-uri de publicitate prin Google Ads pentru
+        măsurarea performanței campaniilor noastre. Nu folosim cookie-uri de
+        analiză sau personalizare.
       </StyledP>
       <ContainerButtons>
         <StyledButton onClick={handleRefuse} variant="refuse">

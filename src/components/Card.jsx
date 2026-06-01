@@ -4,60 +4,69 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGlobe, faGear } from "@fortawesome/free-solid-svg-icons";
 
 const StyledCard = styled.div`
-  height: 100%;
   position: relative;
-  padding: 2rem 0.5rem;
-  border: none;
-  border-radius: 1rem;
+  height: 100%;
+  min-height: 280px;
+  border-radius: var(--radius-card);
   overflow: hidden;
-  transition: all 0.4s ease-in-out;
-  background-color: rgba(168, 187, 163, 0.25);
-  color: #fff;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  transition:
+    border-color var(--transition),
+    transform var(--transition),
+    box-shadow var(--transition);
 
-  @media (max-width: 576px) {
-    padding: 0;
-    margin-bottom: 1rem;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url() (${(props) => props.bgImage || ""});
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 0;
   }
 
-  @media (min-width: 576px) and (max-width: 769px) {
-    padding: 0;
-    margin-bottom: 1rem;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(10, 15, 20, 0.85) 0%,
+      rgba(27, 60, 83, 0.7) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1;
   }
 
-  @media (min-width: 768px) and (max-width: 992px) {
-    padding: 0;
-  }
-
-  @media (min-width: 992px) and (max-width: 1200px) {
-    padding: 0.5rem;
-  }
-
-  /* Hover background */
   @media (min-width: 768px) {
     &:hover {
-      color: #fff;
-      background-image: url(${(props) => props.bgImage || ""});
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+      border-color: var(--color-accent);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
 
       &::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-color: rgba(0, 0, 0, 0.65);
-        z-index: 1;
-        border-radius: inherit;
-        transition: all 0.3s ease;
+        opacity: 1;
+      }
+
+      &::after {
+        opacity: 1;
       }
     }
   }
 `;
 
 const CardTitle = styled.h4`
-  /* @media (min-width: 992px) and (max-width: 1200px) {
-    text-align: left;
-  } */
+  font-family: var(--font-family);
+  font-size: var(--font-card-title);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  margin: 0;
 `;
 
 const CardBody = styled.div`
@@ -65,31 +74,96 @@ const CardBody = styled.div`
   z-index: 2;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 0.5rem;
+  justify-content: space-between;
+  gap: 1rem;
   height: 100%;
-  padding: 1rem;
-  flex-grow: 1 !important;
+  padding: 2rem 1.75rem;
 `;
 
-const StyledP = styled.p``;
+const StyledP = styled.p`
+  font-family: var(--font-family);
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+  margin: 0;
+  flex-grow: 1;
+`;
 
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  background-color: rgb(35, 76, 106);
-  padding: 0.7rem 1rem;
-  border-radius: 0.5rem;
-  color: #fff;
-  transition: all 0.3s ease;
-  margin-right: 0.5rem;
-  flex: 1;
+const IconWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--color-accent);
+  font-size: 1.5rem;
+`;
+
+const CardHeading = styled.h2`
+  font-family: var(--font-family);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+  margin: 0;
+`;
+
+const CardLinkPrimary = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex: 1;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-btn);
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+  font-family: var(--font-family);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition:
+    background-color var(--transition),
+    transform var(--transition);
+  white-space: nowrap;
 
   &:hover {
-    background-color: rgb(60, 110, 150);
+    background-color: var(--color-accent-dim);
+    transform: translateY(-1px);
   }
+`;
+
+const CardLinkGhost = styled(Link)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-btn);
+  background-color: transparent;
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+  font-family: var(--font-family);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition:
+    border-color var(--transition),
+    color var(--transition),
+    transform var(--transition);
+  white-space: nowrap;
+
+  &:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    transform: translateY(-1px);
+  }
+`;
+
+const LinksRow = styled.div`
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
 `;
 
 function Card({
@@ -114,35 +188,32 @@ function Card({
     return null;
   };
 
+  const iconEl = getIcon();
+
   return (
-    <StyledCard
-      className="card"
-      bgcolor={bgcolor}
-      bgImage={bgImage}
-      overlayOpacity={overlayOpacity}
-      blur={blur}
-    >
-      <CardBody className="card-body">
+    <StyledCard bgImage={bgImage}>
+      <CardBody>
         {title && (
-          <h2 className="card-title d-flex align-items-center gap-2 fs-1">
-            {getIcon() && <FontAwesomeIcon icon={getIcon()} />}
-            {title}
-          </h2>
+          <IconWrapper>
+            {iconEl && <FontAwesomeIcon icon={iconEl} />}
+            <CardHeading>{title}</CardHeading>
+          </IconWrapper>
         )}
 
-        {subtitle && (
-          <CardTitle className="text-start card-subtitle mb-2 fs-4">
-            {subtitle}
-          </CardTitle>
-        )}
-        {text && <StyledP className="fs-5">{text}</StyledP>}
-
+        {subtitle && <CardTitle>{subtitle}</CardTitle>}
+        {text && <StyledP>{text}</StyledP>}
         {(link1 || link2 || link3) && (
-          <div className="d-flex">
-            {link1 && <StyledLink to={link1}>{caseStudiesBtn}</StyledLink>}
-            {link2 && <StyledLink to={link2}>{exploreServicesBtn}</StyledLink>}
-            {link3 && <StyledLink to={link3}>{readMoreBtn}</StyledLink>}
-          </div>
+          <LinksRow>
+            {link1 && (
+              <CardLinkGhost to={link1}>{caseStudiesBtn}</CardLinkGhost>
+            )}
+            {link2 && (
+              <CardLinkPrimary to={link2}>{exploreServicesBtn}</CardLinkPrimary>
+            )}
+            {link3 && (
+              <CardLinkPrimary to={link3}>{readMoreBtn}</CardLinkPrimary>
+            )}
+          </LinksRow>
         )}
       </CardBody>
     </StyledCard>

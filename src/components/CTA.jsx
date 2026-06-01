@@ -4,72 +4,104 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ctaImage from "../assets/CTA_image.jpg";
 import ModalForm from "./ModalForm";
+import { SectionHeading } from "../styles/shared";
 
 const CTAWrapper = styled.div`
-  background-color: #37353e;
-  padding: 5rem 0;
+  position: relative;
+  padding: clamp(4rem, 10vw, 7rem) 0;
   background-image: url(${ctaImage});
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
-  position: relative;
-  z-index: 9;
+  background-repeat: no-repeat;
 
   &::before {
     content: "";
     position: absolute;
     inset: 0;
-    background-color: rgba(0, 0, 0, 0.75);
+    background: linear-gradient(
+      135deg,
+      rgba(10, 15, 20, 0.92) 0%,
+      rgba(27, 60, 83, 0.78) 100%
+    );
     z-index: 1;
-    border-radius: inherit;
-    transition: all 0.3s ease;
-  }
-
-  @media (max-width: 576px) {
-    padding: 3rem 0;
   }
 `;
 
 const CTAContainer = styled.div`
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  color: #fff;
-  position: relative;
-  z-index: 10;
+  gap: 1.75rem;
+  text-align: center;
+`;
 
-  @media (max-width: 1200px) {
-    text-align: center;
-  }
+const CTAHeading = styled.h2`
+  font-family: var(--font-family);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  color: var(--color-text);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin: 0;
+  max-width: 680px;
+`;
+
+const CTAText = styled.p`
+  font-family: var(--font-family);
+  font-size: 1.05rem;
+  color: var(--color-text-secondary);
+  line-height: 1.75;
+  margin: 0;
+  max-width: 520px;
+`;
+
+const StyledP = styled.p`
+  font-family: var(--font-family);
+  font-size: 1.1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+  margin: 0;
 `;
 
 const StyledButton = styled.button`
-  background-color: #344955;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2.25rem;
   border: none;
-  padding: 1rem 2rem;
-  color: #fff;
-  border-radius: 0.5rem;
-  transition: all 0.3s ease;
+  border-radius: var(--radius-btn);
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+  font-family: var(--font-family);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background-color var(--transition),
+    transform var(--transition),
+    box-shadow var(--transition);
 
-  @media (min-width: 576px) {
-    &:hover {
-      background-color: #455e6b;
-    }
+  &:hover {
+    background-color: var(--color-accent-dim);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 194, 203, 0.25);
   }
 `;
 
 function CTA({ title, text }) {
   const navigate = useNavigate();
   const [showForm, setShowForm] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  async function handleSubmit(e) {
-    e.preventDefault();
+  async function handleValidSubmit(data) {
+    setIsLoading(true);
 
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData.entries());
-
-    // send to Vercel API route
     const res = await fetch("/api/contact", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -77,23 +109,15 @@ function CTA({ title, text }) {
     });
 
     if (res.ok) {
-      // Navigate to the thank-you page
-      // 1. Removing Bootstrap's modal-backdrop
-      document.body.classList.remove("modal-open");
-      document.querySelectorAll(".modal-backdrop").forEach((el) => el.remove());
+      setIsLoading(false);
       setShowForm(false);
-      // 2. Setting a flag in the SessionStorage
       sessionStorage.setItem("formSubmitted", "true");
-      // 3. Navigating to the thank-you page
       navigate("/thank-you");
     } else if (res.status === 429) {
-      document.body.classList.remove("modal-open");
-      document.querySelectorAll(".modal-backdrop").forEach((el) => el.remove());
+      setIsLoading(false);
       setShowForm(false);
-      // setting a flag in sessionStorage
       sessionStorage.setItem("tooManyRequests", "true");
       navigate("/too-many-requests");
-      return;
     }
   }
 
@@ -101,8 +125,8 @@ function CTA({ title, text }) {
     <>
       <CTAWrapper>
         <CTAContainer className="container">
-          <h3>{title}</h3>
-          <p className="fs-4 text-center">{text}</p>
+          <CTAHeading>{title}</CTAHeading>
+          <CTAText>{text}</CTAText>
           <StyledButton onClick={() => setShowForm(true)}>
             Programează o discuție
           </StyledButton>
@@ -114,7 +138,7 @@ function CTA({ title, text }) {
         title="Formular de contact"
         onClose={() => setShowForm(false)}
       >
-        <Form onSubmit={handleSubmit} />
+        <Form onValidSubmit={handleValidSubmit} isLoading={isLoading} />
       </ModalForm>
     </>
   );

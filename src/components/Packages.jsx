@@ -1,30 +1,48 @@
 import styled from "styled-components";
 import { packages } from "../data/packagesFeatures";
 import Package from "./Package";
-import NextSteps from "./NextSteps";
-import Logo from "./Logo";
+import { SectionLabel, SectionHeading } from "../styles/shared";
 
 const StyledPrices = styled.div`
-  padding: 4rem 3rem;
-  margin: 0 2rem 2rem 2rem;
-  background-color: #e8edf0;
-  border-radius: 1rem;
-  margin-bottom: 2rem;
-
-  @media (max-width: 576px) {
-    margin: 0 1rem 1rem 1rem;
-  }
-
-  @media (max-width: 768px) {
-    padding: 1.5rem 1rem;
-  }
-
-  @media (min-width: 768px) and (max-width: 1024px) {
-    padding: 3rem 1.5rem;
-  }
+  padding: var(--section-padding);
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  background-image: radial-gradient(
+    ellipse 80% 50% at 50% 0%,
+    rgba(0, 194, 203, 0.06) 0%,
+    transparent 70%
+  );
 `;
 
-const Header = styled.div``;
+const PricingHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  text-align: center;
+`;
+
+const Subtitle = styled.p`
+  font-family: var(--font-family);
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  max-width: 520px;
+  margin: 0;
+`;
+
+const PackagesContainer = styled.div`
+  display: flex;
+  align-items: stretch;
+  gap: 1.25rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
+`;
 
 const StyledH1 = styled.h1`
   color: #1b3c53;
@@ -41,15 +59,6 @@ const StyledH1 = styled.h1`
   }
 `;
 
-const Subtitle = styled.p`
-  color: #4b5563;
-  text-align: center;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  max-width: 600px;
-  margin: 0 auto;
-`;
-
 const StyledP = styled.p`
   color: #1b3c53;
   text-align: center;
@@ -64,45 +73,35 @@ const StyledP = styled.p`
   }
 `;
 
-const PackagesContainer = styled.div`
-  display: flex;
-  gap: 1rem;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    font-size: 0.9rem;
-  }
-
-  @media (min-width: 768px) and (max-width: 1024px) {
-    flex-direction: column;
-    font-size: 1rem;
-    gap: 0.75rem;
-  }
-`;
-
 function Packages({ page }) {
   return (
     <StyledPrices>
-      <Header className="mb-4">
-        <StyledH1>Alege pachetul potrivit pentru afacerea ta</StyledH1>
-        <Subtitle>
-          Prețuri clare, fără costuri ascunse. Primul pas nu presupune niciun
-          cost.
-        </Subtitle>
-      </Header>
-      <PackagesContainer className="container">
-        {packages.map((item) => (
-          <Package
-            title={item.title}
-            featuresList={item.features}
-            maintenanceList={item.maintenance}
-            price={item.price}
-            desc={item.desc}
-            type={item.title.toLowerCase()}
-            disclaimer={item.disclaimer}
-          />
-        ))}
-      </PackagesContainer>
+      <div className="container">
+        <PricingHeader>
+          <SectionLabel>Prețuri</SectionLabel>
+          <SectionHeading>
+            Alege pachetul potrivit pentru afacerea ta
+          </SectionHeading>
+          <Subtitle>
+            Prețuri clare, fără costuri ascunse. Primul pas nu presupune niciun
+            cost.
+          </Subtitle>
+        </PricingHeader>
+        <PackagesContainer>
+          {packages.map((item) => (
+            <Package
+              key={item.title}
+              title={item.title}
+              featuresList={item.features}
+              maintenanceList={item.maintenance}
+              price={item.price}
+              desc={item.desc}
+              type={item.title.toLowerCase()}
+              disclaimer={item.disclaimer}
+            />
+          ))}
+        </PackagesContainer>
+      </div>
     </StyledPrices>
   );
 }

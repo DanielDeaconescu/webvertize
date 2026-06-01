@@ -10,13 +10,47 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
+import {
+  SectionLabel,
+  SectionHeading,
+  SectionSubtitle,
+  FeatureCard,
+  FeatureIconWrapper,
+  FeatureTitle,
+  FeatureText,
+} from "../../styles/shared";
 
 const StyledWebAppsFeatures = styled.section`
+  padding: var(--section-padding);
+  border-top: 1px solid var(--color-border);
+`;
+
+const FeaturesGrid = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const SectionHeader = styled.div`
   display: flex;
-  gap: 2rem;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
 `;
 
 const StyledP = styled.p`
@@ -81,38 +115,26 @@ function WebAppsFeatures() {
   ];
 
   return (
-    <StyledWebAppsFeatures className="container">
-      <div className="row">
-        <h2 className="mb-3">Funcționalități & capabilități</h2>
-        <div className="col-12 mb-4">
-          <StyledP className="fs-5 mb-4">
+    <StyledWebAppsFeatures>
+      <div className="container">
+        <SectionHeader>
+          <SectionLabel>Capabilități</SectionLabel>
+          <SectionHeading>Funcționalități & capabilități</SectionHeading>
+          <SectionSubtitle>
             În funcție de nevoile afacerii tale, soluția poate include:
-          </StyledP>
-
-          <div>
-            <StyledUl className="fs-5">
-              {items.map((i) => (
-                <li>
-                  <div className="card rounded-4">
-                    <div className="card-body">
-                      <div className="card-title">
-                        <div className="d-flex gap-2">
-                          <div>
-                            <StyledFontAwesomeIocn icon={i.icon} />
-                          </div>
-                          <div>
-                            <strong>{i.title}</strong>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="card-text">{i.text}</div>
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </StyledUl>
-          </div>
-        </div>
+          </SectionSubtitle>
+        </SectionHeader>
+        <FeaturesGrid>
+          {items.map((item) => (
+            <FeatureCard key={item.title}>
+              <FeatureIconWrapper>
+                <FontAwesomeIcon icon={item.icon} />
+              </FeatureIconWrapper>
+              <FeatureTitle>{item.title}</FeatureTitle>
+              <FeatureText>{item.text}</FeatureText>
+            </FeatureCard>
+          ))}
+        </FeaturesGrid>
       </div>
     </StyledWebAppsFeatures>
   );

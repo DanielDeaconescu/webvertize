@@ -6,7 +6,7 @@ import LandingFooter from "../components/LandingFooter";
 import CookiePopupLanding from "../components/CookiePopupLanding";
 import Logo from "../components/Logo";
 import LandingPageCTA from "../components/LandingPageCTA";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import Header from "../components/Header";
 import WhatsAAppLandingPage from "../components/WhatsAppLandingPage";
 import HeaderLandingPage from "../components/HeaderLandingPage";

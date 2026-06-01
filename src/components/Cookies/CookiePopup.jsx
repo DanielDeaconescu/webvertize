@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -9,47 +8,91 @@ const StyledCookiePopup = styled.div`
   left: 0;
   right: 0;
   width: 100%;
-  z-index: 100;
-  background-color: #1b3c53;
-  color: #fff;
-  border-top: 3px solid #fff;
-  padding: 1.5rem;
+  z-index: 1000;
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  padding: 1.25rem 0;
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.35);
 `;
 
 const CookiePopupInner = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 2rem;
+  justify-content: space-between;
+  gap: 1.5rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
 `;
 
 const ButtonsContainer = styled.div`
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
+  flex-shrink: 0;
 `;
 
 const StyledButton = styled.button`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1.25rem;
   border: none;
-  /* background-color: transparent; */
-  padding: 0.25rem 1rem;
-  border-radius: 10px;
+  border-radius: var(--radius-btn);
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+  font-family: var(--font-family);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background-color var(--transition),
+    transform var(--transition);
+
+  &:hover {
+    background-color: var(--color-accent-dim);
+    transform: translateY(-1px);
+  }
 `;
 
 const StyledLink = styled(Link)`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1.25rem;
+  border-radius: var(--radius-btn);
+  border: 1px solid var(--color-border);
+  background-color: transparent;
+  color: var(--color-text-secondary);
+  font-family: var(--font-family);
+  font-size: 0.85rem;
+  font-weight: 500;
   text-decoration: none;
-  color: #000;
-  background-color: #fff;
-  padding: 0.25rem 1rem;
-  border-radius: 10px;
+  white-space: nowrap;
+  transition:
+    border-color var(--transition),
+    color var(--transition);
+
+  &:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
 `;
 
 const StyledP = styled.p`
   margin: 0;
+  font-family: var(--font-family);
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  max-width: 640px;
 `;
 
 function CookiePopup() {
-  const { t } = useTranslation();
   const [acceptedCookies, setAcceptedCookies] = useState(
     localStorage.getItem("WebvertizeAcceptedCookies") === "true",
   );
@@ -59,38 +102,24 @@ function CookiePopup() {
     localStorage.setItem("WebvertizeAcceptedCookies", "true");
   }
 
+  if (acceptedCookies) return null;
+
   return (
-    <>
-      {!acceptedCookies && (
-        <StyledCookiePopup>
-          <CookiePopupInner className="container">
-            <div className="row">
-              {/* Message */}
-              <div className="col-md-8 mb-3">
-                <StyledP>
-                  În prezent, Webvertize nu utilizează niciun tip de cookie. În
-                  cazul în care vom implementa cookie-uri în viitor, ne vom
-                  asigura că vă înștiințăm. Vă rugăm să verificați periodic
-                  pagina noastră de cookies pentru mai multe informații și
-                  actualizări.
-                </StyledP>
-              </div>
-              {/* Buttons */}
-              <div className="col-md-4 d-flex align-items-center">
-                <ButtonsContainer>
-                  <StyledButton onClick={() => handleAcceptedCookies()}>
-                    Ok
-                  </StyledButton>
-                  <StyledLink to="/cookies">
-                    Mai multe despre cookie-uri
-                  </StyledLink>
-                </ButtonsContainer>
-              </div>
-            </div>
-          </CookiePopupInner>
-        </StyledCookiePopup>
-      )}
-    </>
+    <StyledCookiePopup>
+      <CookiePopupInner className="container">
+        <StyledP>
+          Webvertize utilizează cookie-uri de publicitate prin Google Ads pentru
+          măsurarea performanței campaniilor noastre. Nu folosim cookie-uri de
+          analiză sau personalizare.
+        </StyledP>
+        <ButtonsContainer>
+          <StyledButton onClick={() => handleAcceptedCookies()}>
+            Ok
+          </StyledButton>
+          <StyledLink to="/cookies">Mai multe despre cookie-uri</StyledLink>
+        </ButtonsContainer>
+      </CookiePopupInner>
+    </StyledCookiePopup>
   );
 }
 

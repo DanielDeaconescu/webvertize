@@ -17,9 +17,125 @@ import {
   faCubes,
   faCirclePlay,
 } from "@fortawesome/free-solid-svg-icons";
+import { SectionHeading, SectionLabel } from "../../styles/shared";
 
 const StyledSection3 = styled.section`
-  padding-bottom: 4rem;
+  padding: var(--section-padding);
+  border-top: 1px solid var(--color-border);
+`;
+
+const SubsectionHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+`;
+
+const ObjectivesGrid = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0 0 3rem 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const ObjectiveItem = styled.li`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.5rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  transition:
+    border-color var(--transition),
+    transform var(--transition);
+
+  &:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+  }
+`;
+
+const ObjectiveIcon = styled.div`
+  color: var(--color-accent);
+  font-size: 1.25rem;
+`;
+
+const ObjectiveTitle = styled.h3`
+  font-family: var(--font-family);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0;
+`;
+
+const ObjectiveText = styled.p`
+  font-family: var(--font-family);
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  line-height: 1.55;
+  margin: 0;
+`;
+
+const FormatsGrid = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 576ppx) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+`;
+
+const FormatItem = styled.li`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1.25rem 1rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  text-align: center;
+  transition:
+    border-color var(--transition),
+    transform var(--transition);
+
+  &:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+  }
+`;
+
+const FormatIcon = styled.div`
+  color: var(--color-accent);
+  font-size: 1.25rem;
+`;
+
+const FormatText = styled.span`
+  font-family: var(--font-family);
+  font-size: 0.825rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
 `;
 
 const ContentRow = styled.div`
@@ -90,45 +206,49 @@ function Section3() {
   ];
 
   return (
-    <StyledSection3 className="container">
-      <ContentRow className="row">
-        <TitleTotal className="mb-4">
-          <Title>Reclame Facebook & Instagram</Title>
-        </TitleTotal>
-        <h2>Obiectivele de Campanie pe care le Susținem</h2>
-        <StyledUl>
+    <StyledSection3>
+      <div className="container">
+        <SubsectionHeader>
+          <SectionLabel>Facebook & Instagram</SectionLabel>
+          <SectionHeading>Reclame Facebook & Instagram</SectionHeading>
+        </SubsectionHeader>
+        <SubsectionHeader style={{ marginTop: "2rem" }}>
+          <SectionHeading
+            style={{ fontSize: "var(--font-card-title)", fontWeight: 600 }}
+          >
+            Obiectivele de Campanie pe care le Susținem
+          </SectionHeading>
+        </SubsectionHeader>
+        <ObjectivesGrid>
           {campaignObjectives.map((item) => (
-            <li>
-              <div className="card rounded-4">
-                <div className="card-body">
-                  <div className="fs-5 d-flex gap-2">
-                    <div>
-                      <FontAwesomeIcon icon={item.icon} />
-                    </div>
-                    <div>
-                      <strong>{item.title}</strong> - {item.text}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-          ))}
-        </StyledUl>
-      </ContentRow>
-      {/* Campaign Types We Manage */}
-      <ContentRow className="row">
-        <h2>Formate de Reclame Disponibile</h2>
-        <div className="card rounded-4">
-          <StyledUl className="list-group list-group-flush">
-            {adFormats.map((item) => (
-              <li className="list-group-item d-flex gap-2 align-items-center fs-5">
+            <ObjectiveItem key={item.title}>
+              <ObjectiveIcon>
                 <FontAwesomeIcon icon={item.icon} />
-                {item.adText}
-              </li>
-            ))}
-          </StyledUl>
-        </div>
-      </ContentRow>
+              </ObjectiveIcon>
+              <ObjectiveTitle>{item.title}</ObjectiveTitle>
+              <ObjectiveText>{item.text}</ObjectiveText>
+            </ObjectiveItem>
+          ))}
+        </ObjectivesGrid>
+
+        <SubsectionHeader>
+          <SectionHeading
+            style={{ fontSize: "var(--font-card-title)", fontWeight: 600 }}
+          >
+            Formate de Reclame Disponibile
+          </SectionHeading>
+        </SubsectionHeader>
+        <FormatsGrid>
+          {adFormats.map((item) => (
+            <FormatItem key={item.adText}>
+              <FormatIcon>
+                <FontAwesomeIcon icon={item.icon} />
+              </FormatIcon>
+              <FormatText>{item.adText}</FormatText>
+            </FormatItem>
+          ))}
+        </FormatsGrid>
+      </div>
     </StyledSection3>
   );
 }

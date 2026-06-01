@@ -1,11 +1,30 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
+import { SectionHeading } from "../styles/shared";
 
-const StyledOurMission = styled.div``;
+const StyledOurMission = styled.div`
+  padding: var(--section-padding);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+`;
 
-const StyledH2 = styled.h2``;
+const MissionInner = styled.div`
+  max-width: 780px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+`;
 
-const Subtitle = styled.p``;
+const SectionLabel = styled.span`
+  font-family: var(--font-family);
+  font-size: var(--font-label);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+`;
 
 const Description = styled.div`
   display: flex;
@@ -17,40 +36,28 @@ const Description = styled.div`
   }
 `;
 
-const TitleContainer = styled.h2`
-  @media (max-width: 576px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 2rem;
-  }
-`;
-
-const Title = styled.div``;
-
 const StyledP = styled.p`
-  text-align: justify;
-
-  @media (max-width: 576px) {
-    padding: 0.5rem;
-  }
+  font-family: var(--font-family);
+  font-size: 1.1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+  margin: 0;
 `;
 
 function OurMission() {
   return (
-    <StyledOurMission className="container mb-4">
-      <StyledH2>Misiunea noastră</StyledH2>
-      <Description>
-        <TitleContainer></TitleContainer>
-        <StyledP className="fs-4">
+    <StyledOurMission>
+      <MissionInner className="container">
+        <SectionLabel>Misiunea noastră</SectionLabel>
+        <SectionHeading>Construim prezența ta online cu sens</SectionHeading>
+        <StyledP>
           La Webvertize, ajutăm afacerile să își construiască prezența online pe
           care o merită — prin website-uri de calitate, aplicații web și
           campanii publicitare orientate spre rezultate reale. Lucrăm direct cu
           tine, fără intermediari, și livrăm soluții adaptate nevoilor reale ale
           afacerii tale.
         </StyledP>
-      </Description>
+      </MissionInner>
     </StyledOurMission>
   );
 }

@@ -20,9 +20,161 @@ import {
   faGears,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { SectionHeading, SectionLabel } from "../../styles/shared";
 
 const StyledSection2 = styled.section`
-  padding-bottom: 4rem;
+  padding: var(--section-padding);
+  border-top: 1px solid var(--color-border);
+`;
+
+const IntroGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  gap: 3rem;
+  margin-bottom: 3rem;
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+`;
+
+const GoogleAdsCampaigns = styled.img`
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--color-border);
+  display: block;
+`;
+
+const IntroText = styled.p`
+  font-family: var(--font-family);
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+  margin: 0;
+`;
+
+const SubsectionHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  margin-top: 3rem;
+`;
+
+const ProcessList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
+const ProcessItem = styled.li`
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.5rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  transition: border-color var(--transition);
+
+  &:hover {
+    border-color: var(--color-accent);
+  }
+`;
+
+const ProcessIconWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  color: var(--color-accent);
+  font-size: 1rem;
+  flex-shrink: 0;
+`;
+
+const ProcessItemContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+`;
+
+const ProcessItemTitle = styled.h3`
+  font-family: var(--font-family);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0;
+`;
+
+const ProcessItemText = styled.p`
+  font-family: var(--font-family);
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+  margin: 0;
+`;
+
+const CampaignTypesGrid = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const CampaignTypeItem = styled.li`
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  transition: border-color var(--transition);
+
+  &:hover {
+    border-color: var(--color-accent);
+  }
+`;
+
+const CampaignTypeIcon = styled.div`
+  color: var(--color-accent);
+  font-size: 1rem;
+  margin-top: 2px;
+  flex-shrink: 0;
+`;
+
+const CampaignTypeText = styled.div`
+  font-family: var(--font-family);
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  line-height: 1.55;
+
+  strong {
+    color: var(--color-text);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.2rem;
+  }
 `;
 
 const TitleTotal = styled.div`
@@ -47,26 +199,6 @@ const ContentRow = styled.div`
     flex-direction: column;
     gap: 1rem;
     padding: 0 1.5rem;
-  }
-`;
-
-const GoogleAdsCampaigns = styled.img`
-  border-radius: 1.2rem;
-
-  @media (max-width: 576px) {
-    max-width: 300px;
-  }
-
-  @media (min-width: 576px) and (max-width: 768px) {
-    max-width: 450px;
-  }
-
-  @media (min-width: 768px) and (max-width: 992px) {
-    max-width: 500px;
-  }
-
-  @media (min-width: 992px) and (max-width: 1200px) {
-    max-width: 650px;
   }
 `;
 
@@ -177,68 +309,61 @@ function Section2() {
   ];
 
   return (
-    <StyledSection2 className="container">
-      <div className="row">
-        <TitleTotal>
-          <Title>Campanii Google Ads</Title>
-        </TitleTotal>
+    <StyledSection2>
+      <div className="container">
+        <SubsectionHeader>
+          <SectionLabel>Google Ads</SectionLabel>
+          <SectionHeading>Procesul Nostru</SectionHeading>
+        </SubsectionHeader>
+        <IntroGrid>
+          <GoogleAdsCampaigns
+            src={googleAdsCampaigns}
+            alt="Campanii Google Ads"
+            width="400"
+            height="300"
+          />
+          <IntroText>
+            Campaniile Google Ads funcționează cel mai bine cu obiective clare,
+            targetare precisă și optimizare continuă. Construim structura
+            campaniei împreună cu tine, rafinăm constant performanța și livrăm
+            rapoarte transparente — astfel încât să înțelegi întotdeauna cum
+            lucrează investiția ta.
+          </IntroText>
+        </IntroGrid>
 
-        <Content>
-          <ContentRow className="row mb-4">
-            <div className="col-sm-12 col-xl-4 d-flex align-items-center justify-content-center">
-              <GoogleAdsCampaigns
-                src={googleAdsCampaigns}
-                className="img-fluid"
-              />
-            </div>
-            <div className="col-sm-12 col-xl-8 d-flex align-items-center justify-content-center">
-              <StyledP className="fs-5">
-                Campaniile Google Ads funcționează cel mai bine cu obiective
-                clare, targetare precisă și optimizare continuă. Construim
-                structura campaniei împreună cu tine, rafinăm constant
-                performanța și livrăm rapoarte transparente — astfel încât să
-                înțelegi întotdeauna cum lucrează investiția ta.
-              </StyledP>
-            </div>
-          </ContentRow>
-        </Content>
-        {/* Our Process */}
-        <ContentRow className="row">
-          <h2>Procesul Nostru</h2>
-          <StyledUl>
-            {processItems.map((i) => (
-              <li>
-                <div class="card rounded-4">
-                  <div class="card-body">
-                    <h4 className="d-flex gap-2">
-                      <FontAwesomeIcon icon={i.icon} />
-                      {i.title}
-                    </h4>
-                    <p className="fs-5">{i.text}</p>
-                  </div>
-                </div>
-              </li>
-            ))}
-          </StyledUl>
-        </ContentRow>
-        {/* Campaign Types We Manage */}
-        <ContentRow className="row">
-          <h2>Tipuri de Campanii Google pe care le Gestionăm</h2>
-          <div className="card rounded-4">
-            <StyledUl className="list-group list-group-flush fs-5 p-4">
-              {campaignTypesItems.map((i) => (
-                <li className="list-group-item d-flex gap-2">
-                  <div>
-                    <FontAwesomeIcon icon={i.icon} />
-                  </div>
-                  <div>
-                    <strong>{i.title}</strong> - {i.text}
-                  </div>
-                </li>
-              ))}
-            </StyledUl>
-          </div>
-        </ContentRow>
+        <ProcessList>
+          {processItems.map((item) => (
+            <ProcessItem key={item.title}>
+              <ProcessIconWrapper>
+                <FontAwesomeIcon icon={item.icon} />
+              </ProcessIconWrapper>
+              <ProcessItemContent>
+                <ProcessItemTitle>{item.title}</ProcessItemTitle>
+                <ProcessItemText>{item.text}</ProcessItemText>
+              </ProcessItemContent>
+            </ProcessItem>
+          ))}
+        </ProcessList>
+
+        <SubsectionHeader>
+          <SectionLabel>Tipuri de campanii</SectionLabel>
+          <SectionHeading>
+            Tipuri de Campanii Google pe care le Gestionăm
+          </SectionHeading>
+        </SubsectionHeader>
+        <CampaignTypesGrid>
+          {campaignTypesItems.map((item) => (
+            <CampaignTypeItem key={item.title}>
+              <CampaignTypeIcon>
+                <FontAwesomeIcon icon={item.icon} />
+              </CampaignTypeIcon>
+              <CampaignTypeText>
+                <strong>{item.title}</strong>
+                {item.text}
+              </CampaignTypeText>
+            </CampaignTypeItem>
+          ))}
+        </CampaignTypesGrid>
       </div>
     </StyledSection2>
   );

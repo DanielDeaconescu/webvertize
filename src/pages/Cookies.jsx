@@ -6,7 +6,7 @@ import cookiesHeader from "../assets/cookies_header.jpg";
 import CookiePopup from "../components/Cookies/CookiePopup";
 import BackToTop from "../components/BackToTop";
 import WhatsAppButton from "../components/WhatsAppButton";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 function Cookies() {
   return (
@@ -27,10 +27,10 @@ function Cookies() {
       <Header
         bgImage={cookiesHeader}
         title="Politica de Cookie-uri Webvertize"
-        text1="În prezent, Webvertize nu utilizează cookie-uri pe acest website. În cazul în care acest lucru se va schimba în viitor, vom actualiza această pagină în mod corespunzător și vom explica exact ce date sunt colectate și de ce."
-        page="cookies"
+        text1="Webvertize utilizează cookie-uri de tip publicitar prin Google Ads (gtag.js) pentru măsurarea performanței campaniilor noastre."
+        text2="Nu utilizăm cookie-uri de analiză, sesiune sau personalizare. Prin continuarea navigării, ești de acord cu utilizarea acestor cookie-uri. Le poți dezactiva oricând din setările browserului tău."
       />
-      {/* <MainContent /> */}
+      <MainContent />
     </div>
   );
 }

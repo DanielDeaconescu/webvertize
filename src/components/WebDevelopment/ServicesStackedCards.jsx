@@ -14,18 +14,22 @@ import {
   faClock,
   faStar,
 } from "@fortawesome/free-solid-svg-icons";
+import {
+  SectionLabel,
+  SectionHeading,
+  SectionSubtitle,
+} from "../../styles/shared";
 
 const Section = styled.section`
-  width: 100%;
+  padding: var(--section-padding);
+  border-top: 1px solid var(--color-border);
+`;
+
+const SectionHeader = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 4rem 0;
-
-  @media (max-width: 1200px) {
-    align-items: center;
-    margin-bottom: 1.5rem;
-    padding-top: 0;
-  }
+  gap: 1rem;
+  margin-bottom: 3rem;
 `;
 
 const SectionTitle = styled.h2`
@@ -41,37 +45,40 @@ const Subtitle = styled.p``;
 
 const CardsList = styled.ul`
   list-style: none;
-  width: 75%;
-  margin: 0;
-  margin-bottom: 200px;
   padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 `;
 
 const Card = styled.li`
   position: sticky;
-  top: 6rem;
-  transform-origin: center top;
-  width: 100%;
-
-  border-radius: 1.5rem;
-  padding: 2rem;
-  margin: 0 0 4rem 0;
+  top: ${({ $index }) => `${80 + $index * 12}px`};
+  border-radius: var(--radius-card);
   overflow: hidden;
-  color: white;
-
-  /* Background image */
-  background-image: url(${(props) => props.bg});
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  background-image: url(${({ $bg }) => $bg});
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
-
-  /* Dark overlay */
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 
   &::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.65);
+    background: linear-gradient(
+      to top,
+      rgba(10, 15, 20, 0.97) 0%,
+      rgba(10, 15, 20, 0.75) 50%,
+      rgba(27, 60, 83, 0.4) 100%
+    );
     z-index: 1;
   }
 
@@ -81,29 +88,89 @@ const Card = styled.li`
     z-index: 2;
   }
 
+  @media (max-width: 768px) {
+    top: ${({ $index }) => `${72 + $index * 8}px`};
+    min-height: 260px;
+  }
+`;
+
+const CardInner = styled.div`
+  padding: 2rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
   @media (max-width: 576px) {
-    height: 200px;
-    margin: 0;
-    padding: 1rem;
-  }
-
-  @media (min-width: 576px) and (max-width: 768px) {
-    height: 300px;
-    margin: 0;
-    padding: 1.25rem;
-  }
-
-  @media (min-width: 768px) and (max-width: 992px) {
-    height: 325px;
-    margin: 0;
     padding: 1.5rem;
+    gap: 0.75rem;
   }
+`;
 
-  @media (min-width: 992px) and (max-width: 1200px) {
-    height: 450px;
-    margin: 0;
-    padding: 2rem;
+const StepBadge = styled.span`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+  font-family: var(--font-family);
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+`;
+
+const CardTitle = styled.h3`
+  font-family: var(--font-family);
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+`;
+
+const CardObjective = styled.p`
+  font-family: var(--font-family);
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+  margin: 0;
+  max-width: 680px;
+`;
+
+const DetailsList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem 2rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    display: none;
   }
+`;
+
+const DetailItem = styled.li`
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-family: var(--font-family);
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  line-height: 1.55;
+`;
+
+const DetailIcon = styled.div`
+  color: var(--color-accent);
+  font-size: 0.8rem;
+  margin-top: 2px;
+  flex-shrink: 0;
 `;
 
 const Title = styled.h2`
@@ -140,7 +207,6 @@ const StyledUl = styled.ul`
 
 const StyledLi = styled.li`
   display: flex;
-  /* align-items: center; */
   gap: 0.5rem;
 `;
 
@@ -336,79 +402,52 @@ export default function ServicesStackedCards() {
     },
   ];
 
-  useEffect(() => {
-    const container = document.querySelector(".js-stack-cards");
-    if (!container) return;
-
-    const items = container.getElementsByClassName("js-stack-cards__item");
-    let marginY = 64;
-    const cardHeight = items[0].offsetHeight;
-    const windowHeight = window.innerHeight;
-    let scrolling = false;
-
-    function animate() {
-      const top = container.getBoundingClientRect().top;
-      for (let i = 0; i < items.length; i++) {
-        const scrollOffset = cardHeight + marginY * i + marginY / 2 - top;
-        if (scrollOffset > 0) {
-          const scaling =
-            (this.cardHeight - scrolling * 0.05) / this.cardHeight;
-          items[i].style.transform = `translateY(${
-            marginY * i
-          }px) scale(${scaling})`;
-        } else {
-          items[i].style.transform = `translateY(${marginY * i}px)`;
-        }
-      }
-      scrolling = false;
-    }
-
-    function scrollHandler() {
-      if (scrolling) return;
-      scrolling = true;
-      window.requestAnimationFrame(animate);
-    }
-
-    // initial position
-    for (let i = 0; i < items.length; i++) {
-      items[i].style.transform = `translateY(${marginY * i}px)`;
-    }
-
-    window.addEventListener("scroll", scrollHandler);
-    return () => window.removeEventListener("scroll", scrollHandler);
-  }, []);
-
   return (
-    <Section className="container">
-      <SectionTitle>
-        Procesul nostru – Cum dăm viață proiectului tău
-      </SectionTitle>
-      <Subtitle className="fs-5">
-        O abordare transparentă, pas cu pas, de la idee până la lansare.
-      </Subtitle>
-      <CardsList className="js-stack-cards">
-        {steps.map((step, i) => (
-          <Card key={i} bg={step.image} className="js-stack-cards__item">
-            <Title>{step.title}</Title>
-            <Text className="fs-5">
-              <strong>Obiectiv</strong>: {step.objective}
-            </Text>
-            <StyledUl>
-              {step.list?.map((item, i) => (
-                <StyledLi>
-                  <div>
-                    <FontAwesomeIcon icon={icons[i]} />
-                  </div>
-                  <StyledLiInner className="fs-5">
-                    <strong className="fs-5">{item.itemTitle}</strong>:{" "}
-                    {item.itemText}
-                  </StyledLiInner>
-                </StyledLi>
-              ))}
-            </StyledUl>
-          </Card>
-        ))}
-      </CardsList>
+    <Section>
+      <div className="container">
+        <SectionHeader>
+          <SectionLabel>Procesul nostru</SectionLabel>
+          <SectionHeading>Cum dăm viață proiectului tău</SectionHeading>
+          <SectionSubtitle>
+            O abordare transparentă, pas cu pas, de la idee până la lansare.
+          </SectionSubtitle>
+        </SectionHeader>
+
+        <CardsList>
+          {steps.map((step, i) => (
+            <Card key={step.title} $index={i} $bg={step.image}>
+              <CardInner>
+                <CardTitle>
+                  <StepBadge>{i + 1}</StepBadge>
+                  {step.title}
+                </CardTitle>
+                <CardObjective>{step.objective}</CardObjective>
+                <DetailsList>
+                  {step.list?.map((item, j) => (
+                    <DetailItem key={item.itemTitle}>
+                      <DetailIcon>
+                        <FontAwesomeIcon icon={icons[j]} />
+                      </DetailIcon>
+                      <span>
+                        <strong
+                          style={{
+                            color: "var(--color-text)",
+                            fontWeight: 600,
+                          }}
+                        >
+                          {item.itemTitle}
+                        </strong>
+                        {" — "}
+                        {item.itemText}
+                      </span>
+                    </DetailItem>
+                  ))}
+                </DetailsList>
+              </CardInner>
+            </Card>
+          ))}
+        </CardsList>
+      </div>
     </Section>
   );
 }

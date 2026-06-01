@@ -9,7 +9,7 @@ import WhatsAppButton from "../components/WhatsAppButton";
 import CookiePopup from "../components/Cookies/CookiePopup";
 import BackToTop from "../components/BackToTop";
 import styled from "styled-components";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 const StyledPortfolio = styled.div`
   background-color: #2a4f68;

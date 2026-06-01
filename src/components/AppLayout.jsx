@@ -12,7 +12,6 @@ function AppLayout() {
       <Navigation />
       <Outlet />
       <SideButtons />
-      <WhatsAppButton />
       <BackToTop />
       <CookiePopup />
       <Footer />

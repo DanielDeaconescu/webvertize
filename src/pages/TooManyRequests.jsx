@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 const StyledTooManyRequests = styled.div`
   height: 100vh;
@@ -35,7 +35,6 @@ const StyledLink = styled(Link)`
 `;
 
 function TooManyRequests() {
-  const { t } = useTranslation();
   // Check for the sessionStorage flag - if it doesn't exist, redirect to "/"
   const navigate = useNavigate();
   useEffect(() => {

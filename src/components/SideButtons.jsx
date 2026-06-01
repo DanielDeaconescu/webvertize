@@ -8,20 +8,20 @@ const SideButtonsContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.6rem;
   position: fixed;
-  right: 1rem;
+  right: 1.25rem;
   bottom: 50%;
+  transform: translateY(50%);
   z-index: 9999;
 `;
 
 function SideButtons() {
   return (
-    <>
-      <SideButtonsContainer>
-        <FormButton />
-      </SideButtonsContainer>
-    </>
+    <SideButtonsContainer>
+      <WhatsAppButton />
+      <FormButton />
+    </SideButtonsContainer>
   );
 }
 

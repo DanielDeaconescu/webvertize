@@ -8,19 +8,32 @@ const StyledBackTopButton = styled.button`
   bottom: 1.25rem;
   right: 1.25rem;
   z-index: 100;
-  border: 2px solid #1c3d54;
+  border: 1px solid var(--color-border);
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 3.5rem;
-  height: 3.5rem;
-  color: #1c3d54;
-  background-color: #fff;
+  width: 44px;
+  height: 44px;
+  color: var(--color-text-secondary);
+  background-color: var(--color-surface-2);
+  cursor: pointer;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition),
+    color var(--transition),
+    transform var(--transition);
+
+  &:hover {
+    background-color: var(--color-primary-light);
+    border-color: var(--color-accent);
+    color: var(--color-text);
+    transform: translateY(-2px);
+  }
 `;
 
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
-  font-size: 2rem;
+  font-size: 1.1rem;
 `;
 
 function BackToTop() {
@@ -45,6 +58,7 @@ function BackToTop() {
       onClick={() => {
         window.scrollTo({ top: 0, behavior: "smooth" });
       }}
+      aria-label="Înapoi sus"
     >
       <StyledFontAwesomeIcon icon={faAngleUp} />
     </StyledBackTopButton>

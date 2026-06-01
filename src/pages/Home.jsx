@@ -11,7 +11,7 @@ import homepageHeader from "../assets/homepage_header.jpg";
 import CookiePopup from "../components/Cookies/CookiePopup";
 import styled from "styled-components";
 import BackToTop from "../components/BackToTop";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 const StyledHome = styled.div`
   background-color: hsl(205, 52%, 16%, 0.9);

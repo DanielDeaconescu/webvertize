@@ -9,13 +9,26 @@ import ModalForm from "./ModalForm";
 
 const StyledFormButton = styled.a`
   display: flex;
-  text-decoration: none;
-  font-size: 2rem;
-  color: #1b3c53;
-  background-color: #fff;
-  padding: 5px 2px;
-  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--color-primary-light);
+  color: var(--color-text);
+  font-size: 1.25rem;
   cursor: pointer;
+  text-decoration: none;
+  border: 1px solid var(--color-border);
+  transition:
+    background-color var(--transition),
+    transform var(--transition);
+
+  &:hover {
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+    transform: scale(1.08);
+  }
 `;
 
 function FormButton() {

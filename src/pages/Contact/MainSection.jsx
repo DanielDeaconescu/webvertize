@@ -5,19 +5,120 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const StyledMainSection = styled.div`
-  padding: 4rem 6rem;
-  @media (max-width: 576px) {
-    padding: 1.5rem 2.25rem;
+const StyledMainSection = styled.section`
+  padding: var(--section-padding);
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  background-image: radial-gradient(
+    ellipse 80% 50% at 50% 0%,
+    rgba(0, 194, 203, 0.05) 0%,
+    transparent 70%
+  );
+`;
+
+const ContactGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+`;
+
+const FormColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+`;
+
+const InfoColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+`;
+
+const ColumnHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+`;
+
+const ColumnTitle = styled.h3`
+  font-family: var(--font-family);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0;
+  letter-spacing: -0.02em;
+`;
+
+const ColumnSubtitle = styled.p`
+  font-family: var(--font-family);
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+`;
+
+const StepsList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+`;
+
+const StepItem = styled.li`
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  position: relative;
+
+  &:not(:last-child) {
+    padding-bottom: 1.75rem;
   }
 
-  @media (min-width: 576px) and (max-width: 768px) {
-    padding: 1.75rem 2.625rem;
+  &:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    left: 19px;
+    top: 40px;
+    bottom: 0;
+    width: 1px;
+    background-color: var(--color-border);
   }
+`;
 
-  @media (min-width: 768px) and (max-width: 992px) {
-    padding: 2rem 3rem;
-  }
+const StepNumber = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
+  font-family: var(--font-family);
+  font-size: 0.85rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+`;
+
+const StepText = styled.p`
+  font-family: var(--font-family);
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+  margin: 0;
+  padding-top: 0.6rem;
 `;
 
 const Text = styled.div`
@@ -36,6 +137,12 @@ const StyledUl = styled.ul`
   gap: 1rem;
 `;
 
+const steps = [
+  "Analizăm mesajul tău.",
+  "Te contactăm prin email pentru a programa un apel.",
+  "Discutăm obiectivele tale și vedem dacă suntem potriviți pentru a colabora.",
+];
+
 function MainSection() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
@@ -53,56 +160,47 @@ function MainSection() {
     });
 
     if (res.ok) {
-      handleLoading(false);
-      document.body.classList.remove("modal-open");
-      document.querySelectorAll(".modal-backdrop").forEach((el) => el.remove());
+      setIsLoading(false);
       sessionStorage.setItem("formSubmitted", "true");
       navigate("/thank-you");
     } else if (res.status === 429) {
-      handleLoading(false);
-      document.body.classList.remove("modal-open");
-      document.querySelectorAll(".modal-backdrop").forEach((el) => el.remove());
+      setIsLoading(false);
       sessionStorage.setItem("tooManyRequests", "true");
       navigate("/too-many-requests");
     } else if (res.status === 400) {
-      handleLoading(false);
-      // toast.error('Captcha verification failed!');
+      setIsLoading(false);
     }
   }
 
   return (
-    <StyledMainSection className="container">
-      <div className="row">
-        {/* Contact Form */}
-        <div className="col-md-6 mb-4">
-          <Text>
-            <h3>Hai să începem conversația</h3>
-            <p className="fs-5">
-              Completează formularul și te contactăm în cel mai scurt timp.
-            </p>
-          </Text>
+    <StyledMainSection>
+      <div className="container">
+        <ContactGrid>
+          <FormColumn>
+            <ColumnHeader>
+              <ColumnTitle>Hai să începem conversația</ColumnTitle>
+              <ColumnSubtitle>
+                Completează formularul și te contactăm în cel mai scurt timp.
+              </ColumnSubtitle>
+            </ColumnHeader>
 
-          <Form onValidSubmit={handleValidSubmit} isLoading={isLoading} />
-        </div>
-        {/* CTA */}
-        <div className="col-md-6">
-          <h3>La ce să te aștepți</h3>
-          <StyledUl>
-            <li className="fs-5">
-              <FontAwesomeIcon icon={fa1} />
-              Analizăm mesajul tău.
-            </li>
-            <li className="fs-5">
-              <FontAwesomeIcon icon={fa2} />
-              Te contactăm prin email pentru a programa un apel.
-            </li>
-            <li className="fs-5">
-              <FontAwesomeIcon icon={fa3} />
-              Discutăm obiectivele tale și vedem dacă suntem potriviți pentru a
-              colabora.
-            </li>
-          </StyledUl>
-        </div>
+            <Form onValidSubmit={handleValidSubmit} isLoading={isLoading} />
+          </FormColumn>
+
+          <InfoColumn>
+            <ColumnHeader>
+              <ColumnTitle>La ce să te aștepți</ColumnTitle>
+            </ColumnHeader>
+            <StepsList>
+              {steps.map((step, i) => (
+                <StepItem>
+                  <StepNumber>{i + 1}</StepNumber>
+                  <StepText>{step}</StepText>
+                </StepItem>
+              ))}
+            </StepsList>
+          </InfoColumn>
+        </ContactGrid>
       </div>
     </StyledMainSection>
   );

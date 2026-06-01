@@ -8,7 +8,7 @@ import MainSection from "./Contact/MainSection";
 import CookiePopup from "../components/Cookies/CookiePopup";
 import BackToTop from "../components/BackToTop";
 import styled from "styled-components";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 const StyledContact = styled.div`
   background-color: rgba(58, 97, 122, 0.8);

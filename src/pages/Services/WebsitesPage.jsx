@@ -12,7 +12,7 @@ import Header from "../../components/Header";
 import websitesHeader from "../../assets/websites_header.jpg";
 import WebsitesIntro from "../../components/WebDevelopment/WebsitesIntro";
 import WebsitesFeatures from "../../components/WebDevelopment/WebsitesFeatures";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 const StyledWebsitesPage = styled.div`
   background-color: hsl(203, 53%, 13%, 0.9);

@@ -4,14 +4,33 @@ import styled from "styled-components";
 
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
   font-size: 2rem;
-  color: ${(props) => (props.color === "light" ? "#fff" : "#1b3c53")};
+  color: ${(props) =>
+    props.color === "light"
+      ? "var(--color-text-secondary)"
+      : "var(--color-primary)"};
+  transition: color var(--transition);
+`;
+
+const StyledAnchor = styled.a`
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+
+  &:hover ${StyledFontAwesomeIcon} {
+    color: var(--color-accent);
+  }
 `;
 
 function FacebookIcon({ color }) {
   return (
-    <a href="https://www.facebook.com/webvertize/" target="_blank">
+    <StyledAnchor
+      href="https://www.facebook.com/webvertize/"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Webvertize pe Facebook"
+    >
       <StyledFontAwesomeIcon icon={faFacebook} color={color} />
-    </a>
+    </StyledAnchor>
   );
 }
 

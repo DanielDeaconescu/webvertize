@@ -1,7 +1,7 @@
-import imgWebsites1 from "../../assets/portfolio/websites/website1.jpg";
-import imgWebsites2 from "../../assets/portfolio/websites/website2.jpg";
+import imgWebsites1 from "../../assets/portfolio/websites/website1.png";
+import imgWebsites2 from "../../assets/portfolio/websites/website2.png";
 import imgWebsites3 from "../../assets/portfolio/websites/website3.png";
-import imgWebApps1 from "../../assets/portfolio/web_apps/web_app1.jpg";
+import imgWebApps1 from "../../assets/portfolio/web_apps/web_app1.png";
 import imgContent1 from "../../assets/portfolio/content_creation/content1.png";
 import imgContent2 from "../../assets/portfolio/content_creation/content2.png";
 import imgContent3 from "../../assets/portfolio/content_creation/reel_thumbs_up.png";
@@ -14,9 +14,48 @@ import edionTransLogo from "../../assets/portfolio/logos/ediontrans_logo.svg";
 import certicorpLogo from "../../assets/portfolio/logos/certicorp_logo_v4.svg";
 import fixaziLogo from "../../assets/portfolio/logos/fixazi_logo2_nobg.png";
 import senorExpertLogo from "../../assets/portfolio/logos/senorexpert_logo.svg";
+import { SectionLabel, SectionHeading } from "../../styles/shared";
 
 const StyledSectionWebsites = styled.div`
-  padding: 2.5rem 0 4rem;
+  padding: var(--section-padding);
+`;
+
+const CategorySection = styled.section`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  &:not(:last-child) {
+    margin-bottom: 4rem;
+  }
+`;
+
+const CategoryHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+`;
+
+const CategorySubtitle = styled.p`
+  font-family: var(--font-family);
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+  margin: 0;
+`;
+
+const ProjectsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const StyledP = styled.p`
@@ -324,33 +363,55 @@ function SectionWebsites() {
 
   return (
     <StyledSectionWebsites className="container">
-      {/* Websites */}
-      <section className="mb-4">
-        <h2>Website-uri</h2>
-        <StyledP className="fs-5">
-          Proiecte livrate — fiecare cu provocări diferite și soluții construite
-          de la zero.
-        </StyledP>
-        <div className="container">{renderCards(websites)}</div>
-      </section>
-      {/* Web Apps */}
-      <section className="mb-4">
-        <h2>Aplicații Web</h2>
-        <StyledP className="fs-5">
-          Instrumente interne și aplicații web care eficientizează procesele de
-          business și cresc productivitatea.
-        </StyledP>
-        <div className="container">{renderCards(webApps)}</div>
-      </section>
-      {/* Content Creation */}
-      <section className="mb-4">
-        <h2>Creare de Conținut</h2>
-        <StyledP className="fs-5">
-          Materiale publicitare, grafică și proiecte media create pentru a
-          atrage atenția publicului tău.
-        </StyledP>
-        <div className="container">{renderCards(content)}</div>
-      </section>
+      <CategorySection>
+        <CategoryHeader>
+          <SectionLabel>Portofoliu</SectionLabel>
+          <SectionHeading>Website-uri</SectionHeading>
+          <CategorySubtitle>
+            Proiecte livrate — fiecare cu provocări diferite și soluții
+            construite de la zero.
+          </CategorySubtitle>
+        </CategoryHeader>
+        <ProjectsGrid>
+          {websites.map((project) => (
+            <CardFlip key={project.name} project={project} />
+          ))}
+        </ProjectsGrid>
+      </CategorySection>
+      <CategorySection>
+        <CategoryHeader>
+          <SectionLabel>Portofoliu</SectionLabel>
+          <SectionHeading>Aplicații Web</SectionHeading>
+          <CategorySubtitle>
+            Instrumente interne și aplicații web care eficientizează procesele
+            de business și cresc productivitatea.
+          </CategorySubtitle>
+        </CategoryHeader>
+        <ProjectsGrid>
+          {webApps.map((project) => (
+            <CardFlip key={project.name} project={project} />
+          ))}
+        </ProjectsGrid>
+      </CategorySection>
+
+      <CategorySection>
+        <CategoryHeader>
+          <SectionLabel>Portofoliu</SectionLabel>
+          <SectionHeading>Creare de Conținut</SectionHeading>
+          <CategorySubtitle>
+            Materiale publicitare, grafică și proiecte media create pentru a
+            atrage atenția publicului tău.
+          </CategorySubtitle>
+        </CategoryHeader>
+        <ProjectsGrid>
+          {content.map((project) => (
+            <CardFlip
+              key={project.name + project.card_title}
+              project={project}
+            />
+          ))}
+        </ProjectsGrid>
+      </CategorySection>
     </StyledSectionWebsites>
   );
 }

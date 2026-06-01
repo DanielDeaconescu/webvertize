@@ -1,16 +1,32 @@
 import {
-  faArrowRightToBracket,
   faComments,
   faImages,
+  faArrowRightToBracket,
   faMapLocationDot,
-  faMessage,
+  faEnvelope,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useTranslation } from "react-i18next";
 import styled from "styled-components";
+import {
+  SectionLabel,
+  SectionHeading,
+  SectionSubtitle,
+  FeatureCard,
+  FeatureIconWrapper,
+  FeatureTitle,
+  FeatureText,
+} from "../../styles/shared";
 
 const StyledWebsitesFeatures = styled.div`
-  /* border: 1px solid white; */
+  padding: var(--section-padding);
+  border-top: 1px solid var(--color-border);
+`;
+
+const SectionHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
 `;
 
 const StyledSection2 = styled.section`
@@ -19,6 +35,23 @@ const StyledSection2 = styled.section`
   justify-content: center;
   align-items: center;
   padding: 2rem;
+`;
+
+const FeaturesGrid = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const FeaturesImg = styled.img`
@@ -45,22 +78,27 @@ const StyledFontAwesomeIocn = styled(FontAwesomeIcon)`
 function WebsitesFeatures() {
   const cardItems = [
     {
+      icon: faComments,
       title: "Chat live",
       text: "Comunicare directă cu vizitatorii site-ului, în timp real.",
     },
     {
+      icon: faImages,
       title: "Prezentări de produse",
       text: "Galerii interactive și prezentări vizuale pentru a evidenția produsele și serviciile tale.",
     },
     {
+      icon: faEnvelope,
       title: "Formulare",
       text: "Formulare de contact și solicitări, stocate în siguranță în baza de date.",
     },
     {
+      icon: faArrowRightToBracket,
       title: "Funcționalitate de autentificare",
       text: "Autentificare securizată și panou de administrare pentru gestionarea conținutului.",
     },
     {
+      icon: faMapLocationDot,
       title: "Hărți și elemente interactive",
       text: "Hărți, media încorporată și alte elemente interactive adaptate afacerii tale.",
     },
@@ -69,43 +107,25 @@ function WebsitesFeatures() {
   return (
     <StyledWebsitesFeatures>
       <div className="container">
-        {/* Features & Capabilities */}
-        <StyledSection2>
-          <div className="row">
-            <h2 className="mb-3">Funcționalități și capabilități</h2>
-            <div className="col-12 mb-4">
-              <StyledP className="fs-5 mb-4">
-                Construim website-uri de prezentare și le extindem cu
-                funcționalități personalizate în funcție de nevoile afacerii
-                tale:
-              </StyledP>
-
-              <div>
-                <StyledUl className="fs-5 row">
-                  {cardItems.map((item) => (
-                    <li>
-                      <div className="card rounded-4">
-                        <div className="card-body">
-                          <div className="card-title">
-                            <div className="d-flex gap-2">
-                              <div>
-                                <StyledFontAwesomeIocn icon={faComments} />
-                              </div>
-                              <div>
-                                <strong>{item.title}</strong>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="card-text">{item.text}</div>
-                        </div>
-                      </div>
-                    </li>
-                  ))}
-                </StyledUl>
-              </div>
-            </div>
-          </div>
-        </StyledSection2>
+        <SectionHeader>
+          <SectionLabel>Capabilități</SectionLabel>
+          <SectionHeading>Funcționalități și capabilități</SectionHeading>
+          <SectionSubtitle>
+            Construim website-uri de prezentare și le extindem cu
+            funcționalități personalizate în funcție de nevoile afacerii tale:
+          </SectionSubtitle>
+        </SectionHeader>
+        <FeaturesGrid>
+          {cardItems.map((item) => (
+            <FeatureCard>
+              <FeatureIconWrapper>
+                <FontAwesomeIcon icon={item.icon} />
+              </FeatureIconWrapper>
+              <FeatureTitle>{item.title}</FeatureTitle>
+              <FeatureText>{item.text}</FeatureText>
+            </FeatureCard>
+          ))}
+        </FeaturesGrid>
       </div>
     </StyledWebsitesFeatures>
   );

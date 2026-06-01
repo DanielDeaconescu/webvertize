@@ -7,10 +7,117 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { SectionLabel, SectionHeading } from "../../styles/shared";
 
 const StyledSection1 = styled.section`
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+  padding: var(--section-padding);
+  border-top: 1px solid var(--color-border);
+`;
+
+const ItemsList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+`;
+
+const Item = styled.li`
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  gap: 1.5rem;
+  padding: 1.75rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(---color-border);
+  border-radius: var(--radius-card);
+  transition: border-color var(--transition);
+
+  &:hover {
+    border-color: var(--color-accent);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const ItemContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+`;
+
+const ItemTitleRow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--color-text);
+`;
+
+const ItemIcon = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  color: var(--color-accent);
+  font-size: 1rem;
+  flex-shrink: 0;
+`;
+
+const ItemTitle = styled.h3`
+  font-family: var(--font-family);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0;
+  letter-spacing: -0.01em;
+`;
+
+const ItemDescription = styled.p`
+  font-family: var(--font-family);
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+  margin: 0;
+`;
+
+const InnerList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+`;
+
+const InnerListItem = styled.li`
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-family: var(--font-family);
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  line-height: 1.55;
+`;
+
+const CheckIcon = styled.div`
+  color: var(--color-accent);
+  font-size: 0.8rem;
+  margin-top: 2px;
+  flex-shrink: 0;
+`;
+
+const SectionHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
 `;
 
 const Title = styled.h2``;
@@ -24,33 +131,11 @@ const Description = styled.p`
   font-size: 1.2rem;
 `;
 
-const InnerTitle = styled.h4``;
-
 const StyledUl = styled.ul`
   list-style-type: none;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-`;
-
-const Item = styled.li`
-  border: 1px solid #f0f0f0;
-  padding: 1rem;
-  border-radius: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-const ItemTitle = styled.div`
-  font-size: 1.4rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-`;
-
-const ItemDescription = styled.div`
-  padding-left: 1rem;
 `;
 
 const InnerUl = styled.ul`
@@ -66,17 +151,27 @@ const InnerUlItem = styled.li`
 `;
 
 const StyledLink = styled(Link)`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1.25rem;
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-btn);
+  color: var(--color-text-secondary);
+  font-family: var(--font-family);
+  font-size: 0.85rem;
+  font-weight: 500;
   text-decoration: none;
-  background-color: #182f3f;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  color: #fff;
-  transition: all 0.3s ease;
-  border: 2px solid #182f3f;
   white-space: nowrap;
+  align-self: flex-start;
+  transition:
+    border-color var(--transition),
+    color var(--transition);
 
   &:hover {
-    background-color: #203d52;
+    border-color: var(--color-accent);
+    color: var(--color-accent);
   }
 `;
 
@@ -117,34 +212,41 @@ function Section1() {
   ];
 
   return (
-    <StyledSection1 className="container">
-      <Title>Creare de Conținut pentru Reclame</Title>
-      <StyledUl className="fs-5">
-        {items.map((i, index) => (
-          <Item className="row">
-            <div className="col-md-10">
-              <ItemTitle>
-                <FontAwesomeIcon icon={i.icon} />
-                {i.title}
-              </ItemTitle>
-              <ItemDescription>{i.text}</ItemDescription>
-              <InnerUl>
-                {i.list.map((n) => (
-                  <InnerUlItem>
-                    <FontAwesomeIcon icon={faSquareCheck} />
-                    {n}
-                  </InnerUlItem>
-                ))}
-              </InnerUl>
-            </div>
-            {index !== 2 && (
-              <div className="col-md-2">
+    <StyledSection1>
+      <div className="container">
+        <SectionHeader>
+          <SectionLabel>Creare de conținut</SectionLabel>
+          <SectionHeading>Creare de Conținut pentru Reclame</SectionHeading>
+        </SectionHeader>
+        <ItemsList>
+          {items.map((item) => (
+            <Item key={item.title}>
+              <ItemContent>
+                <ItemTitleRow>
+                  <ItemIcon>
+                    <FontAwesomeIcon icon={item.icon} />
+                  </ItemIcon>
+                  <ItemTitle>{item.title}</ItemTitle>
+                </ItemTitleRow>
+                <ItemDescription>{item.text}</ItemDescription>
+                <InnerList>
+                  {item.list.map((n) => (
+                    <InnerListItem key={n}>
+                      <CheckIcon>
+                        <FontAwesomeIcon icon={faSquareCheck} />
+                      </CheckIcon>
+                      {n}
+                    </InnerListItem>
+                  ))}
+                </InnerList>
+              </ItemContent>
+              {item.title !== "Vizualuri Optimizate pentru Google Ads" && (
                 <StyledLink to="/portfolio">Vezi Proiecte</StyledLink>
-              </div>
-            )}
-          </Item>
-        ))}
-      </StyledUl>
+              )}
+            </Item>
+          ))}
+        </ItemsList>
+      </div>
     </StyledSection1>
   );
 }
