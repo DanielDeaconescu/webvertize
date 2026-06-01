@@ -178,7 +178,7 @@ function LandingContactForm({ type, onSubmitHandler, loading, showForm }) {
     reset,
   } = useForm({
     defaultValues: {
-      package: "",
+      package: type,
     },
   });
   const ref = useRef(null);
