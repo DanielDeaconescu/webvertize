@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import ctaImage from "../assets/CTA_image.jpg";
 import ModalForm from "./ModalForm";
 import { SectionHeading } from "../styles/shared";
+import toast from "react-hot-toast";
 
 const CTAWrapper = styled.div`
   position: relative;
@@ -99,9 +100,12 @@ function CTA({ title, text }) {
   const [showForm, setShowForm] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  async function handleValidSubmit(data) {
-    setIsLoading(true);
+  function handleLoading(bool) {
+    setIsLoading(bool);
+  }
 
+  async function handleValidSubmit(data) {
+    handleLoading(true);
     const res = await fetch("/api/contact", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -109,15 +113,16 @@ function CTA({ title, text }) {
     });
 
     if (res.ok) {
-      setIsLoading(false);
-      setShowForm(false);
+      handleLoading(false);
       sessionStorage.setItem("formSubmitted", "true");
       navigate("/thank-you");
     } else if (res.status === 429) {
-      setIsLoading(false);
-      setShowForm(false);
+      handleLoading(false);
       sessionStorage.setItem("tooManyRequests", "true");
       navigate("/too-many-requests");
+    } else if (res.status === 400) {
+      handleLoading(false);
+      toast.error("Captcha verification failed!");
     }
   }
 

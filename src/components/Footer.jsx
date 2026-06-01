@@ -9,6 +9,7 @@ import Modal from "./Modal";
 import Form from "./Form";
 import { Link } from "react-router-dom";
 import ModalForm from "./ModalForm";
+import toast from "react-hot-toast";
 
 const StyledFooter = styled.footer`
   padding: clamp(2.5rem, 5vw, 4rem) 0;
@@ -123,13 +124,14 @@ function Footer() {
   const navigate = useNavigate();
   const [showForm, setShowForm] = useState(false);
 
-  async function handleSubmit(e) {
-    e.preventDefault();
+  const [isLoading, setIsLoading] = useState(false);
 
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData.entries());
+  function handleLoading(bool) {
+    setIsLoading(bool);
+  }
 
-    // send to Vercel API route
+  async function handleValidSubmit(data) {
+    handleLoading(true);
     const res = await fetch("/api/contact", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -137,23 +139,16 @@ function Footer() {
     });
 
     if (res.ok) {
-      // Navigate to the thank-you page
-      // 1. Removing Bootstrap's modal-backdrop
-      document.body.classList.remove("modal-open");
-      document.querySelectorAll(".modal-backdrop").forEach((el) => el.remove());
-      setShowForm(false);
-      // 2. Setting a flag in the SessionStorage
+      handleLoading(false);
       sessionStorage.setItem("formSubmitted", "true");
-      // 3. Navigating to the thank-you page
       navigate("/thank-you");
     } else if (res.status === 429) {
-      document.body.classList.remove("modal-open");
-      document.querySelectorAll(".modal-backdrop").forEach((el) => el.remove());
-      setShowForm(false);
-      // setting a flag in sessionStorage
+      handleLoading(false);
       sessionStorage.setItem("tooManyRequests", "true");
       navigate("/too-many-requests");
-      return;
+    } else if (res.status === 400) {
+      handleLoading(false);
+      toast.error("Captcha verification failed!");
     }
   }
 
@@ -209,7 +204,7 @@ function Footer() {
         title="Formular de contact"
         onClose={() => setShowForm(false)}
       >
-        <Form onSubmit={handleSubmit} />
+        <Form onValidSubmit={handleValidSubmit} isLoading={isLoading} />
       </ModalForm>
     </>
   );

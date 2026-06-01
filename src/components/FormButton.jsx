@@ -55,16 +55,10 @@ function FormButton() {
 
     if (res.ok) {
       handleLoading(false);
-      document.body.classList.remove("modal-open");
-      document.querySelectorAll(".modal-backdrop").forEach((el) => el.remove());
-      setShowForm(false);
       sessionStorage.setItem("formSubmitted", "true");
       navigate("/thank-you");
     } else if (res.status === 429) {
       handleLoading(false);
-      document.body.classList.remove("modal-open");
-      document.querySelectorAll(".modal-backdrop").forEach((el) => el.remove());
-      setShowForm(false);
       sessionStorage.setItem("tooManyRequests", "true");
       navigate("/too-many-requests");
     } else if (res.status === 400) {

@@ -197,12 +197,10 @@ function Header({
 
     if (res.ok) {
       handleLoading(false);
-      setShowForm(false);
       sessionStorage.setItem("formSubmitted", "true");
       navigate("/thank-you");
     } else if (res.status === 429) {
       handleLoading(false);
-      setShowForm(false);
       sessionStorage.setItem("tooManyRequests", "true");
       navigate("/too-many-requests");
     } else if (res.status === 400) {
