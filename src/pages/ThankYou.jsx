@@ -102,6 +102,7 @@ function ThankYou() {
 
     sessionStorage.removeItem("formSubmitted");
     sessionStorage.removeItem("landingFormSubmitted");
+    setAllowed(true);
   }, [navigate]);
 
   if (!allowed) return null;
