@@ -123,11 +123,11 @@ const Spinner = styled.div`
   border: 2px solid rgba(0, 0, 0, 0.2);
   border-top-color: var(--color-bg);
   border-radius: 50%;
-  animation: spin 0.7s llinear infinite;
+  animation: spin 0.7s linear infinite;
 
   @keyframes spin {
     to {
-      transform: roatate(360deg);
+      transform: rotate(360deg);
     }
   }
 `;
