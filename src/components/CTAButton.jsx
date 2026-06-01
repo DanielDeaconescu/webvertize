@@ -4,72 +4,70 @@ import styled from "styled-components";
 import LandingContactForm from "./LandingContactForm";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { useForm } from "react-hook-form";
 
 const RequestButton = styled.button`
   display: flex;
+  align-items: center;
   justify-content: center;
   width: 100%;
-  background-color: ${(props) =>
-    props.type === "standard"
-      ? "#1b3c53"
-      : props.type === "cta"
-        ? "#F25912"
-        : "transparent"};
-  color: ${(props) =>
-    props.type === "standard" || props.type === "cta" ? "#fff" : "#1b3c53"};
-  border: ${(props) =>
-    props.type === "standard" || props.type === "cta"
-      ? "none"
-      : "3px solid #1b3c53"};
-  border-radius: 0.5rem;
-  align-self: center;
   padding: 0.75rem 1.5rem;
   margin-top: auto;
-  font-size: 1.125rem;
+  border-radius: var(--radius-btn);
+  font-family: var(--font-family);
+  font-size: 0.95rem;
   font-weight: 600;
   letter-spacing: 0.02em;
-  transition: all 0.2s ease;
   cursor: pointer;
+  transition:
+    background-color var(--transition),
+    transform var(--transition),
+    box-shadow var(--transition);
 
-  ${(props) =>
-    props.type === "standard" &&
-    `
-    &:hover {
-      background-color: #16303f;
-      transform: translateY(-1px);
-    }
-  `}
+  background-color: ${({ type }) => {
+    if (type === "standard") return "var(--color-accent)";
+    if (type === "cta") return "#f25912";
+    return "transparent";
+  }};
 
-  ${(props) =>
-    props.type === "cta" &&
-    `
+  color: ${({ type }) =>
+    type === "standard" || type === "cta"
+      ? "var(--color-bg)"
+      : "var(--color-text)"};
+  border: ${({ type }) =>
+    type === "standard" || type === "cta"
+      ? "none"
+      : "1px solid var(--color-border)"};
+
   &:hover {
-    background-color: #d94e0f;
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    background-color: ${({ type }) => {
+      if (type === "standard") return "var(--color-accent-dim)";
+      if (type === "cta") return "#d94e0f";
+      return "var(--color-surface-2)";
+    }};
+    border-color: ${({ type }) =>
+      type === "basic" || type === "premium"
+        ? "var(--color-accent)"
+        : "transparent"};
+    color: ${({ type }) =>
+      type === "basic" || type === "premium"
+        ? "var(--color-accent)"
+        : "var(--color-bg)"};
+    box-shadow: ${({ type }) =>
+      type === "cta"
+        ? "0 8px 24px rgba(242, 89, 18, 0.3)"
+        : type === "standard"
+          ? "0 8px 24px rgba(0, 194, 203, 0.2)"
+          : "none"};
   }
-`}
-
-${(props) =>
-    (props.type === "basic" || props.type === "premium") &&
-    `
-  &:hover {
-    background-color: #1b3c53;
-    color: #fff;
-    transform: translateY(-1px);
-  }
-`}
 `;
 
 function CTAButton({ type }) {
-  const [showForm, setShowForm] = useState();
-  const [selectedPackage, _] = useState(type);
+  const [showForm, setShowForm] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const { reset } = useForm();
 
   async function submitHandler(data) {
-    console.log("data in submitHandler: ", data);
     setLoading(true);
 
     const res = await fetch("/api/packageForm", {
@@ -81,16 +79,10 @@ function CTAButton({ type }) {
     const resData = await res.json();
 
     if (res.ok) {
-      document.body.classList.remove("modal-open");
-      document.querySelectorAll(".modal-backdrop").forEach((el) => el.remove());
-      setShowForm(false);
       setLoading(false);
       sessionStorage.setItem("landingFormSubmitted", "true");
       navigate("/thank-you");
     } else if (res.status === 429) {
-      document.body.classList.remove("modal-open");
-      document.querySelectorAll(".modal-backdrop").forEach((el) => el.remove());
-      setShowForm(false);
       setLoading(false);
       sessionStorage.setItem("tooManyRequests", "true");
       navigate("/too-many-requests");
@@ -116,7 +108,6 @@ function CTAButton({ type }) {
           onSubmitHandler={submitHandler}
           loading={loading}
           type={type}
-          selectedPackage={selectedPackage}
           showForm={showForm}
         />
       </ModalForm>

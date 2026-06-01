@@ -2,6 +2,7 @@ import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
+import { SectionLabel, SectionHeading } from "../styles/shared";
 
 const testimonials = [
   {
@@ -25,20 +26,94 @@ const testimonials = [
 ];
 
 const StyledLandingTestimonials = styled.div`
-  background-color: #fff;
-  border-radius: 1rem;
-  margin: 0 2rem 2rem 2rem;
-  padding: 3rem 2rem;
-  color: #000;
-  @media (max-width: 768px) {
-    margin: 0 1rem 1.5rem 1rem;
-    padding: 2rem 1.5rem;
+  padding: var(--section-padding);
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+`;
+
+const SectionHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+`;
+
+const Subtitle = styled.p`
+  font-family: var(--font-family);
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+`;
+
+const CardsContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  @media (min-width: 768px) and (max-width: 1024px) {
-    margin: 0 1.5rem 1.5rem 1.5rem;
-    padding: 2.5rem 1.5rem;
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
   }
+`;
+
+const RatingCard = styled.div`
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition:
+    border-color var(--transition),
+    transform var(--transition);
+
+  &:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-3px);
+  }
+`;
+
+const CardHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const StarsContainer = styled.div`
+  display: flex;
+  gap: 0.2rem;
+  color: #f59e0b;
+  font-size: 0.85rem;
+`;
+
+const GoogleIcon = styled(FontAwesomeIcon)`
+  color: var(--color-text-muted);
+  font-size: 1rem;
+`;
+
+const ReviewText = styled.div`
+  font-family: var(--font-family);
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  font-style: italic;
+  margin: 0;
+  flex-grow: 1;
+`;
+
+const ClientInfo = styled.div`
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
 `;
 
 const Title = styled.h3`
@@ -55,109 +130,72 @@ const Title = styled.h3`
   }
 `;
 
-const Subtitle = styled.p`
-  color: #4b5563;
-  font-size: 1rem;
-  line-height: 1.6;
-  margin-top: 0.5rem;
-`;
-
-const CardsContainer = styled.div`
-  display: flex;
-  gap: 1.5rem;
-  margin-top: 2rem;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
-
-  @media (min-width: 768px) and (max-width: 1024px) {
-    flex-direction: column;
-  }
-`;
-
-const RatingCard = styled.div`
-  background-color: #f9fafb;
-  border-radius: 0.75rem;
-  padding: 1.5rem;
-  flex: 1;
-  border: 1px solid #e5e7eb;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-
-  @media (max-width: 768px) {
-    padding: 1.25rem;
-  }
-`;
-
-const CardHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const StarsContainer = styled.div`
-  display: flex;
-  color: #f59e0b;
-  font-size: 0.875rem;
-  gap: 0.25rem;
-`;
-
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
   color: #4b5563;
   font-size: 1rem;
 `;
 
-const ReviewText = styled.div`
-  color: #4b5563;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  font-style: italic;
-`;
-
-const ClientInfo = styled.div`
-  margin-top: auto;
-  padding-top: 0.75rem;
-  border-top: 1px solid #e5e7eb;
-`;
-
 const ClientName = styled.div`
-  color: #1b3c53;
+  font-family: var(--font-family);
+  font-size: 0.875rem;
   font-weight: 600;
-  font-size: 0.95rem;
+  color: var(--color-text);
 `;
 
 const BusinessType = styled.div`
-  color: #9ca3af;
-  font-size: 0.85rem;
+  font-family: var(--font-family);
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+`;
+
+const PendingNote = styled.div`
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 0.3rem 0.75rem;
+  border-radius: 99px;
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  font-family: var(--font-family);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 1rem;
 `;
 
 function LandingTestimonials() {
   return (
     <StyledLandingTestimonials>
-      <Title>Ce spun clienții noștri</Title>
-      <p>Recenzii reale de la afaceri locale care au ales Webvertize</p>
-      <CardsContainer>
-        {testimonials.map((item) => (
-          <RatingCard>
-            <CardHeader>
-              <StarsContainer>
-                {item.stars.map((item) => (
-                  <FontAwesomeIcon icon={faStar} />
-                ))}
-              </StarsContainer>
-              <StyledFontAwesomeIcon icon={faGoogle} />
-            </CardHeader>
-
-            <ReviewText>{item.text}</ReviewText>
-            <ClientInfo>
-              <ClientName>{item.name}</ClientName>
-              <BusinessType>{item.business}</BusinessType>
-            </ClientInfo>
-          </RatingCard>
-        ))}
-      </CardsContainer>
+      <div className="container">
+        <SectionHeader>
+          <SectionLabel>Recenzii</SectionLabel>
+          <SectionHeading>Ce spun clienții noștri</SectionHeading>
+          <Subtitle>
+            Recenzii reale de la afaceri locale care au ales Webvertize.
+          </Subtitle>
+          <PendingNote>⏳ Recenzii în curs de colectare</PendingNote>
+        </SectionHeader>
+        <CardsContainer>
+          {testimonials.map((item) => (
+            <RatingCard key={item.business}>
+              <CardHeader>
+                <StarsContainer>
+                  {item.stars.map((star) => (
+                    <FontAwesomeIcon key={star} icon={faStar} />
+                  ))}
+                </StarsContainer>
+                <GoogleIcon icon={faGoogle} />
+              </CardHeader>
+              <ReviewText>"{item.text}"</ReviewText>
+              <ClientInfo>
+                <ClientName>{item.name}</ClientName>
+                <BusinessType>{item.business}</BusinessType>
+              </ClientInfo>
+            </RatingCard>
+          ))}
+        </CardsContainer>
+      </div>
     </StyledLandingTestimonials>
   );
 }

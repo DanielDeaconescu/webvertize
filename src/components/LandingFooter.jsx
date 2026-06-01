@@ -3,36 +3,47 @@ import Logo from "./Logo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopyright } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import Footer from "./Footer";
 
 const StyledFooter = styled.footer`
-  display: flex;
-  padding: 2rem 1rem;
-  background-color: rgb(34, 40, 49);
-  color: #fff;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
-  margin: 0 2rem;
-
-  @media (max-width: 576px) {
-    margin: 0 1rem 0 1rem;
-  }
+  padding: 2rem 0;
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text);
 `;
 
 const FooterRow = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
   width: 100%;
-  padding: 0.5rem 0;
 
   @media (max-width: 768px) {
-    display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.5rem;
     text-align: center;
+  }
+`;
+
+const Copyright = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  font-family: var(--font-family);
+  font-size: var(--font-small);
+  color: var(--color-text-muted);
+`;
+
+const WhatsAppLink = styled.a`
+  font-family: var(--font-family);
+  font-size: var(--font-small);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color var(--transition);
+
+  &:hover {
+    color: #25d366;
   }
 `;
 
@@ -42,30 +53,6 @@ const LogoWrapper = styled.div`
 
   @media (max-width: 768px) {
     justify-content: center;
-  }
-`;
-
-const Copyright = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.7);
-  @media (max-width: 768px) {
-    justify-content: center;
-  }
-`;
-
-const WhatsAppLink = styled.a`
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.875rem;
-  text-decoration: none;
-
-  &:hover {
-    color: #fff;
-    text-decoration: underline;
   }
 `;
 
@@ -83,35 +70,18 @@ const FooterYear = styled.div`
   }
 `;
 
-const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
-  color: #fff;
-`;
-
 function LandingFooter() {
-  const [now] = useState(() => Date.now());
-  const date = new Date(now);
-  const year = date.getFullYear();
+  const year = new Date().getFullYear();
 
   return (
     <StyledFooter>
-      <FooterRow>
-        <LogoWrapper>
-          <Logo theme={"light"} />
-        </LogoWrapper>
-        {/* Copyright */}
-        <Copyright>
-          <div className="d-flex gap-1 align-items-center">
-            <FontAwesomeIcon icon={faCopyright} />
-            <CopyrightText>
-              Webvertize SRL - Toate drepturile rezervate.
-            </CopyrightText>
-          </div>
-
-          {/* Year */}
-          <FooterYear>{year}</FooterYear>
-        </Copyright>
-        {/* WhatsApp link */}
-        <div>
+      <div className="container">
+        <FooterRow>
+          <Logo theme="light" />
+          <Copyright>
+            <span>© {year} Webvertize SRL</span>
+            <span>Toate drepturile rezervate.</span>
+          </Copyright>
           <WhatsAppLink
             href="https://wa.me/+40775511874"
             target="_blank"
@@ -119,8 +89,8 @@ function LandingFooter() {
           >
             Contactează-ne pe WhatsApp
           </WhatsAppLink>
-        </div>
-      </FooterRow>
+        </FooterRow>
+      </div>
     </StyledFooter>
   );
 }

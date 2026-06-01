@@ -1,31 +1,175 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { set, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import LoadingSpinner from "./LoadingSpinner";
 import styled from "styled-components";
 
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
+  gap: 0;
+`;
+
+const FormGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+`;
+
+const StyledLabel = styled.label`
+  font-family: var(--font-family);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+`;
+
+const OptionalTag = styled.span`
+  font-family: var(--font-family);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--color-text-muted);
+  margin-left: 0.35rem;
+`;
+
+const StyledInput = styled.input`
+  width: 100%;
+  padding: 0.65rem 0.9rem;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-btn);
+  color: var(--color-text);
+  font-family: var(--font-family);
+  font-size: 0.95rem;
+  outline: none;
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition);
+
+  &:focus {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(0, 194, 203, 0.15);
+  }
+
+  &::placeholder {
+    color: var(--color-text-muted);
+  }
+`;
+
+const StyledSelect = styled.select`
+  width: 100%;
+  padding: 0.65rem 0.9rem;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-btn);
+  color: var(--color-text);
+  font-family: var(--font-family);
+  font-size: 0.95rem;
+  outline: none;
+  cursor: pointer;
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition);
+  appearance: none;
+
+  &:focus {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(0, 194, 203, 0.15);
+  }
+
+  option {
+    background-color: var(--color-surface);
+    color: var(--color-text);
+  }
+`;
+
+const StyledTextarea = styled.textarea`
+  width: 100%;
+  padding: 0.65rem 0.9rem;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-btn);
+  color: var(--color-text);
+  font-family: var(--font-family);
+  font-size: 0.95rem;
+  min-height: 100px;
+  resize: vertical;
+  outline: none;
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition);
+
+  &:focus {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(0, 194, 203, 0.15);
+  }
+
+  &::placeholder {
+    color: var(--color-text-muted);
+  }
+`;
+
+const ErrorMessage = styled.small`
+  font-size: 0.78rem;
+  color: var(--color-error);
+`;
+
+const TurnstileWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.25rem;
 `;
 
 const SendButton = styled.button`
-  border: none;
-  background-color: #1b3c53;
-  color: #fff;
-  font-weight: 500;
-  font-size: 1.2rem;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   width: 100%;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: var(--radius-btn);
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+  font-family: var(--font-family);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition:
+    background-color var(--transition),
+    transform var(--transition);
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-accent-dim);
+    transform: translateY(-1px);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
 `;
 
-function LandingContactForm({
-  selectedPackage,
-  onSubmitHandler,
-  loading,
-  showForm,
-}) {
+const Spinner = styled.div`
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(10, 15, 20, 0.3);
+  border-top-color: var(--color-bg);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+`;
+
+function LandingContactForm({ type, onSubmitHandler, loading, showForm }) {
   const {
     register,
     handleSubmit,
@@ -34,18 +178,14 @@ function LandingContactForm({
     reset,
   } = useForm({
     defaultValues: {
-      package: selectedPackage,
+      package: "",
     },
   });
   const ref = useRef(null);
   const widgetRef = useRef(null);
 
   useEffect(() => {
-    function handleShowForm() {
-      if (!showForm) reset();
-    }
-
-    handleShowForm();
+    if (!showForm) reset();
   }, [showForm, reset]);
 
   // registering the virtual field
@@ -87,85 +227,78 @@ function LandingContactForm({
     };
   }, []);
 
-  function submitHandler(data) {
-    onSubmitHandler(data);
-  }
-
   return (
-    <div>
-      <StyledForm onSubmit={handleSubmit(submitHandler)}>
-        <div className="mb-4">
-          <label htmlFor="name" className="form-label">
-            Nume
-          </label>
-          <input
-            type="text"
-            name="name"
-            className="form-control"
-            {...register("name", {
-              required: "Câmplul 'Nume' este obligatoriu!",
-            })}
-          />
-          {errors?.name && (
-            <small className="text-danger">{errors.name?.message}</small>
-          )}
-        </div>
-        <div className="mb-4">
-          <label htmlFor="phone" className="form-label">
-            Număr de telefon
-          </label>
-          <input
-            type="text"
-            name="phone"
-            className="form-control"
-            {...register("phone", {
-              required: "Câmplul 'Număr de telefon' este obligatoriu!",
-            })}
-          />
-          {errors?.phone && (
-            <small className="text-danger">{errors.phone?.message}</small>
-          )}
-        </div>
-        <div className="mb-4">
-          <label htmlFor="package" className="form-label">
-            Pachet de interes <span className="text-muted">(opțional)</span>
-          </label>
-          <select id="package" className="form-select" {...register("package")}>
-            <option value="basic">Pachetul Basic</option>
-            <option value="standard">Pachetul Standard</option>
-            <option value="premium">Pachetul Premium</option>
-            <option value="unknown">Nu știu încă</option>
-          </select>
-        </div>
-        <div className="mb-3">
-          <label htmlFor="message" className="form-label">
-            Mesaj <span className="text-muted">(opțional)</span>
-          </label>
-          <textarea
-            name="message"
-            id="message"
-            className="form-control"
-            placeholder="Spune-ne puțin despre afacerea ta..."
-            rows="4"
-            {...register("message")}
-          ></textarea>
-        </div>
-        {/* Turnstile */}
-        <div className="d-flex justify-content-center mb-2">
-          <div
-            ref={ref}
-            className="turnstile-landing-page"
-            data-theme="light"
-            data-size="normal"
-          ></div>
-        </div>
+    <StyledForm onSubmit={handleSubmit(onSubmitHandler)}>
+      <FormGroup>
+        <StyledLabel htmlFor="name">Nume</StyledLabel>
+        <StyledInput
+          type="text"
+          id="name"
+          placeholder="ex: Ion Popescu"
+          {...register("name", {
+            required: "Câmpul 'Nume' este obligatoriu!",
+          })}
+        />
+        {errors?.name && <ErrorMessage>{errors.name?.message}</ErrorMessage>}
+      </FormGroup>
 
-        <SendButton type="submit">
-          {loading && <LoadingSpinner />}
-          Trimite
-        </SendButton>
-      </StyledForm>
-    </div>
+      <FormGroup>
+        <StyledLabel htmlFor="phone">Număr de telefon</StyledLabel>
+        <StyledInput
+          type="text"
+          id="phone"
+          placeholder="ex: 07xx xxx xxx"
+          {...register("phone", {
+            required: "Câmpul 'Număr de telefon' este obligatoriu!",
+          })}
+        />
+        {errors?.phone && <ErrorMessage>{errors.phone?.message}</ErrorMessage>}
+      </FormGroup>
+
+      <FormGroup>
+        <StyledLabel htmlFor="package">
+          Pachet de interes
+          <OptionalTag>(opțional)</OptionalTag>
+        </StyledLabel>
+        <StyledSelect id="package" defaultValue="" {...register("package")}>
+          <option value="" disabled>
+            Alege un pachet
+          </option>
+          <option value="basic">Pachetul Basic</option>
+          <option value="standard">Pachetul Standard</option>
+          <option value="premium">Pachetul Premium</option>
+          <option value="unknown">Nu știu încă</option>
+        </StyledSelect>
+      </FormGroup>
+
+      <FormGroup>
+        <StyledLabel htmlFor="message">
+          Mesaj
+          <OptionalTag>(opțional)</OptionalTag>
+        </StyledLabel>
+        <StyledTextarea
+          id="message"
+          placeholder="Spune-ne puțin despre afacerea ta..."
+          rows="4"
+          {...register("message")}
+        />
+      </FormGroup>
+
+      <TurnstileWrapper>
+        <div
+          ref={ref}
+          className="turnstile-landing-page"
+          data-theme="dark"
+          data-size="normal"
+        ></div>
+      </TurnstileWrapper>
+
+      <SendButton type="submit" disabled={loading}>
+        {loading && <Spinner />}
+
+        {loading ? "Se trimite..." : "Trimite mesajul"}
+      </SendButton>
+    </StyledForm>
   );
 }
 

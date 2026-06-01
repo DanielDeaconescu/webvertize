@@ -2,19 +2,43 @@ import styled from "styled-components";
 import CTAButton from "./CTAButton";
 
 const StyledLandingPageCTA = styled.div`
+  padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 5vw, 4rem);
+  background-color: var(--color-primary-dark);
+  background-image: radial-gradient(
+    ellipse 80% 60% at 50% 100%,
+    rgba(0, 194, 203, 0.1) 0%,
+    transparent 70%
+  );
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  padding: 3rem 2.25rem;
-  background-color: #1f3541;
-  color: #fff;
-  border-radius: 1rem;
-  margin: 0 2rem 2rem 2rem;
+  gap: 2rem;
+  text-align: center;
+`;
 
-  @media (max-width: 768px) {
-    margin: 0 1rem 1rem 1rem;
-  }
+const CTAHeading = styled.h2`
+  font-family: var(--font-family);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  margin: 0;
+  max-width: 560px;
+`;
+
+const CTASubtitle = styled.p`
+  font-family: var(--font-family);
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  margin: 0;
+`;
+
+const CTAButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 280px;
 `;
 
 const StyledH2 = styled.h2`
@@ -29,21 +53,11 @@ const StyledH2 = styled.h2`
   }
 `;
 
-const CTAButtonWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  width: 100%;
-  max-width: 280px;
-  margin-top: 0.5rem;
-`;
-
 function LandingPageCTA() {
   return (
     <StyledLandingPageCTA>
-      <StyledH2>
-        <div>Gata să construim prezența ta online?</div>
-        <div>Contactează-ne azi! Primul pas nu presupune niciun cost.</div>
-      </StyledH2>
+      <CTAHeading>Gata să construim prezența ta online?</CTAHeading>
+      <CTASubtitle>Primul pas nu presupune niciun cost.</CTASubtitle>
       <CTAButtonWrapper>
         <CTAButton type="cta" />
       </CTAButtonWrapper>
