@@ -4,7 +4,7 @@ import Form from "../Form";
 import styled from "styled-components";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
-import imgContent1 from "../../assets/portfolio/content_creation/content1.png";
+import imgContent1 from "../../assets/portfolio/content_creation/content1.webp";
 import { Video } from "yet-another-react-lightbox/plugins";
 import {
   faCheckSquare,
