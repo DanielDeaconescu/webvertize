@@ -40,23 +40,25 @@ const StyledP = styled.p`
 function WebsitesIntro() {
   return (
     <StyledSection className="container">
-      <WebsitesImage src={websitesImg} className="img-fluid" />
-      <div className="row">
-        <SectionTextContent>
-          <SectionLabel>Ce construim</SectionLabel>
-          <SectionHeading>
-            Website-uri personalizate, create pentru nevoile reale ale afacerii
-            tale
-          </SectionHeading>
-          <StyledP>
-            Fiecare website pe care îl construim pornește de la o înțelegere
-            clară a afacerii tale — publicul țintă, obiectivele de business și
-            identitatea brandului. Rezultatul este un site care nu doar arată
-            profesional, ci lucrează activ pentru tine: atrage vizitatori,
-            comunică clar ceea ce oferi și convinge potențialii clienți să ia
-            legătura cu tine.
-          </StyledP>
-        </SectionTextContent>
+      <div className="container">
+        <WebsitesImage src={websitesImg} className="img-fluid" />
+        <div className="row">
+          <SectionTextContent>
+            <SectionLabel>Ce construim</SectionLabel>
+            <SectionHeading>
+              Website-uri personalizate, create pentru nevoile reale ale
+              afacerii tale
+            </SectionHeading>
+            <StyledP>
+              Fiecare website pe care îl construim pornește de la o înțelegere
+              clară a afacerii tale — publicul țintă, obiectivele de business și
+              identitatea brandului. Rezultatul este un site care nu doar arată
+              profesional, ci lucrează activ pentru tine: atrage vizitatori,
+              comunică clar ceea ce oferi și convinge potențialii clienți să ia
+              legătura cu tine.
+            </StyledP>
+          </SectionTextContent>
+        </div>
       </div>
     </StyledSection>
   );

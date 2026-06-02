@@ -41,9 +41,11 @@ export const FeatureCard = styled.li`
     border-color var(--transition),
     transform var(--transition);
 
-  &:hover {
-    border-color: var(--color-accent);
-    transform: translateY(-3px);
+  @media (min-width: 992px) {
+    &:hover {
+      border-color: var(--color-accent);
+      transform: translateY(-3px);
+    }
   }
 `;
 
