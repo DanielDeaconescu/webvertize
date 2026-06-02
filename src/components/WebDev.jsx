@@ -11,6 +11,12 @@ const StyledWebDev = styled.div`
   gap: 2.5rem;
 `;
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+`;
+
 const CardsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -24,7 +30,7 @@ const CardsGrid = styled.div`
 function WebDev() {
   return (
     <StyledWebDev>
-      <div className="container">
+      <Container className="container">
         <SectionHeading>
           Dezvoltare web – website-uri și aplicații web
         </SectionHeading>
@@ -56,7 +62,7 @@ function WebDev() {
             exploreServicesBtn="Descoperă serviciile"
           />
         </CardsGrid>
-      </div>
+      </Container>
     </StyledWebDev>
   );
 }

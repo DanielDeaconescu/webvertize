@@ -13,6 +13,12 @@ const StyledAds = styled.div`
   gap: 2.5rem;
 `;
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+`;
+
 const CardsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -30,7 +36,7 @@ const CardsGrid = styled.div`
 function Ads() {
   return (
     <StyledAds>
-      <div className="container">
+      <Container className="container">
         <SectionHeading>Publicitate și Creare de Conținut</SectionHeading>
         <SectionSubtitle>
           Conținut promoțional și campanii publicitare gestionate pentru a aduce
@@ -68,7 +74,7 @@ function Ads() {
             link3="/advertising-content-creation"
           />
         </CardsGrid>
-      </div>
+      </Container>
     </StyledAds>
   );
 }
