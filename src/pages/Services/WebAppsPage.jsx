@@ -10,7 +10,7 @@ import styled from "styled-components";
 import BackToTop from "../../components/BackToTop";
 import WebAppsFeatures from "../../components/WebDevelopment/WebAppsFeatures";
 import Header from "../../components/Header";
-import webAppsHeader from "../../assets/web_apps_header.jpg";
+import webAppsHeader from "../../assets/headers/web_apps_header.webp";
 import { Helmet } from "react-helmet-async";
 
 const StyledWebAppsPage = styled.div`

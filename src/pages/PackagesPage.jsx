@@ -8,7 +8,7 @@ import Footer from "../components/Footer";
 import Packages from "../components/Packages";
 import NextSteps from "../components/NextSteps";
 import Header from "../components/Header";
-import pricesHeaderImg from "../assets/prices_header_img.jpg";
+import pricesHeaderImg from "../assets/headers/prices_header_img.webp";
 import CTA from "../components/CTA";
 import { Helmet } from "react-helmet-async";
 

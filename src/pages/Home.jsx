@@ -7,7 +7,7 @@ import OurMission from "../components/OurMission";
 import CTA from "../components/CTA";
 import WhatsAppButton from "../components/WhatsAppButton";
 import Header from "../components/Header";
-import homepageHeader from "../assets/homepage_header.jpg";
+import homepageHeader from "../assets/headers/homepage_header.webp";
 import CookiePopup from "../components/Cookies/CookiePopup";
 import styled from "styled-components";
 import BackToTop from "../components/BackToTop";

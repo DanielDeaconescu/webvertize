@@ -9,7 +9,7 @@ import CookiePopup from "../../components/Cookies/CookiePopup";
 import styled from "styled-components";
 import BackToTop from "../../components/BackToTop";
 import Header from "../../components/Header";
-import websitesHeader from "../../assets/websites_header.jpg";
+import websitesHeader from "../../assets/headers/websites_header.webp";
 import WebsitesIntro from "../../components/WebDevelopment/WebsitesIntro";
 import WebsitesFeatures from "../../components/WebDevelopment/WebsitesFeatures";
 import { Helmet } from "react-helmet-async";

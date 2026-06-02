@@ -3,7 +3,7 @@ import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
 import SectionWebsites from "../components/Portfolio/SectionWebsites";
 import SideButtons from "../components/SideButtons";
-import bgImage from "../assets/portfolio/portfolio-header.jpg";
+import bgImage from "../assets/headers/portfolio-header.webp";
 import CTA from "../components/CTA";
 import WhatsAppButton from "../components/WhatsAppButton";
 import CookiePopup from "../components/Cookies/CookiePopup";

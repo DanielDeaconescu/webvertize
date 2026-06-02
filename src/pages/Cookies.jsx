@@ -2,7 +2,7 @@ import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import MainContent from "../components/Cookies/MainContent";
-import cookiesHeader from "../assets/cookies_header.jpg";
+import cookiesHeader from "../assets/headers/cookies_header.webp";
 import CookiePopup from "../components/Cookies/CookiePopup";
 import BackToTop from "../components/BackToTop";
 import WhatsAppButton from "../components/WhatsAppButton";

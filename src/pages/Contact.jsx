@@ -3,7 +3,7 @@ import Navigation from "../components/Navigation";
 import SideButtons from "../components/SideButtons";
 import WhatsAppButton from "../components/WhatsAppButton";
 import Header from "../components/Header";
-import contactHeaderImg from "../assets/contact_us_header.jpg";
+import contactHeaderImg from "../assets/headers/contact_us_header.webp";
 import MainSection from "./Contact/MainSection";
 import CookiePopup from "../components/Cookies/CookiePopup";
 import BackToTop from "../components/BackToTop";
