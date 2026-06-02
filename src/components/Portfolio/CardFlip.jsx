@@ -282,6 +282,7 @@ function CardFlip({ project }) {
                 src={project.card_img}
                 alt={project.name}
                 loading="lazy"
+                decoding="async"
               />
 
               <CardContent>
