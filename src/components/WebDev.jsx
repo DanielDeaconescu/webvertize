@@ -23,38 +23,40 @@ const CardsGrid = styled.div`
 
 function WebDev() {
   return (
-    <StyledWebDev className="container">
-      <SectionHeading>
-        Dezvoltare web – website-uri și aplicații web
-      </SectionHeading>
+    <StyledWebDev>
+      <div className="container">
+        <SectionHeading>
+          Dezvoltare web – website-uri și aplicații web
+        </SectionHeading>
 
-      <CardsGrid>
-        <Card
-          title="Website-uri"
-          text="Website-uri de prezentare profesionale, optimizate pentru mobil și adaptate identității brandului tău."
-          link1="/portfolio"
-          link2="/websites"
-          icon="websites-icon"
-          bgImage={bgWebsitesImage}
-          overlayOpacity={0.35}
-          blur={5}
-          caseStudiesBtn="Vezi studii de caz"
-          exploreServicesBtn="Descoperă serviciile"
-        />
+        <CardsGrid>
+          <Card
+            title="Website-uri"
+            text="Website-uri de prezentare profesionale, optimizate pentru mobil și adaptate identității brandului tău."
+            link1="/portfolio"
+            link2="/websites"
+            icon="websites-icon"
+            bgImage={bgWebsitesImage}
+            overlayOpacity={0.35}
+            blur={5}
+            caseStudiesBtn="Vezi studii de caz"
+            exploreServicesBtn="Descoperă serviciile"
+          />
 
-        <Card
-          title="Aplicații Web"
-          text="Aplicații web personalizate pentru IMM-uri — construite în jurul fluxurilor tale de lucru specifice."
-          link1="/portfolio"
-          link2="/web-apps"
-          icon="web-app-icon"
-          bgImage={bgWebAppsImage}
-          overlayOpacity={0.35}
-          blur={5}
-          caseStudiesBtn="Vezi studii de caz"
-          exploreServicesBtn="Descoperă serviciile"
-        />
-      </CardsGrid>
+          <Card
+            title="Aplicații Web"
+            text="Aplicații web personalizate pentru IMM-uri — construite în jurul fluxurilor tale de lucru specifice."
+            link1="/portfolio"
+            link2="/web-apps"
+            icon="web-app-icon"
+            bgImage={bgWebAppsImage}
+            overlayOpacity={0.35}
+            blur={5}
+            caseStudiesBtn="Vezi studii de caz"
+            exploreServicesBtn="Descoperă serviciile"
+          />
+        </CardsGrid>
+      </div>
     </StyledWebDev>
   );
 }

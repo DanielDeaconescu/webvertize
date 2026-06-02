@@ -29,44 +29,46 @@ const CardsGrid = styled.div`
 
 function Ads() {
   return (
-    <StyledAds className="container">
-      <SectionHeading>Publicitate și Creare de Conținut</SectionHeading>
-      <SectionSubtitle>
-        Conținut promoțional și campanii publicitare gestionate pentru a aduce
-        rezultate măsurabile afacerii tale.
-      </SectionSubtitle>
-      <CardsGrid>
-        <Card
-          title="Creare de Conținut"
-          subtitle="Imagini și Reels pentru reclame Facebook și Google"
-          text="Producem materiale vizuale promoționale — imagini compuse și clipuri scurte de tip Reels — concepute să evidențieze brandul tău și să genereze acțiune."
-          bgImage={contentCreationImg}
-          link1="/portfolio"
-          link2="/advertising-content-creation"
-          caseStudiesBtn="Vezi studii de caz"
-          exploreServicesBtn="Descoperă serviciile"
-        />
+    <StyledAds>
+      <div className="container">
+        <SectionHeading>Publicitate și Creare de Conținut</SectionHeading>
+        <SectionSubtitle>
+          Conținut promoțional și campanii publicitare gestionate pentru a aduce
+          rezultate măsurabile afacerii tale.
+        </SectionSubtitle>
+        <CardsGrid>
+          <Card
+            title="Creare de Conținut"
+            subtitle="Imagini și Reels pentru reclame Facebook și Google"
+            text="Producem materiale vizuale promoționale — imagini compuse și clipuri scurte de tip Reels — concepute să evidențieze brandul tău și să genereze acțiune."
+            bgImage={contentCreationImg}
+            link1="/portfolio"
+            link2="/advertising-content-creation"
+            caseStudiesBtn="Vezi studii de caz"
+            exploreServicesBtn="Descoperă serviciile"
+          />
 
-        {/* Google Ads Campaigns */}
-        <Card
-          title="Campanii Google Ads"
-          subtitle="De la strategie la optimizare continuă"
-          text="Construim campania ta de la zero — structură, targetare și obiective clare. Monitorizăm performanța, implementăm îmbunătățiri și livrăm rapoarte lunare."
-          readMoreBtn="Mai multe despre tipurile de campanii"
-          bgImage={googleAdsImage}
-          link3="/advertising-content-creation"
-        />
+          {/* Google Ads Campaigns */}
+          <Card
+            title="Campanii Google Ads"
+            subtitle="De la strategie la optimizare continuă"
+            text="Construim campania ta de la zero — structură, targetare și obiective clare. Monitorizăm performanța, implementăm îmbunătățiri și livrăm rapoarte lunare."
+            readMoreBtn="Mai multe despre tipurile de campanii"
+            bgImage={googleAdsImage}
+            link3="/advertising-content-creation"
+          />
 
-        {/* Facebook Ads Campaigns */}
-        <Card
-          title="Campanii Facebook Ads"
-          subtitle="Campanii atractive, adaptate obiectivelor afacerii tale"
-          text="Crearea și administrarea campaniilor Facebook Ads, incluzând conținut promoțional, texte publicitare și monitorizarea performanței, pentru a ajunge eficient la publicul tău."
-          readMoreBtn="Mai multe despre tipurile de campanii"
-          bgImage={facebookAdsImage}
-          link3="/advertising-content-creation"
-        />
-      </CardsGrid>
+          {/* Facebook Ads Campaigns */}
+          <Card
+            title="Campanii Facebook Ads"
+            subtitle="Campanii atractive, adaptate obiectivelor afacerii tale"
+            text="Crearea și administrarea campaniilor Facebook Ads, incluzând conținut promoțional, texte publicitare și monitorizarea performanței, pentru a ajunge eficient la publicul tău."
+            readMoreBtn="Mai multe despre tipurile de campanii"
+            bgImage={facebookAdsImage}
+            link3="/advertising-content-creation"
+          />
+        </CardsGrid>
+      </div>
     </StyledAds>
   );
 }
