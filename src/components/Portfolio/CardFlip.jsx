@@ -17,8 +17,10 @@ const CardWrapper = styled.div`
   perspective: 1000px;
   cursor: pointer;
 
-  &:hover .card-flip-inner {
-    transform: rotateY(180deg);
+  @media (min-width: 992px) {
+    &:hover .card-flip-inner {
+      transform: rotateY(180deg);
+    }
   }
 `;
 

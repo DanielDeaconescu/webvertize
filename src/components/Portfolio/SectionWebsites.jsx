@@ -361,56 +361,58 @@ function SectionWebsites() {
   );
 
   return (
-    <StyledSectionWebsites className="container">
-      <CategorySection>
-        <CategoryHeader>
-          <SectionLabel>Portofoliu</SectionLabel>
-          <SectionHeading>Website-uri</SectionHeading>
-          <CategorySubtitle>
-            Proiecte livrate — fiecare cu provocări diferite și soluții
-            construite de la zero.
-          </CategorySubtitle>
-        </CategoryHeader>
-        <ProjectsGrid>
-          {websites.map((project) => (
-            <CardFlip key={project.name} project={project} />
-          ))}
-        </ProjectsGrid>
-      </CategorySection>
-      <CategorySection>
-        <CategoryHeader>
-          <SectionLabel>Portofoliu</SectionLabel>
-          <SectionHeading>Aplicații Web</SectionHeading>
-          <CategorySubtitle>
-            Instrumente interne și aplicații web care eficientizează procesele
-            de business și cresc productivitatea.
-          </CategorySubtitle>
-        </CategoryHeader>
-        <ProjectsGrid>
-          {webApps.map((project) => (
-            <CardFlip key={project.name} project={project} />
-          ))}
-        </ProjectsGrid>
-      </CategorySection>
+    <StyledSectionWebsites>
+      <div className="container">
+        <CategorySection>
+          <CategoryHeader>
+            <SectionLabel>Portofoliu</SectionLabel>
+            <SectionHeading>Website-uri</SectionHeading>
+            <CategorySubtitle>
+              Proiecte livrate — fiecare cu provocări diferite și soluții
+              construite de la zero.
+            </CategorySubtitle>
+          </CategoryHeader>
+          <ProjectsGrid>
+            {websites.map((project) => (
+              <CardFlip key={project.name} project={project} />
+            ))}
+          </ProjectsGrid>
+        </CategorySection>
+        <CategorySection>
+          <CategoryHeader>
+            <SectionLabel>Portofoliu</SectionLabel>
+            <SectionHeading>Aplicații Web</SectionHeading>
+            <CategorySubtitle>
+              Instrumente interne și aplicații web care eficientizează procesele
+              de business și cresc productivitatea.
+            </CategorySubtitle>
+          </CategoryHeader>
+          <ProjectsGrid>
+            {webApps.map((project) => (
+              <CardFlip key={project.name} project={project} />
+            ))}
+          </ProjectsGrid>
+        </CategorySection>
 
-      <CategorySection>
-        <CategoryHeader>
-          <SectionLabel>Portofoliu</SectionLabel>
-          <SectionHeading>Creare de Conținut</SectionHeading>
-          <CategorySubtitle>
-            Materiale publicitare, grafică și proiecte media create pentru a
-            atrage atenția publicului tău.
-          </CategorySubtitle>
-        </CategoryHeader>
-        <ProjectsGrid>
-          {content.map((project) => (
-            <CardFlip
-              key={project.name + project.card_title}
-              project={project}
-            />
-          ))}
-        </ProjectsGrid>
-      </CategorySection>
+        <CategorySection>
+          <CategoryHeader>
+            <SectionLabel>Portofoliu</SectionLabel>
+            <SectionHeading>Creare de Conținut</SectionHeading>
+            <CategorySubtitle>
+              Materiale publicitare, grafică și proiecte media create pentru a
+              atrage atenția publicului tău.
+            </CategorySubtitle>
+          </CategoryHeader>
+          <ProjectsGrid>
+            {content.map((project) => (
+              <CardFlip
+                key={project.name + project.card_title}
+                project={project}
+              />
+            ))}
+          </ProjectsGrid>
+        </CategorySection>
+      </div>
     </StyledSectionWebsites>
   );
 }
