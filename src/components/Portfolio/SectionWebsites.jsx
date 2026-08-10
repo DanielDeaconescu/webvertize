@@ -102,45 +102,6 @@ function SectionWebsites() {
       ],
       live_url: "https://www.ediontrans.ro/",
     },
-    // Studio Foto Adda
-    {
-      // card
-      name: "Studio Foto Adda",
-      card_img: imgWebsites2,
-      front_text: "Website de prezentare pentru un studio foto local.",
-      category: "Website-uri",
-      categoryInner: "websites",
-      back_text:
-        "Un website de prezentare optimizat pentru performanță, care include galerii foto cu încărcare progresivă (lazy-loading), o prezentare clară a serviciilor și un formular de contact validat, cu trimiterea solicitărilor direct prin email.",
-      // modal
-      business_logo: fotoAddaLogo,
-      business_description:
-        "Studio Foto Adda este un studio foto local care oferă servicii de fotografie atât în studio, cât și la locație, pentru evenimente, portrete și ocazii speciale.",
-      project_challenges: [
-        "Lipsa unui conținut structurat pentru prezentarea serviciilor și a portofoliului",
-        "Optimizarea paginilor cu multe imagini fără a compromite performanța",
-        "Implementarea unei strategii eficiente de încărcare progresivă (lazy-loading) pentru galerii foto mari",
-        "Alegerea unui design curat și elegant care să pună în valoare conținutul vizual",
-      ],
-      project_solution:
-        "Am abordat proiectul având ca priorități performanța și claritatea vizuală. În primul rând, am implementat încărcarea progresivă a imaginilor folosind Intersection Observer API, pentru a asigura timpi rapizi de încărcare inițială. Apoi, am structurat și creat conținutul website-ului pentru a prezenta clar serviciile și lucrările fotografice. În final, am realizat o interfață curată și minimalistă, care permite imaginilor să rămână elementul principal.",
-      project_results: {
-        project_results_intro:
-          "Rezultatul este un website modern, rapid și optimizat pentru mobil, care consolidează prezența online a Studio Foto Adda și le pune în valoare munca: ",
-        project_results_list: [
-          "Galerii foto performante, cu imagini încărcate progresiv",
-          "Prezentare clară a serviciilor și a portofoliului fotografic",
-          "Acces facil la informațiile de contact și la formularele de solicitare",
-          "Experiență de utilizare îmbunătățită pe desktop și dispozitive mobile",
-        ],
-      },
-      project_key_points: [
-        "Povestea vizuală contează. Pentru afacerile creative, website-ul trebuie să pună în valoare lucrările, păstrând în același timp performanța și responsivitatea.",
-        "Abordare orientată pe performanță. Optimizarea încărcării imaginilor îmbunătățește semnificativ experiența utilizatorilor și calitatea percepută.",
-        "Design atemporal. Un layout simplu și elegant menține focusul pe conținut și asigură relevanță pe termen lung.",
-      ],
-      live_url: "https://www.studiofotoaddagl.ro/",
-    },
     // FixAzi
     {
       // card
