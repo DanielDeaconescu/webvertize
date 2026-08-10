@@ -10,7 +10,7 @@ const StyledLogo = styled.div`
 `;
 
 const StyledLogoImg = styled.img`
-  width: 75px;
+  width: 62.5px;
   height: auto;
   display: block;
   flex-shrink: 0;
@@ -27,7 +27,7 @@ const StyledLogoImg = styled.img`
 const LogoTitle = styled.div`
   font-family: var(--font-logo);
   font-weight: 800;
-  font-size: 1.8rem;
+  font-size: 1.65rem;
   color: ${({ theme }) =>
     theme === "light" ? "var(--color-text)" : "var(--color-primary)"};
   letter-spacing: -0.02em;
@@ -49,7 +49,7 @@ const LogoTitle = styled.div`
 const LogoSubtitle = styled.div`
   font-family: var(--font-logo);
   font-weight: 600;
-  font-size: 0.72rem;
+  font-size: 0.65rem;
   color: ${({ theme }) =>
     theme === "light"
       ? "var(--color-text-secondary)"
@@ -78,8 +78,8 @@ function Logo({ theme }) {
       <StyledLogoImg
         src={theme === "light" ? logoImgLight : logoImg}
         alt="Webvertize logo"
-        width="75"
-        height="75"
+        width="55"
+        height="55"
       />
 
       <div style={{ display: "flex", flexDirection: "column" }}>
